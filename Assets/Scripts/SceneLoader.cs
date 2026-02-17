@@ -9,7 +9,7 @@ public class SceneLoader : MonoBehaviour
     
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && other.TryGetComponent<PlayerMovement>(out PlayerMovement player) && nEnemies == EnemyCounter.instance.enemyCounter)
+        if (other.CompareTag("Player") && other.TryGetComponent<PlayerMovement>(out PlayerMovement player))
         {
             SceneManager.LoadScene(sceneName);
         }
