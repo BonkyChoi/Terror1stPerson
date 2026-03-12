@@ -4,6 +4,7 @@ using UnityEngine;
 public class SC_LightManager : MonoBehaviour
 {
    public static System.Action OnSwitchOff;//activa el movimiento de los enemigos
+   public static System.Action OnSwitchOn;//activa el movimiento de los enemigos
     
     [SerializeField] private Light[] lights;
 
@@ -119,8 +120,9 @@ public class SC_LightManager : MonoBehaviour
         startTime += timeReductionOnEvent;//tiempo que le añade al contador para apagar la luz antes
     }
 
-    public void OnSwitchOn()
+    public void SwitchOn()
     {
+        OnSwitchOn?.Invoke();
         currentState = LightState.Normal;
         StartCoroutine(StateTimer());
         foreach (Light light in lights)
