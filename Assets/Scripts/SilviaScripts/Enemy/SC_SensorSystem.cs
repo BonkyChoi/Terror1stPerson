@@ -2,15 +2,8 @@ using UnityEngine;
 
 public class SC_SensorSystem : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //Comprobar donde está el jugador
+    //Lograr verle con 33 grados de vision
+    //Comprobar que no hayan objetos que impidan la visión
+    //Pasar al estado de persecución
 }
