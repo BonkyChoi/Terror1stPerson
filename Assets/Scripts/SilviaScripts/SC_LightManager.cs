@@ -27,25 +27,27 @@ public class SC_LightManager : MonoBehaviour
         currentState = LightState.Normal;
 
         StartCoroutine(StateTimer());
+        Debug.Log("Luz encendida hasta dentro de 3 minutos");
 
         foreach (Light light in lights)
         {
             StartCoroutine(LightRoutine(light));
+            Debug.Log("Corutina de luz iniciada para " + light.name);
         }
     }
 
     IEnumerator StateTimer()
     {
-        yield return new WaitForSeconds(180);
+        yield return new WaitForSeconds(5);//cambiar a 180 para el juego final
         currentState = LightState.Flicker30;
 
-        yield return new WaitForSeconds(60);
+        yield return new WaitForSeconds(5);//cambiar a 60 para el juego final
         currentState = LightState.Flicker15;
 
-        yield return new WaitForSeconds(60);
+        yield return new WaitForSeconds(5);//cambiar a 60 para el juego final
         currentState = LightState.Flicker5;
 
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(5);//cambiar a 20 para el juego final
         currentState = LightState.FinalFlicker;
     }
 
@@ -61,11 +63,11 @@ public class SC_LightManager : MonoBehaviour
                     break;
 
                 case LightState.Flicker30:
-                    yield return Flick(light, 30f);
+                    yield return Flick(light, 5f);//cambiar a 30
                     break;
 
                 case LightState.Flicker15:
-                    yield return Flick(light, 15f);
+                    yield return Flick(light, 5f);//cambiar a 15
                     break;
 
                 case LightState.Flicker5:
@@ -90,6 +92,7 @@ public class SC_LightManager : MonoBehaviour
 
     private IEnumerator Flick(Light light, float waitTime)//luz a apagar y tiempo de espera entre cada parpadeo
     {
+        Debug.Log("Flicker en " + light.name + " con tiempo de espera de " + waitTime + " segundos");
         light.enabled = false;
         yield return new WaitForSeconds(0.3f);
 
