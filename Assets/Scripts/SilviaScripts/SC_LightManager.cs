@@ -12,14 +12,28 @@ public class SC_LightManager : MonoBehaviour
     enum LightState
     {
         Normal,
-        Flicker30,
-        Flicker15,
-        Flicker5,
+        Flicker1,
+        Flicker2,
+        Flicker3,
         FinalFlicker,
         Off
     }
     
     private LightState currentState;
+    
+    [Header("Tiempo hasta cambiar de estado en segundos")]
+    [SerializeField] private float timeToFlicker1 = 180f;
+    [SerializeField] private float timeToFlicker2 = 60f;
+    [SerializeField] private float timeToFlicker3 = 60f;
+    [SerializeField] private float timeToFinalFlicker = 20f;
+    
+    [Header("Intervalos de espera al parpadear en segundos")]
+    [SerializeField] private float flicker1Interval = 30f;
+    [SerializeField] private float flicker2Interval = 15f;
+    [SerializeField] private float flicker3Interval = 5f;
+    
+    [Header("Modificadores de tiempo")]
+    [SerializeField] private float timeReductionOnEvent = 15f;
 
     private void Start()
     {
@@ -38,16 +52,16 @@ public class SC_LightManager : MonoBehaviour
 
     IEnumerator StateTimer()
     {
-        yield return new WaitForSeconds(5);//cambiar a 180 para el juego final
-        currentState = LightState.Flicker30;
+        yield return new WaitForSeconds(timeToFlicker1);
+        currentState = LightState.Flicker1;
 
-        yield return new WaitForSeconds(5);//cambiar a 60 para el juego final
-        currentState = LightState.Flicker15;
+        yield return new WaitForSeconds(timeToFlicker2);
+        currentState = LightState.Flicker2;
 
-        yield return new WaitForSeconds(5);//cambiar a 60 para el juego final
-        currentState = LightState.Flicker5;
+        yield return new WaitForSeconds(timeToFlicker3);
+        currentState = LightState.Flicker3;
 
-        yield return new WaitForSeconds(5);//cambiar a 20 para el juego final
+        yield return new WaitForSeconds(timeToFinalFlicker);
         currentState = LightState.FinalFlicker;
     }
 
@@ -62,16 +76,16 @@ public class SC_LightManager : MonoBehaviour
                     yield return null;//espera un frame antes de continuar el bucle y verificar el estado de la luz nuevamente
                     break;
 
-                case LightState.Flicker30:
-                    yield return Flick(light, 5f);//cambiar a 30
+                case LightState.Flicker1:
+                    yield return Flick(light, flicker1Interval);//cambiar a 30
                     break;
 
-                case LightState.Flicker15:
-                    yield return Flick(light, 5f);//cambiar a 15
+                case LightState.Flicker2:
+                    yield return Flick(light, flicker2Interval);//cambiar a 15
                     break;
 
-                case LightState.Flicker5:
-                    yield return Flick(light, 5f);
+                case LightState.Flicker3:
+                    yield return Flick(light, flicker3Interval);
                     break;
 
                 case LightState.FinalFlicker:
@@ -102,13 +116,18 @@ public class SC_LightManager : MonoBehaviour
 
     public void SubstractTime()
     {
-        startTime -= 15f;
+        startTime += timeReductionOnEvent;//tiempo que le añade al contador para apagar la luz antes
     }
 
     public void OnSwitchOn()
     {
         currentState = LightState.Normal;
         StartCoroutine(StateTimer());
+        foreach (Light light in lights)
+        {
+            StartCoroutine(LightRoutine(light));
+            Debug.Log("Corutina de luz iniciada para " + light.name);
+        }
     }
 
 }
