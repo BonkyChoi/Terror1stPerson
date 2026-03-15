@@ -14,7 +14,7 @@ public class SC_PatrolState : SC_State
     
     private NavMeshAgent agent;
 
-    private Transform patrolRoute;
+    [SerializeField]private Transform patrolRoute;
     private List<Vector3> patrolPoints = new();
     private int currentPatrolPoint = 0;
 
@@ -36,7 +36,7 @@ public class SC_PatrolState : SC_State
 
     public override void UpdateState()
     {
-        throw new System.NotImplementedException();
+        //nothing now
     }
 
     public override void ExitState()
@@ -46,8 +46,8 @@ public class SC_PatrolState : SC_State
 
     private void OnEnable()
     {
-        SC_LightManager.OnSwitchOn += PatrolAndWait;
-        SC_LightManager.OnSwitchOff += StopMovement;
+        SC_LightManager.OnSwitchOff += PatrolAndWait;
+        SC_LightManager.OnSwitchOn += StopMovement;
     }
 
     private void StopMovement()
@@ -57,8 +57,8 @@ public class SC_PatrolState : SC_State
 
     private void OnDisable()
     {
-        SC_LightManager.OnSwitchOn -= PatrolAndWait;
-        SC_LightManager.OnSwitchOff -= StopMovement;
+        SC_LightManager.OnSwitchOff -= PatrolAndWait;
+        SC_LightManager.OnSwitchOn -= StopMovement;
     }
 
     private void PatrolAndWait()
@@ -68,12 +68,17 @@ public class SC_PatrolState : SC_State
 
     private IEnumerator PatrolAndWaitCoroutine()
     {
+        //rwarrr!
+        yield return new WaitForSeconds(1);
+        //ahora ya se mueve
+        
         while (true)
         {
             agent.enabled = true;
             agent.SetDestination(patrolPoints[currentPatrolPoint]);
             yield return new WaitUntil(ReachedDestination);
             yield return new WaitForSeconds(Random.Range(0.2f, 1.5f));
+            currentPatrolPoint = (currentPatrolPoint + 1) % patrolPoints.Count;
 
         }
         
@@ -82,7 +87,7 @@ public class SC_PatrolState : SC_State
     private bool ReachedDestination()
     {
         return !agent.pathPending &&
-            agent.remainingDistance >= agent.stoppingDistance; //si no tienes pendiente un camino y la distancia
+            agent.remainingDistance <= agent.stoppingDistance; //si no tienes pendiente un camino y la distancia
         //que queda entre el punto y tu parada
     }
 }

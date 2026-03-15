@@ -46,11 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SC_LightManager
   lights:
   - {fileID: 0}
-  timeToFlicker1: 180
-  timeToFlicker2: 60
-  timeToFlicker3: 60
-  timeToFinalFlicker: 20
-  flicker1Interval: 30
-  flicker2Interval: 15
+  timeToFlicker1: 5
+  timeToFlicker2: 5
+  timeToFlicker3: 5
+  timeToFinalFlicker: 5
+  flicker1Interval: 5
+  flicker2Interval: 5
   flicker3Interval: 5
   timeReductionOnEvent: 15

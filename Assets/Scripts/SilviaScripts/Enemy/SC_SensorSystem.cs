@@ -10,7 +10,7 @@ public class SC_SensorSystem : MonoBehaviour
     //Pasar al estado de persecución
 
     [field: SerializeField] public float SensorAngle { get; private set; } //si son 33 grados, el sensor va a ser de 16.5 grados a cada lado del enemigo
-    [field: SerializeField] public float VisionAngle { get; private set; }
+    [field: SerializeField] public float VisionAngle { get; private set; }//rango de unidades en las que detecta al jugador
     [SerializeField] private LayerMask isAPlayer;
     [SerializeField] private LayerMask isAnObstacle;
     private GameObject player; //el player que va a ser enviado a otros scripts
@@ -20,7 +20,7 @@ public class SC_SensorSystem : MonoBehaviour
     private void FixedUpdate()
     {
         Collider[] col = Physics.OverlapSphere(this.transform.position, VisionAngle, isAPlayer);
-        if (col.Length < 0&&col[0].gameObject.CompareTag("Player"))
+        if (col.Length > 0&&col[0].gameObject.CompareTag("Player"))
         {
             //ver si el jugador está dentro del rango de visión
             Vector3 directionToTarget = col[0].transform.position - this.transform.position;
