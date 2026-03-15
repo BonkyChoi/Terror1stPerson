@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class SC_SensorSystem : MonoBehaviour
 {
+    //Se enciende cuando está investigando?
     //Comprobar donde está el jugador
     //Lograr verle con 33 grados de vision
     //Comprobar que no hayan objetos que impidan la visión
@@ -11,7 +12,10 @@ public class SC_SensorSystem : MonoBehaviour
     [SerializeField] private float visionRadius;
     [SerializeField] private LayerMask isAPlayer;
     [SerializeField] private LayerMask isAnObstacle;
-    private GameObject player;
+    private GameObject player; //el player que va a ser enviado a otros scripts
+    
+    //se necesita enviar un evento con una referencia al gameobjet
+    Event Input.Action;
     private void FixedUpdate()
     {
         Collider[] col = Physics.OverlapSphere(this.transform.position, visionRadius, isAPlayer);
@@ -29,7 +33,7 @@ public class SC_SensorSystem : MonoBehaviour
                 if (!Physics.Raycast(this.transform.position, directionToTarget, out RaycastHit hit, visionRadius,
                         isAnObstacle))
                 {
-                    player = hit.collider.gameObject;
+                    player = hit.collider.gameObject; 
                 }
             }
         }
