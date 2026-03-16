@@ -117,6 +117,7 @@ public class SC_LightManager : MonoBehaviour
 
     public void SubstractTime()
     {
+        Debug.Log("Han reducido el tiempo de luces");
         startTime += timeReductionOnEvent;//tiempo que le añade al contador para apagar la luz antes
     }
 
@@ -135,10 +136,12 @@ public class SC_LightManager : MonoBehaviour
     private void OnEnable()
     {
         SC_ElectricalPannel.SwitchOnTheLights += SwitchOn;
+        SC_PuzzlePannel.Substract15Seconds += SubstractTime;
     }
     private void OnDisable()
     {
         SC_ElectricalPannel.SwitchOnTheLights -= SwitchOn;
+        SC_PuzzlePannel.Substract15Seconds -= SubstractTime;
     }
 
 }

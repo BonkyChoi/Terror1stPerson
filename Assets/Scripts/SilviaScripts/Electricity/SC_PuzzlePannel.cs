@@ -13,13 +13,14 @@ public class SC_PuzzlePannel : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player")&& currentTimesToSuccess < totalTimesToSuccess)
+        if (other.CompareTag("Player")&& currentTimesToSuccess < totalTimesToSuccess && Input.GetKeyDown(KeyCode.E))
         {
             //permitir clicar
             //si acierta -> current success ++
-            currentTimesToSuccess++;
+            //currentTimesToSuccess++;
             //si falla -> substract invoke
-            
+            Substract15Seconds?.Invoke();
+            Debug.Log("Substract15Seconds");
         }
         else if (other.CompareTag("Player") && currentTimesToSuccess == totalTimesToSuccess)
         {
