@@ -230,14 +230,22 @@ public class PlayerMovementV : MonoBehaviour
         Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, grabDistance))
         {
+            GameObject hitObj = hit.collider.gameObject;
+            
+            if (hitObj == rightHandObject || hitObj == leftHandObject || hitObj == heavyObject)
+            {
+                RemoveHighlight();
+                return;
+            }
+
             if (hit.collider.CompareTag("Lanzable") || hit.collider.CompareTag("Pesado") || hit.collider.CompareTag("Fusible"))
             {
                 Renderer rend = hit.collider.GetComponent<Renderer>();
-                if (rend != null && hit.collider.gameObject != highlightedObject)
+                if (rend != null && hitObj != highlightedObject)
                 {
                     RemoveHighlight();
 
-                    highlightedObject = hit.collider.gameObject;
+                    highlightedObject = hitObj;
                     highlightedRenderer = rend;
                     originalMaterial = rend.material;
 
