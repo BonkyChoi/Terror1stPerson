@@ -132,4 +132,13 @@ public class SC_LightManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        SC_ElectricalPannel.SwitchOnTheLights += SwitchOn;
+    }
+    private void OnDisable()
+    {
+        SC_ElectricalPannel.SwitchOnTheLights -= SwitchOn;
+    }
+
 }
