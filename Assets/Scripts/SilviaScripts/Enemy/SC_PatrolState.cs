@@ -17,6 +17,7 @@ public class SC_PatrolState : SC_State
     [SerializeField]private Transform patrolRoute;
     private List<Vector3> patrolPoints = new();
     private int currentPatrolPoint = 0;
+    private bool patrolActive;
 
     private void Awake()
     {
@@ -52,7 +53,8 @@ public class SC_PatrolState : SC_State
 
     private void StopMovement()
     {
-        agent.enabled = false;
+        patrolActive = false;
+        agent.isStopped = true;
     }
 
     private void OnDisable()
@@ -63,6 +65,7 @@ public class SC_PatrolState : SC_State
 
     private void PatrolAndWait()
     {
+        patrolActive = true;
         StartCoroutine(PatrolAndWaitCoroutine());
     }
 
@@ -72,16 +75,16 @@ public class SC_PatrolState : SC_State
         yield return new WaitForSeconds(1);
         //ahora ya se mueve
         
-        while (true)
+        while (patrolActive)
         {
-            agent.enabled = true;
+            agent.isStopped = false;
             agent.SetDestination(patrolPoints[currentPatrolPoint]);
             yield return new WaitUntil(ReachedDestination);
             yield return new WaitForSeconds(Random.Range(0.2f, 1.5f));
             currentPatrolPoint = (currentPatrolPoint + 1) % patrolPoints.Count;
 
         }
-        
+
     }
 
     private bool ReachedDestination()
