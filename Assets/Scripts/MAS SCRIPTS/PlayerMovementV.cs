@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerMovementV : MonoBehaviour
 {
@@ -34,6 +35,9 @@ public class PlayerMovementV : MonoBehaviour
     [Header("Empuje")]
     public float pushForce = 5f;
     public float pushDistance = 2f;
+
+    [Header("Fusibles")]
+    public List<GameObject> fusibles = new List<GameObject>();
 
     private CharacterController controller;
     private float xRotation = 0f;
@@ -125,7 +129,7 @@ public class PlayerMovementV : MonoBehaviour
         Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, grabDistance))
         {
-            if (hit.collider.CompareTag("Lanzable"))
+            if (hit.collider.CompareTag("Lanzable") || hit.collider.CompareTag("Fusible"))
                 GrabSmall(hit.collider.gameObject);
 
             if (hit.collider.CompareTag("Pesado"))
@@ -148,6 +152,9 @@ public class PlayerMovementV : MonoBehaviour
             obj.transform.SetParent(holdPointRight);
             obj.transform.localPosition = Vector3.zero;
             obj.transform.localRotation = Quaternion.identity;
+
+            if (obj.CompareTag("Fusible") && !fusibles.Contains(obj))
+                fusibles.Add(obj);
         }
         else if (leftHandObject == null)
         {
@@ -158,6 +165,9 @@ public class PlayerMovementV : MonoBehaviour
             obj.transform.SetParent(holdPointLeft);
             obj.transform.localPosition = Vector3.zero;
             obj.transform.localRotation = Quaternion.identity;
+
+            if (obj.CompareTag("Fusible") && !fusibles.Contains(obj))
+                fusibles.Add(obj);
         }
     }
     void GrabHeavy(GameObject obj)
@@ -183,6 +193,9 @@ public class PlayerMovementV : MonoBehaviour
     {
         if (rightHandObject != null)
         {
+            if (rightHandObject.CompareTag("Fusible"))
+                fusibles.Remove(rightHandObject);
+
             rightHandObject.transform.SetParent(null);
             rightRb.isKinematic = false;
             rightRb.AddForce(cameraTransform.forward * throwForce, ForceMode.Impulse);
@@ -190,6 +203,9 @@ public class PlayerMovementV : MonoBehaviour
         }
         else if (leftHandObject != null)
         {
+            if (leftHandObject.CompareTag("Fusible"))
+                fusibles.Remove(leftHandObject);
+
             leftHandObject.transform.SetParent(null);
             leftRb.isKinematic = false;
             leftRb.AddForce(cameraTransform.forward * throwForce, ForceMode.Impulse);
@@ -208,7 +224,7 @@ public class PlayerMovementV : MonoBehaviour
         Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, grabDistance))
         {
-            if (hit.collider.CompareTag("Lanzable") || hit.collider.CompareTag("Pesado"))
+            if (hit.collider.CompareTag("Lanzable") || hit.collider.CompareTag("Pesado") || hit.collider.CompareTag("Fusible"))
             {
                 Renderer rend = hit.collider.GetComponent<Renderer>();
                 if (rend != null && hit.collider.gameObject != highlightedObject)
@@ -224,6 +240,7 @@ public class PlayerMovementV : MonoBehaviour
                 return;
             }
         }
+
         RemoveHighlight();
     }
     void RemoveHighlight()
