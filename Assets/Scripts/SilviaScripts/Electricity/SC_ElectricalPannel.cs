@@ -56,9 +56,15 @@ public class SC_ElectricalPannel : MonoBehaviour
                     if (!isLightOn)
                     {
                         Debug.Log("Light is off");
-                        SwitchOnTheLights?.Invoke();
-                        Debug.Log("Mando que la luz se encienda");
-                        currentLight--;
+
+                        if (GetComponentInChildren<SC_ImAFusible>())
+                        {
+                            Debug.Log("Has a fussible");
+                            SwitchOnTheLights?.Invoke();
+                            Debug.Log("Mando que la luz se encienda"); 
+                            currentLight--;
+                        }
+                        
                     }
                 }
             }

@@ -136,12 +136,12 @@ public class SC_LightManager : MonoBehaviour
     private void OnEnable()
     {
         SC_ElectricalPannel.SwitchOnTheLights += SwitchOn;
-        SC_PuzzlePannel.Substract15Seconds += SubstractTime;
+        SC_CursorPuzzle.Substract15Seconds += SubstractTime;
     }
     private void OnDisable()
     {
         SC_ElectricalPannel.SwitchOnTheLights -= SwitchOn;
-        SC_PuzzlePannel.Substract15Seconds -= SubstractTime;
+        SC_CursorPuzzle.Substract15Seconds -= SubstractTime;
     }
 
 }
