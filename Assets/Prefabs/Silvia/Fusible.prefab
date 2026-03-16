@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9107464975482465854}
   m_Layer: 0
   m_Name: Fusible
-  m_TagString: Empujable
+  m_TagString: Fusible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

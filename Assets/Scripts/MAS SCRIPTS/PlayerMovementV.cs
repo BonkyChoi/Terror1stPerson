@@ -31,10 +31,11 @@ public class PlayerMovementV : MonoBehaviour
 
     [Header("Highlight")]
     public Material outlineMaterial;
-    
+
     [Header("Empuje")]
     public float pushForce = 5f;
     public float pushDistance = 2f;
+    public float pushCooldown = 2f;
 
     [Header("Fusibles")]
     public List<GameObject> fusibles = new List<GameObject>();
@@ -43,7 +44,7 @@ public class PlayerMovementV : MonoBehaviour
     private float xRotation = 0f;
     private float yVelocity = 0f;
     private bool isCrouching = false;
-    
+
     private GameObject rightHandObject;
     private GameObject leftHandObject;
     private GameObject heavyObject;
@@ -51,10 +52,12 @@ public class PlayerMovementV : MonoBehaviour
     private Rigidbody rightRb;
     private Rigidbody leftRb;
     private Rigidbody heavyRb;
-    
+
     private GameObject highlightedObject;
     private Renderer highlightedRenderer;
     private Material originalMaterial;
+
+    private float pushTimer = 0f;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -70,6 +73,9 @@ public class PlayerMovementV : MonoBehaviour
         HandleThrow();
         CheckHighlight();
         HandlePush();
+
+        if (pushTimer > 0)
+            pushTimer -= Time.deltaTime;
     }
     void Move()
     {
@@ -255,7 +261,9 @@ public class PlayerMovementV : MonoBehaviour
     void HandlePush()
     {
         if (!Input.GetKeyDown(KeyCode.F)) return;
-        
+
+        if (pushTimer > 0) return;
+
         if (rightHandObject != null || leftHandObject != null || heavyObject != null)
             return;
 
@@ -269,6 +277,8 @@ public class PlayerMovementV : MonoBehaviour
                 {
                     Vector3 pushDir = new Vector3(cameraTransform.forward.x, 0, cameraTransform.forward.z).normalized;
                     rb.AddForce(pushDir * pushForce, ForceMode.Impulse);
+
+                    pushTimer = pushCooldown;
                 }
             }
         }
