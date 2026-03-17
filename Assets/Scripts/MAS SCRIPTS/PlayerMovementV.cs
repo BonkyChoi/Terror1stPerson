@@ -45,6 +45,8 @@ public class PlayerMovementV : MonoBehaviour
     private float yVelocity = 0f;
     private bool isCrouching = false;
 
+    private float currentHeight;
+
     private GameObject rightHandObject;
     private GameObject leftHandObject;
     private GameObject heavyObject;
@@ -58,12 +60,16 @@ public class PlayerMovementV : MonoBehaviour
     private Material originalMaterial;
 
     private float pushTimer = 0f;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        currentHeight = standingHeight;
     }
+
     void Update()
     {
         Move();
@@ -77,6 +83,7 @@ public class PlayerMovementV : MonoBehaviour
         if (pushTimer > 0)
             pushTimer -= Time.deltaTime;
     }
+
     void Move()
     {
         float x = Input.GetAxis("Horizontal");
@@ -101,6 +108,7 @@ public class PlayerMovementV : MonoBehaviour
 
         controller.Move(move * Time.deltaTime);
     }
+
     void Look()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
@@ -112,22 +120,26 @@ public class PlayerMovementV : MonoBehaviour
         cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
     }
+
     void Crouch()
     {
-        if (Input.GetKey(KeyCode.C))
-        {
-            controller.height = crouchHeight;
-            isCrouching = true;
-        }
-        else
-        {
-            controller.height = standingHeight;
-            isCrouching = false;
-        }
+        bool quiereAgacharse = Input.GetKey(KeyCode.C);
+        
+        isCrouching = quiereAgacharse;
 
-        controller.center = new Vector3(0, controller.height / 2f, 0);
-        cameraTransform.localPosition = new Vector3(0, controller.height - 0.2f, 0);
+        float targetHeight = isCrouching ? crouchHeight : standingHeight;
+
+        currentHeight = Mathf.Lerp(currentHeight, targetHeight, Time.deltaTime * 10f);
+
+        controller.height = currentHeight;
+        controller.center = new Vector3(0, currentHeight / 2f, 0);
+
+        Vector3 camPos = cameraTransform.localPosition;
+        float targetCamY = currentHeight - 0.2f;
+        camPos.y = Mathf.Lerp(camPos.y, targetCamY, Time.deltaTime * 10f);
+        cameraTransform.localPosition = camPos;
     }
+
     void HandleGrab()
     {
         if (!Input.GetKeyDown(KeyCode.E)) return;
@@ -142,6 +154,7 @@ public class PlayerMovementV : MonoBehaviour
                 GrabHeavy(hit.collider.gameObject);
         }
     }
+
     void GrabSmall(GameObject obj)
     {
         if (heavyObject != null) return;
@@ -176,6 +189,7 @@ public class PlayerMovementV : MonoBehaviour
                 fusibles.Add(obj);
         }
     }
+
     void GrabHeavy(GameObject obj)
     {
         if (rightHandObject != null || leftHandObject != null || heavyObject != null) return;
@@ -189,12 +203,14 @@ public class PlayerMovementV : MonoBehaviour
         obj.transform.localPosition = Vector3.zero;
         obj.transform.localRotation = Quaternion.identity;
     }
+
     void HandleThrow()
     {
         if (!Input.GetKeyDown(KeyCode.Q)) return;
 
         ThrowObject();
     }
+
     void ThrowObject()
     {
         if (rightHandObject != null)
@@ -225,13 +241,14 @@ public class PlayerMovementV : MonoBehaviour
             heavyObject = null;
         }
     }
+
     void CheckHighlight()
     {
         Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, grabDistance))
         {
             GameObject hitObj = hit.collider.gameObject;
-            
+
             if (hitObj == rightHandObject || hitObj == leftHandObject || hitObj == heavyObject)
             {
                 RemoveHighlight();
@@ -257,6 +274,7 @@ public class PlayerMovementV : MonoBehaviour
 
         RemoveHighlight();
     }
+
     void RemoveHighlight()
     {
         if (highlightedObject != null)
@@ -266,6 +284,7 @@ public class PlayerMovementV : MonoBehaviour
             highlightedRenderer = null;
         }
     }
+
     void HandlePush()
     {
         if (!Input.GetKeyDown(KeyCode.F)) return;
