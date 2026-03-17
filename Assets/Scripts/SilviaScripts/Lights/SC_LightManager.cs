@@ -94,7 +94,7 @@ public class SC_LightManager : MonoBehaviour
                     for (int i = 0; i < 10; i++)
                     {
                         light.enabled = !light.enabled;//cambia el estado de la luz 10 veces
-                        yield return new WaitForSeconds(0.3f);
+                        yield return new WaitForSeconds(0.1f);
                     }
 
                     light.enabled = false;
@@ -107,11 +107,13 @@ public class SC_LightManager : MonoBehaviour
 
     private IEnumerator Flick(Light light, float waitTime)//luz a apagar y tiempo de espera entre cada parpadeo
     {
+        float originalIntensity = light.intensity;
         Debug.Log("Flicker en " + light.name + " con tiempo de espera de " + waitTime + " segundos");
-        light.enabled = false;
+        float randomIntensity = originalIntensity * Random.Range(0.7f, 0.9f);//baja entre un 70 y 90
+        light.intensity = -1 * randomIntensity;
         yield return new WaitForSeconds(0.3f);
 
-        light.enabled = true;
+        light.intensity = originalIntensity;
         yield return new WaitForSeconds(waitTime);
     }
 
