@@ -29,18 +29,18 @@ public class SC_PatrolState : SC_State
         }
     }
 
-    public override void EnterState(SC_FSMController controller)
+    public override void OnEnterState(SC_FSMController controller)
     {
         myController = controller;
          // Code to execute when entering the state
     }
 
-    public override void UpdateState()
+    public override void OnUpdateState()
     {
         //nothing now
     }
 
-    public override void ExitState()
+    public override void OnExitState()
     {
         // Code to execute when exiting the state
     }

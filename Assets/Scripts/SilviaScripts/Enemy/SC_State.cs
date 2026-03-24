@@ -2,9 +2,9 @@ using UnityEngine;
 
 public abstract class SC_State : MonoBehaviour
 {
-    public abstract void EnterState(SC_FSMController controller);
+    public abstract void OnEnterState(SC_FSMController controller);
 
-    public abstract void UpdateState();
+    public abstract void OnUpdateState();
 
-    public abstract void ExitState();
+    public abstract void OnExitState();
 }
