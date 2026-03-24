@@ -12,17 +12,17 @@ public class SC_FSMController : MonoBehaviour
         
     }
 
-    private void ChangeState(SC_State newState)
+    internal void ChangeState(SC_State newState)
     {
-        currentState?.ExitState();
+        currentState?.OnExitState();
         currentState = newState;
-        currentState.EnterState(this);
+        currentState.OnEnterState(this);
 
     }
 
     private void Update()
     {
-        currentState.UpdateState();
+        currentState.OnUpdateState();
     }
     
     

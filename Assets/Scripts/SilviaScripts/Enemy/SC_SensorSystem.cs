@@ -3,45 +3,66 @@ using UnityEngine;
 
 public class SC_SensorSystem : MonoBehaviour
 {
-    //Se enciende cuando está investigando?
-    //Comprobar donde está el jugador
-    //Lograr verle con 33 grados de vision
-    //Comprobar que no hayan objetos que impidan la visión
-    //Pasar al estado de persecución
+     [field: SerializeField]
+    public float
+        SensorAngle { get; private set; } //si son 33 grados, el sensor va a ser de 16.5 grados a cada lado del enemigo
 
-    [field: SerializeField] public float SensorAngle { get; private set; } //si son 33 grados, el sensor va a ser de 16.5 grados a cada lado del enemigo
-    [field: SerializeField] public float VisionAngle { get; private set; }//rango de unidades en las que detecta al jugador
+    [field: SerializeField]
+    public float VisionDistance { get; private set; } //rango de unidades en las que detecta al jugador
+
+    [SerializeField] private float sphereOffset;
+
     [SerializeField] private LayerMask isAPlayer;
     [SerializeField] private LayerMask isAnObstacle;
-    private GameObject player; //el player que va a ser enviado a otros scripts
     
+
+    private GameObject player; //el player que va a ser enviado a otros scripts
+
     //se necesita enviar un evento con una referencia al gameobjet
-    public static System.Action<GameObject>OnPlayerFound;
+    public static System.Action<GameObject> OnPlayerFound;
+    
+    public bool FoundPlayer { get; set; }
+    
+    public Vector3 LastPlayerPosition { get; set; }
+    
+    //se necesita volver a 33º
+
     private void FixedUpdate()
     {
-        Collider[] col = Physics.OverlapSphere(this.transform.position, VisionAngle, isAPlayer);
-        if (col.Length > 0&&col[0].gameObject.CompareTag("Player"))
+        
+        
+        Collider[] col = Physics.OverlapSphere(this.transform.position + this.transform.forward * sphereOffset, VisionDistance, isAPlayer);
+        
+        if (col.Length > 0)
         {
-            //ver si el jugador está dentro del rango de visión
             Vector3 directionToTarget = col[0].transform.position - this.transform.position;
-
-            if (Vector3.Angle(this.transform.forward, directionToTarget) <=
-                SensorAngle / 2) //tiene que estar en su visión que se
-                //divide entre dos porque son 16.5 para cada lado
-            {
+            Debug.DrawRay(transform.position, directionToTarget.normalized, Color.red);
+            
+            LastPlayerPosition = col[0].transform.position;
+            
+            if (FoundPlayer) return;
+            
+            // if (Vector3.Angle(this.transform.forward, directionToTarget) <=
+            //     SensorAngle / 2) //tiene que estar en su visión que se //divide entre dos porque son 16.5 para cada lado
+            // {
                 //comprobar que no haya objetos
                 //para eso deebes saber que es un obstáculo
-                if (!Physics.Raycast(this.transform.position, directionToTarget, out RaycastHit hit, VisionAngle,
+                if (!Physics.Raycast(this.transform.position, directionToTarget.normalized, VisionDistance,
                         isAnObstacle))
                 {
-                    player = hit.collider.gameObject; 
+                    //player = col[0].gameObject;
                     OnPlayerFound?.Invoke(player);
+                    FoundPlayer = true;
                 }
-            }
+                // }
         }
     }
-    public Vector2 DirFromAngle(float angle)
+    
+    private void OnDrawGizmos()
     {
-        return new Vector3(MathF.Sin(angle)* Mathf.Rad2Deg,0.00f,MathF.Cos(angle)* Mathf.Rad2Deg);
+        Gizmos.color = new Vector4(1, 0, 0, 0.7f);
+        Gizmos.DrawSphere(this.transform.position + this.transform.forward * sphereOffset, VisionDistance);
     }
 }
+
+
