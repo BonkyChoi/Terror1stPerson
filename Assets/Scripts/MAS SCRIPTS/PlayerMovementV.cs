@@ -19,6 +19,11 @@ public class PlayerMovementV : MonoBehaviour
     public float crouchHeight = 1f;
     public float standingHeight = 1.8f;
     public float crouchSpeed = 2f;
+    
+    [Header("Detección techo")]
+    public Transform headCheck;
+    public float headRadius = 0.25f;
+    public LayerMask ceilingMask;
 
     [Header("Agarre")]
     public Transform holdPointRight;
@@ -60,7 +65,7 @@ public class PlayerMovementV : MonoBehaviour
     private Material originalMaterial;
 
     private float pushTimer = 0f;
-
+    
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -69,7 +74,6 @@ public class PlayerMovementV : MonoBehaviour
 
         currentHeight = standingHeight;
     }
-
     void Update()
     {
         Move();
@@ -83,7 +87,6 @@ public class PlayerMovementV : MonoBehaviour
         if (pushTimer > 0)
             pushTimer -= Time.deltaTime;
     }
-
     void Move()
     {
         float x = Input.GetAxis("Horizontal");
@@ -108,7 +111,6 @@ public class PlayerMovementV : MonoBehaviour
 
         controller.Move(move * Time.deltaTime);
     }
-
     void Look()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
@@ -120,11 +122,20 @@ public class PlayerMovementV : MonoBehaviour
         cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
     }
-
+    bool HayTecho()
+    {
+        return Physics.CheckSphere(headCheck.position, headRadius, ceilingMask);
+    }
     void Crouch()
     {
         bool quiereAgacharse = Input.GetKey(KeyCode.C);
         
+        if (!quiereAgacharse)
+        {
+            if (HayTecho())
+                quiereAgacharse = true;
+        }
+
         isCrouching = quiereAgacharse;
 
         float targetHeight = isCrouching ? crouchHeight : standingHeight;
@@ -139,7 +150,6 @@ public class PlayerMovementV : MonoBehaviour
         camPos.y = Mathf.Lerp(camPos.y, targetCamY, Time.deltaTime * 10f);
         cameraTransform.localPosition = camPos;
     }
-
     void HandleGrab()
     {
         if (!Input.GetKeyDown(KeyCode.E)) return;
@@ -154,9 +164,9 @@ public class PlayerMovementV : MonoBehaviour
                 GrabHeavy(hit.collider.gameObject);
         }
     }
-
     void GrabSmall(GameObject obj)
     {
+        obj.layer = LayerMask.NameToLayer("Se ve");
         if (heavyObject != null) return;
 
         Rigidbody rb = obj.GetComponent<Rigidbody>();
@@ -189,9 +199,9 @@ public class PlayerMovementV : MonoBehaviour
                 fusibles.Add(obj);
         }
     }
-
     void GrabHeavy(GameObject obj)
     {
+        obj.layer = LayerMask.NameToLayer("Se ve");
         if (rightHandObject != null || leftHandObject != null || heavyObject != null) return;
 
         heavyObject = obj;
@@ -203,14 +213,12 @@ public class PlayerMovementV : MonoBehaviour
         obj.transform.localPosition = Vector3.zero;
         obj.transform.localRotation = Quaternion.identity;
     }
-
     void HandleThrow()
     {
         if (!Input.GetKeyDown(KeyCode.Q)) return;
 
         ThrowObject();
     }
-
     void ThrowObject()
     {
         if (rightHandObject != null)
@@ -219,6 +227,7 @@ public class PlayerMovementV : MonoBehaviour
                 fusibles.Remove(rightHandObject);
 
             rightHandObject.transform.SetParent(null);
+            rightHandObject.layer = LayerMask.NameToLayer("Default");
             rightRb.isKinematic = false;
             rightRb.AddForce(cameraTransform.forward * throwForce, ForceMode.Impulse);
             rightHandObject = null;
@@ -229,6 +238,7 @@ public class PlayerMovementV : MonoBehaviour
                 fusibles.Remove(leftHandObject);
 
             leftHandObject.transform.SetParent(null);
+            rightHandObject.layer = LayerMask.NameToLayer("Default");
             leftRb.isKinematic = false;
             leftRb.AddForce(cameraTransform.forward * throwForce, ForceMode.Impulse);
             leftHandObject = null;
@@ -236,12 +246,12 @@ public class PlayerMovementV : MonoBehaviour
         else if (heavyObject != null)
         {
             heavyObject.transform.SetParent(null);
+            rightHandObject.layer = LayerMask.NameToLayer("Default");
             heavyRb.isKinematic = false;
             heavyRb.AddForce(cameraTransform.forward * heavyThrowForce, ForceMode.Impulse);
             heavyObject = null;
         }
     }
-
     void CheckHighlight()
     {
         Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
@@ -274,7 +284,6 @@ public class PlayerMovementV : MonoBehaviour
 
         RemoveHighlight();
     }
-
     void RemoveHighlight()
     {
         if (highlightedObject != null)
@@ -284,7 +293,6 @@ public class PlayerMovementV : MonoBehaviour
             highlightedRenderer = null;
         }
     }
-
     void HandlePush()
     {
         if (!Input.GetKeyDown(KeyCode.F)) return;
