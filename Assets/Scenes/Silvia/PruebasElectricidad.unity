@@ -190,7 +190,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3302105122379774813, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1175709017}
   m_SourcePrefab: {fileID: 100100000, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
 --- !u!1 &517074359
 GameObject:
@@ -408,6 +411,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159598606}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1175709010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3302105122379774813, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
+  m_PrefabInstance: {fileID: 253123510}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1175709017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175709010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9380e1c2731755a4ba1b18d7bf583547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SC_PlayerHealth
 --- !u!1 &1223109315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,6 +1427,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 460700019968891601, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
+      propertyPath: sprintFloat
+      value: 3.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 460700019968891601, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
+      propertyPath: currentVelocity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 460700019968891601, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
+      propertyPath: isAPlayer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 505885901520208322, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -1450,6 +1482,10 @@ PrefabInstance:
     - target: {fileID: 6488869075951928511, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690836276253599992, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
+      propertyPath: <VisionDistance>k__BackingField
+      value: 2.12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
