@@ -4,6 +4,8 @@ using UnityEngine.AI;
 
 public class SC_ChaseAttackState : SC_State
 {
+    
+    //hay que añadir que te persiga con la mirada para que no te pierda tan rapido
     private GameObject target => SC_PlayerHealth.player;
     private SC_FSMController myController; 
     private NavMeshAgent agent; 
@@ -28,37 +30,22 @@ public class SC_ChaseAttackState : SC_State
         sensorSystem = GetComponent<SC_SensorSystem>();
     }
 
-    private void OnEnable()
-    {
-        SC_SensorSystem.OnPlayerFound += OnPlayerFound;
-
-    }
-
-    private void OnPlayerFound(GameObject obj)
-    {
-        sensorSystem.FoundPlayer = false;
-        
-        StartCoroutine(MakeRwarBeforeGo());
-    }
-
-
-    private void OnDisable()
-    {
-        SC_SensorSystem.OnPlayerFound -= OnPlayerFound;
-    }
-
+    
     
     private IEnumerator MakeRwarBeforeGo()//te avisa de que te ha visto
     {
+        Debug.Log("Esperame tantito");
         yield return new WaitForSeconds(3f);
         canAttack = true;
         Debug.Log("Te puedo atacar");
+        
     }
 
     public override void OnEnterState(SC_FSMController fsmController)
     {
         myController = fsmController;
         agent.isStopped = false;
+        StartCoroutine(MakeRwarBeforeGo());
     }
 
     public override void OnUpdateState()
@@ -67,38 +54,45 @@ public class SC_ChaseAttackState : SC_State
         ////cual es la distancia a la que el enemigo debe acelerar [la distancia a la que se para + sprint float]
         //hacer el if de la distancia
         //volver a ver el lugar al que ir
-        if (!canAttack) return;
+        if (!canAttack)
+        {
+            Debug.Log("No m da la gana atacars");
+            return;
+        }
         if (!target)
         {
             Debug.Log("No se ha encontrado el target");
             return;
         }
-        Vector3 directionToTarget = target.transform.position - transform.position;
+        FaceToTarget();
+        
         distance = Vector3.Distance(transform.position, target.transform.position);
         sprintDistance = agent.stoppingDistance + sprintFloat;
         
-        if (Physics.Raycast(transform.position,
-                directionToTarget.normalized, sensorSystem.VisionDistance, isAPlayer))
-        {
+        // if (Physics.Raycast(transform.position,
+        //         directionToTarget.normalized, sensorSystem.VisionDistance, isAPlayer))
+        // {
             if (distance <= sprintDistance)
             {
-                animator.SetBool("attackPlayer", true);
+                //animator.SetBool("attackPlayer", true);
                 agent.speed = currentVelocity * 3;
             }
             else
             {
-                animator.SetBool("attackPlayer", false);
+                //animator.SetBool("attackPlayer", false);
                 agent.speed = currentVelocity;
             }
 
             agent.SetDestination(target.transform.position);
+            
+            
             lastDestination = target.transform.position;
-        }
-        else
-        {
+        //}
+        if (sensorSystem.FoundPlayer) return;
+        
             myController.ChangeState(investigateState);
             OnPlayerLost?.Invoke(lastDestination);
-        }
+        
 
         //si la distancia es muy larga o tienes obstáculos debe ir a investigar donde revs el último punto donde lo vio
         ////si investigando no lo encuentra vuelve a patrol
@@ -112,6 +106,18 @@ public class SC_ChaseAttackState : SC_State
               playerHealth.ReciveDamage();
           }
       }
+    private void FaceToTarget()
+    {
+        //Sacar direccion a objetivo (Destino - origer)
+        Vector3 targetDirection = (target.transform.position - agent.transform.position).normalized;
+        targetDirection.y = 0;
+        //Discriminar la y o ponerla a 0
+        Quaternion rotationToTarget = Quaternion.LookRotation(targetDirection);
+        transform.rotation = rotationToTarget;
+        //Se transforma la direcciona rotacio
+
+        //Lw das la rotacion calculada en el paso 3 al transformposition dl enemigo
+    }
 
     public override void OnExitState()
     {

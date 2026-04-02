@@ -1484,6 +1484,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7690836276253599992, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
+      propertyPath: sphereOffset
+      value: 2.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690836276253599992, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
       propertyPath: <VisionDistance>k__BackingField
       value: 2.12
       objectReference: {fileID: 0}

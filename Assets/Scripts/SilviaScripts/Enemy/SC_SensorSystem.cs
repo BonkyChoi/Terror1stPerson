@@ -37,6 +37,7 @@ public class SC_SensorSystem : MonoBehaviour
     {
         if (!canSearch) return;
         
+        
         Collider[] col = Physics.OverlapSphere(this.transform.position + this.transform.forward * sphereOffset, VisionDistance, isAPlayer);
         
         if (col.Length > 0)
@@ -46,7 +47,7 @@ public class SC_SensorSystem : MonoBehaviour
             
             LastPlayerPosition = col[0].transform.position;
             
-            if (FoundPlayer) return;
+            //if (FoundPlayer) return;
             
             // if (Vector3.Angle(this.transform.forward, directionToTarget) <=
             //     SensorAngle / 2) //tiene que estar en su visión que se //divide entre dos porque son 16.5 para cada lado
@@ -59,6 +60,10 @@ public class SC_SensorSystem : MonoBehaviour
                     player = col[0].gameObject;
                     OnPlayerFound?.Invoke(player);
                     FoundPlayer = true;
+                }
+                else
+                {
+                    FoundPlayer = false;
                 }
            // }
         }
