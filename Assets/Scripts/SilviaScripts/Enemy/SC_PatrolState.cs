@@ -11,6 +11,7 @@ public class SC_PatrolState : SC_State
     //Inicia el estado de patrulla, el enemigo se movera entre puntos de patrulla predefinidos
     
     private SC_FSMController myController;
+    private SC_ChaseAttackState chaseAttackState;
     
     private NavMeshAgent agent;
 
@@ -21,7 +22,9 @@ public class SC_PatrolState : SC_State
 
     private void Awake()
     {
+        chaseAttackState = GetComponent<SC_ChaseAttackState>();
         agent = GetComponent<NavMeshAgent>();
+        myController = GetComponent<SC_FSMController>();
 
         foreach (Transform points in patrolRoute)
         {
@@ -42,14 +45,26 @@ public class SC_PatrolState : SC_State
 
     public override void OnExitState()
     {
-        // Code to execute when exiting the state
+        patrolActive = false;
+        
+        agent.ResetPath();
+        StopAllCoroutines();
     }
 
     private void OnEnable()
     {
         SC_LightManager.OnSwitchOff += PatrolAndWait;
         SC_LightManager.OnSwitchOn += StopMovement;
+        SC_SensorSystem.OnPlayerFound += OnPlayerFound;
     }
+
+    private void OnPlayerFound(GameObject obj)
+    {
+        Debug.Log("ChangeState>ToAttack");
+        myController.ChangeState(chaseAttackState);
+    }
+
+    
 
     private void StopMovement()
     {

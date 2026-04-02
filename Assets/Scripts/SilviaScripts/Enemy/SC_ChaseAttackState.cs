@@ -4,7 +4,6 @@ using UnityEngine.AI;
 
 public class SC_ChaseAttackState : SC_State
 {
-  
     private GameObject target => SC_PlayerHealth.player;
     private SC_FSMController myController; 
     private NavMeshAgent agent; 
@@ -18,7 +17,7 @@ public class SC_ChaseAttackState : SC_State
     public static System.Action<Vector3> OnPlayerLost;
     [SerializeField] Animator animator;
     private bool canAttack = false;
-    private bool canAttackNow;
+    
 
 
     private void Awake()
@@ -34,28 +33,32 @@ public class SC_ChaseAttackState : SC_State
         SC_SensorSystem.OnPlayerFound += OnPlayerFound;
 
     }
-    
+
+    private void OnPlayerFound(GameObject obj)
+    {
+        sensorSystem.FoundPlayer = false;
+        
+        StartCoroutine(MakeRwarBeforeGo());
+    }
+
 
     private void OnDisable()
     {
         SC_SensorSystem.OnPlayerFound -= OnPlayerFound;
     }
 
-    private void OnPlayerFound(GameObject player)
-    {
-        sensorSystem.FoundPlayer = false;
-        
-        StartCoroutine(MakeRwarBeforeGo(player));
-    } 
-    private IEnumerator MakeRwarBeforeGo(GameObject player)
+    
+    private IEnumerator MakeRwarBeforeGo()//te avisa de que te ha visto
     {
         yield return new WaitForSeconds(3f);
         canAttack = true;
+        Debug.Log("Te puedo atacar");
     }
 
     public override void OnEnterState(SC_FSMController fsmController)
     {
         myController = fsmController;
+        agent.isStopped = false;
     }
 
     public override void OnUpdateState()
@@ -65,7 +68,11 @@ public class SC_ChaseAttackState : SC_State
         //hacer el if de la distancia
         //volver a ver el lugar al que ir
         if (!canAttack) return;
-        
+        if (!target)
+        {
+            Debug.Log("No se ha encontrado el target");
+            return;
+        }
         Vector3 directionToTarget = target.transform.position - transform.position;
         distance = Vector3.Distance(transform.position, target.transform.position);
         sprintDistance = agent.stoppingDistance + sprintFloat;
@@ -100,7 +107,7 @@ public class SC_ChaseAttackState : SC_State
 
     private void OnTriggerEnter(Collider other)
       {
-          if (other.TryGetComponent<SC_PlayerHealth>(out var playerHealth) && canAttackNow)
+          if (other.TryGetComponent<SC_PlayerHealth>(out var playerHealth) && canAttack)
           {
               playerHealth.ReciveDamage();
           }

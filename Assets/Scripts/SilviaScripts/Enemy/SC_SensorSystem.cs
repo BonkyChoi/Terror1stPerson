@@ -3,7 +3,10 @@ using UnityEngine;
 
 public class SC_SensorSystem : MonoBehaviour
 {
-     [field: SerializeField]
+    
+    //solo deberia tener sencor cuando las luces 3sten encendudas
+
+       [field: SerializeField]
     public float
         SensorAngle { get; private set; } //si son 33 grados, el sensor va a ser de 16.5 grados a cada lado del enemigo
 
@@ -17,6 +20,7 @@ public class SC_SensorSystem : MonoBehaviour
     
 
     private GameObject player; //el player que va a ser enviado a otros scripts
+    private bool canSearch;
 
     //se necesita enviar un evento con una referencia al gameobjet
     public static System.Action<GameObject> OnPlayerFound;
@@ -25,11 +29,13 @@ public class SC_SensorSystem : MonoBehaviour
     
     public Vector3 LastPlayerPosition { get; set; }
     
-    //se necesita volver a 33º
+    //hacer cono de 33 grados
+
+
 
     private void FixedUpdate()
     {
-        
+        if (!canSearch) return;
         
         Collider[] col = Physics.OverlapSphere(this.transform.position + this.transform.forward * sphereOffset, VisionDistance, isAPlayer);
         
@@ -50,18 +56,42 @@ public class SC_SensorSystem : MonoBehaviour
                 if (!Physics.Raycast(this.transform.position, directionToTarget.normalized, VisionDistance,
                         isAnObstacle))
                 {
-                    //player = col[0].gameObject;
+                    player = col[0].gameObject;
                     OnPlayerFound?.Invoke(player);
                     FoundPlayer = true;
                 }
-                // }
+           // }
         }
     }
-    
+
+    public Vector2 DirFromAngle(float angle)
+    {
+        return new Vector3(MathF.Sin(angle) * Mathf.Rad2Deg, 0.00f, MathF.Cos(angle) * Mathf.Rad2Deg);
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = new Vector4(1, 0, 0, 0.7f);
         Gizmos.DrawSphere(this.transform.position + this.transform.forward * sphereOffset, VisionDistance);
+    }
+    private void OnEnable()
+    {
+        SC_LightManager.OnSwitchOff += BeginToSearchPlayer;
+    }
+    
+    private void OnDisable()
+    {
+        SC_LightManager.OnSwitchOff -= BeginToSearchPlayer;
+        SC_LightManager.OnSwitchOn += StopToSearchPlayer;
+    }
+    private void StopToSearchPlayer()
+    {
+        canSearch = false;
+    }
+
+    private void BeginToSearchPlayer()
+    {
+        canSearch = true;
     }
 }
 
