@@ -19,7 +19,8 @@ public class SC_ChaseAttackState : SC_State
     public static System.Action<Vector3> OnPlayerLost;
     [SerializeField] Animator animator;
     private bool canAttack = false;
-    
+    private float sightLostTimer;
+    [SerializeField] private float sightLostMaxTime = 2f;
 
 
     private void Awake()
@@ -54,17 +55,18 @@ public class SC_ChaseAttackState : SC_State
         ////cual es la distancia a la que el enemigo debe acelerar [la distancia a la que se para + sprint float]
         //hacer el if de la distancia
         //volver a ver el lugar al que ir
-        if (!canAttack)
-        {
-            Debug.Log("No m da la gana atacars");
-            return;
-        }
+        // if (!canAttack)
+        // {
+        //     Debug.Log("No m da la gana atacars");
+        //     return;
+        // }
         if (!target)
         {
             Debug.Log("No se ha encontrado el target");
             return;
         }
         FaceToTarget();
+        agent.updateRotation = false;
         
         distance = Vector3.Distance(transform.position, target.transform.position);
         sprintDistance = agent.stoppingDistance + sprintFloat;
@@ -88,10 +90,21 @@ public class SC_ChaseAttackState : SC_State
             
             lastDestination = target.transform.position;
         //}
-        if (sensorSystem.FoundPlayer) return;
+        if (sensorSystem.FoundPlayer)
+        {
+            sightLostTimer = 0;
+        }
+        else
+        {
+            sightLostTimer += Time.deltaTime;
+            if (sightLostTimer >= sightLostMaxTime)
+            {
+                myController.ChangeState(investigateState);
+                OnPlayerLost?.Invoke(lastDestination);
+            }
+        }
         
-            myController.ChangeState(investigateState);
-            OnPlayerLost?.Invoke(lastDestination);
+            
         
 
         //si la distancia es muy larga o tienes obstáculos debe ir a investigar donde revs el último punto donde lo vio
@@ -125,6 +138,7 @@ public class SC_ChaseAttackState : SC_State
         agent.isStopped = true; 
         StopAllCoroutines(); 
         agent.ResetPath();
+        agent.updateRotation = true;
     } 
             
 }

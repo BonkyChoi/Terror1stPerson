@@ -49,8 +49,8 @@ public class SC_SensorSystem : MonoBehaviour
             
             //if (FoundPlayer) return;
             
-            // if (Vector3.Angle(this.transform.forward, directionToTarget) <=
-            //     SensorAngle / 2) //tiene que estar en su visión que se //divide entre dos porque son 16.5 para cada lado
+            if (Vector3.Angle(this.transform.forward, directionToTarget) <=
+                 SensorAngle / 2) //tiene que estar en su visión que se //divide entre dos porque son 16.5 para cada lado
             // {
                 //comprobar que no haya objetos
                 //para eso deebes saber que es un obstáculo
@@ -61,18 +61,15 @@ public class SC_SensorSystem : MonoBehaviour
                     OnPlayerFound?.Invoke(player);
                     FoundPlayer = true;
                 }
-                else
-                {
-                    FoundPlayer = false;
-                }
-           // }
+                // else
+                // {
+                //     FoundPlayer = false;
+                // }
+
         }
     }
 
-    public Vector2 DirFromAngle(float angle)
-    {
-        return new Vector3(MathF.Sin(angle) * Mathf.Rad2Deg, 0.00f, MathF.Cos(angle) * Mathf.Rad2Deg);
-    }
+   
 
     private void OnDrawGizmos()
     {
