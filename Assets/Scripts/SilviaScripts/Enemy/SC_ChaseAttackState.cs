@@ -36,7 +36,7 @@ public class SC_ChaseAttackState : SC_State
     private IEnumerator MakeRwarBeforeGo()//te avisa de que te ha visto
     {
         Debug.Log("Esperame tantito");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.1f);
         canAttack = true;
         Debug.Log("Te puedo atacar");
         
@@ -112,13 +112,20 @@ public class SC_ChaseAttackState : SC_State
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
       {
           if (other.TryGetComponent<SC_PlayerHealth>(out var playerHealth) && canAttack)
           {
               playerHealth.ReciveDamage();
           }
       }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent<SC_PlayerHealth>(out var playerHealth) && canAttack)
+        {
+            playerHealth.ReciveDamage();
+        }
+    }
     private void FaceToTarget()
     {
         //Sacar direccion a objetivo (Destino - origer)
@@ -132,13 +139,20 @@ public class SC_ChaseAttackState : SC_State
         //Lw das la rotacion calculada en el paso 3 al transformposition dl enemigo
     }
 
+   
     public override void OnExitState()
     {
         canAttack = false;
-        agent.isStopped = true; 
-        StopAllCoroutines(); 
-        agent.ResetPath();
-        agent.updateRotation = true;
+
+        if (agent != null)
+        {
+            agent.isStopped = true;
+            agent.ResetPath();
+            agent.updateRotation = true;
+        }
+
+        StopAllCoroutines();
+    
     } 
             
 }

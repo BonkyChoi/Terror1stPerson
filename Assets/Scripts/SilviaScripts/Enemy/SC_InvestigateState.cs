@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -51,15 +52,16 @@ public class SC_InvestigateState : SC_State
         SC_SensorSystem.OnPlayerFound += OnPlayerFound;
     }
 
+    private void OnDisable()
+    {
+        SC_ChaseAttackState.OnPlayerLost -= OnPlayerLost;
+        SC_SensorSystem.OnPlayerFound -= OnPlayerFound;
+    }
+
     private void OnPlayerFound(GameObject obj)
     {
         sensorSystem.FoundPlayer = true;
         myController.ChangeState(chase);
-    }
-
-    private void OnPlayerFound()
-    {
-        
     }
 
     private void OnPlayerLost(Vector3 lastPlayerPosition)

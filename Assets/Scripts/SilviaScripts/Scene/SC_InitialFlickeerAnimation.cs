@@ -7,44 +7,55 @@ using Random = UnityEngine.Random;
 
 public class SC_InitialFlickeerAnimation : MonoBehaviour
 {
-    private Image hudImage;
+    [SerializeField]private Image hudImage;
     private PlayerMovementV playerMovement;
+    private int timesDeath = 0;
 
     private void Awake()
     {
-        hudImage = GetComponent<Image>();
         playerMovement = GetComponent<PlayerMovementV>();
     }
 
     private void Start()
     {
-        playerMovement.enabled = false;
-        hudImage.color = Color.white;
+        if (SC_DeathCounter.Instance.DeathCounter == 0)
+        {
+            hudImage.enabled = false;
+            playerMovement.enabled = true;
+            timesDeath++;
+        }
+        else
+        {
+            BeginToFlick();
+        }
+       
         
     }
-
-    private void OnEnable()
-    {
-        SC_ChangeIntensity.BeginToFlick += BeginToFlick;
-    }
-
-    private void OnDisable()
-    {
-        SC_ChangeIntensity.BeginToFlick -= BeginToFlick;
-    }
+    
 
     private void BeginToFlick()
     {
+        Debug.Log("Voy a flickear");
+        
+        playerMovement.enabled = false;
         StartCoroutine(BeginToFlickCoroutine());
     }
+
+    
+    
 
     private IEnumerator BeginToFlickCoroutine()
     {
        float randomFloat = Random.value;
-       float secondsForWhite = Random.value;
-       float secondsForTransparent = Random.value;
+       float secondsForWhite = Random.Range(0.05f, 0.1f);
+       float secondsForTransparent = Random.Range(0.05f,0.1f);
         Image newImage = hudImage.GetComponent<Image>();
         Color newColor = newImage.color;
+        timesDeath++;
+        hudImage.enabled = true;
+        hudImage.color = Color.white;
+        newColor.a = 1;
+        yield return new WaitForSeconds(secondsForTransparent);
         for (int i = 0; i < 4; i++)
         {
             newColor.a = randomFloat;

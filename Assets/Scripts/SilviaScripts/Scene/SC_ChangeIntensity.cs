@@ -10,7 +10,7 @@ public class SC_ChangeIntensity : MonoBehaviour
 {
     private bool canUpdateColor;
     [SerializeField] private Image image;
-    public static System.Action BeginToFlick;
+    public static System.Action<int> BeginToFlick;
 
     // Cambia progresivamente el valor del color a blanco
     // Una vez que es blanco espera 3 segundos
@@ -56,7 +56,7 @@ public class SC_ChangeIntensity : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("PruebasElectricidad");//Esto es provisional, te debe mandar al centro de la sala que es de donde sales en un primer momeento
-        BeginToFlick?.Invoke();
+        
         //El progreso que hayas logrado se debe guardar en una instancia que no se destruya para no volver a repetir el juego
     }
 }

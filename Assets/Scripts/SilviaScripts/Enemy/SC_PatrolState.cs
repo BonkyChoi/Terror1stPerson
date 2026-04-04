@@ -76,6 +76,7 @@ public class SC_PatrolState : SC_State
     {
         SC_LightManager.OnSwitchOff -= PatrolAndWait;
         SC_LightManager.OnSwitchOn -= StopMovement;
+        SC_SensorSystem.OnPlayerFound -= OnPlayerFound;
     }
 
     private void PatrolAndWait()

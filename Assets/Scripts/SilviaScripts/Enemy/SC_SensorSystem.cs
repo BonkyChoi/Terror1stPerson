@@ -31,6 +31,11 @@ public class SC_SensorSystem : MonoBehaviour
     
     //hacer cono de 33 grados
 
+    private void Awake()
+    {
+        //if (player != null) Destroy(player);
+        
+    }
 
 
     private void FixedUpdate()
@@ -49,17 +54,21 @@ public class SC_SensorSystem : MonoBehaviour
             
             //if (FoundPlayer) return;
             
-            if (Vector3.Angle(this.transform.forward, directionToTarget) <=
-                 SensorAngle / 2) //tiene que estar en su visión que se //divide entre dos porque son 16.5 para cada lado
+            //if (Vector3.Angle(this.transform.forward, directionToTarget) <=
+                // SensorAngle / 2) //tiene que estar en su visión que se //divide entre dos porque son 16.5 para cada lado
             // {
                 //comprobar que no haya objetos
                 //para eso deebes saber que es un obstáculo
                 if (!Physics.Raycast(this.transform.position, directionToTarget.normalized, VisionDistance,
                         isAnObstacle))
                 {
-                    player = col[0].gameObject;
-                    OnPlayerFound?.Invoke(player);
-                    FoundPlayer = true;
+                   // if (!FoundPlayer)
+                    {
+                        player = col[0].gameObject;
+                        OnPlayerFound?.Invoke(player);
+                        FoundPlayer = true;
+                    }
+                    
                 }
                 // else
                 // {
@@ -85,6 +94,7 @@ public class SC_SensorSystem : MonoBehaviour
     {
         SC_LightManager.OnSwitchOff -= BeginToSearchPlayer;
         SC_LightManager.OnSwitchOn += StopToSearchPlayer;
+        //canSearch = false;
     }
     private void StopToSearchPlayer()
     {

@@ -94,7 +94,7 @@ public class SC_HandWrittingManager : MonoBehaviour
         while (textBox.maxVisibleCharacters > 0) //mas uno pq siempre te cuenta el nnumero 0
         {
             textBox.maxVisibleCharacters--;//vamos aumentando los caractetres en pantalla
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(0.03f);
         }
         
     

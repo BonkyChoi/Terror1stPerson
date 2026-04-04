@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,7 +30,15 @@ public class SC_PlayerHealth : MonoBehaviour
         health--;
         if (health <= 0)
         {
-            SceneManager.LoadScene("BadEnding");
+            SC_DeathCounter.Instance.DeathCounter++;
+            StartCoroutine(LoadSceneDelayed());
         }
+    }
+
+    private IEnumerator LoadSceneDelayed()
+    {
+        yield return null;
+        SceneManager.LoadScene("BadEnding");
+
     }
 }
