@@ -12,4 +12,14 @@ public class Titulo : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void CONTROLES()
+    {
+        SceneManager.LoadScene("Controles");
+    }
+    
+    public void BACK()
+    {
+        SceneManager.LoadScene("Titulo");
+    }
 }
