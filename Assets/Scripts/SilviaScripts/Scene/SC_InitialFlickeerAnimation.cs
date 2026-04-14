@@ -21,8 +21,9 @@ public class SC_InitialFlickeerAnimation : MonoBehaviour
         if (SC_DeathCounter.Instance.DeathCounter == 0)
         {
             hudImage.enabled = false;
-            playerMovement.enabled = true;
+            
             timesDeath++;
+            playerMovement.enabled = true;
         }
         else
         {
