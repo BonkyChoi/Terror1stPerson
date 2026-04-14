@@ -8,13 +8,12 @@ using Random = UnityEngine.Random;
 public class SC_InitialFlickeerAnimation : MonoBehaviour
 {
     [SerializeField]private Image hudImage;
-    //private PlayerMovementV playerMovement;
+    private PlayerMovementV playerMovement;
     private int timesDeath = 0;
 
     private void Awake()
     {
-        //playerMovement = GetComponent<PlayerMovementV>();
-        //playerMovement.enabled = true;
+        playerMovement = GetComponent<PlayerMovementV>();
     }
 
     private void Start()
@@ -24,6 +23,7 @@ public class SC_InitialFlickeerAnimation : MonoBehaviour
             hudImage.enabled = false;
             
             timesDeath++;
+            playerMovement.enabled = true;
         }
         else
         {
@@ -38,7 +38,7 @@ public class SC_InitialFlickeerAnimation : MonoBehaviour
     {
         Debug.Log("Voy a flickear");
         
-        //playerMovement.enabled = false;
+        playerMovement.enabled = false;
         StartCoroutine(BeginToFlickCoroutine());
     }
 
@@ -68,7 +68,7 @@ public class SC_InitialFlickeerAnimation : MonoBehaviour
         }
         newColor.a = 0;
         newImage.color = newColor;
-       // playerMovement.enabled = true;
+        playerMovement.enabled = true;
         
         
     }
