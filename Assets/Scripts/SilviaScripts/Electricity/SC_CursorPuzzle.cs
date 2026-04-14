@@ -18,6 +18,8 @@ public class SC_CursorPuzzle : MonoBehaviour
     private void ShowPuzzlePannel()
     {
         //programar bien el puzle
+        
+        
         //permitir clicar
         //si acierta -> current success ++
         AddSuccess?.Invoke();

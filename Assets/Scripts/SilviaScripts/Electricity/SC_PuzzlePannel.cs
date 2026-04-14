@@ -5,9 +5,10 @@ public class SC_PuzzlePannel : MonoBehaviour
 {
     //tiene un cursor y una zona roja si le pulsas en la zona roja 3 veces permites abrir una puerta
     //por cada vez que falles a la hora de pulsar te quita tiempo de luces (15 segundos)
+    //este enciende le dice al canvas del cursor que se encienda
 
     public static System.Action ShowPuzzlePannel;
-    public static System.Action Activate1FinalLight;
+    
     [SerializeField] private int totalTimesToSuccess;
     private int currentTimesToSuccess;
 
@@ -19,7 +20,7 @@ public class SC_PuzzlePannel : MonoBehaviour
         }
         else if (other.CompareTag("Player") && currentTimesToSuccess == totalTimesToSuccess)
         {
-            Activate1FinalLight?.Invoke();
+            //en vez de invocar el evento lo guarda en una instancia 
         }
     }
 
