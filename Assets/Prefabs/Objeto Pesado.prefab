@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1511861084870918491}
   - component: {fileID: 3406899738455334299}
   m_Layer: 0
-  m_Name: Objeto (1)
+  m_Name: Objeto Pesado
   m_TagString: Pesado
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

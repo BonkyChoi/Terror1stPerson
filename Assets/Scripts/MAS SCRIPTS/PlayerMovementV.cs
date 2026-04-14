@@ -246,7 +246,8 @@ public class PlayerMovementV : MonoBehaviour
         else if (heavyObject != null)
         {
             heavyObject.transform.SetParent(null);
-            rightHandObject.layer = LayerMask.NameToLayer("Default");
+            if(rightHandObject)
+                rightHandObject.layer = LayerMask.NameToLayer("Default");
             heavyRb.isKinematic = false;
             heavyRb.AddForce(cameraTransform.forward * heavyThrowForce, ForceMode.Impulse);
             heavyObject = null;
