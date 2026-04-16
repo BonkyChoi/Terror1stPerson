@@ -9,6 +9,7 @@ TagManager:
   - Empujable
   - Collider
   - Fusible
+  - DetectorEnemy
   layers:
   - Default
   - TransparentFX

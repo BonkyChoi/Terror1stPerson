@@ -8,6 +8,12 @@ public class PlayerMovementV : MonoBehaviour
     public float runSpeed = 6f;
     public float gravity = -9.81f;
     public float jumpHeight = 1.5f;
+    
+    [Header("Trigger esfera")]
+    public SphereCollider triggerSphere;
+    public float moveRadius = 1.5f;
+    public float runRadius = 2.2f;
+    public float crouchRadius = 1f;
 
     [Header("Mouse")]
     public Transform cameraTransform;
@@ -96,6 +102,8 @@ public class PlayerMovementV : MonoBehaviour
         if (isCrouching) currentSpeed = crouchSpeed;
 
         Vector3 move = (transform.right * x + transform.forward * z) * currentSpeed;
+        
+        UpdateTriggerRadius(x, z);
 
         if (controller.isGrounded)
         {
@@ -320,6 +328,26 @@ public class PlayerMovementV : MonoBehaviour
                     pushTimer = pushCooldown;
                 }
             }
+        }
+    }
+    void UpdateTriggerRadius(float x, float z)
+    {
+        if (triggerSphere == null) return;
+
+        bool isMoving = x != 0 || z != 0;
+        bool isRunning = Input.GetKey(KeyCode.LeftShift) && isMoving && !isCrouching;
+
+        if (isCrouching)
+        {
+            triggerSphere.radius = crouchRadius;
+        }
+        else if (isRunning)
+        {
+            triggerSphere.radius = runRadius;
+        }
+        else if (isMoving)
+        {
+            triggerSphere.radius = moveRadius;
         }
     }
 }
