@@ -7,7 +7,7 @@ public class PuzzleLightCounter : MonoBehaviour
 
     public static System.Action OpenFinalDoor;
     
-    private int lightCounter;
+    public int lightCounter {get; private set;}
 
     public int puzzleCounterA;
     public int puzzleCounterB;

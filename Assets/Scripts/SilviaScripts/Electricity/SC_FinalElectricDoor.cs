@@ -46,7 +46,8 @@ public class SC_FinalElectricDoor : MonoBehaviour
     {
         //Pausar gameplay
         //Ir a cinemática de la puerta abriéndose
-        //Apagar las luces
+        //Reanudar gameplay
+        //Apagar las luces (esta ultima parte se debe hacer a oscuras)
         //Volver al gameplay normal
     }
 
@@ -58,10 +59,10 @@ public class SC_FinalElectricDoor : MonoBehaviour
 
     private void OnEnable()
     {
-        
+        PuzzleLightCounter.OpenFinalDoor += OpenDoor;
     }
     private void OnDisable()
     {
-        
+       PuzzleLightCounter.OpenFinalDoor -= OpenDoor; 
     }
 }
