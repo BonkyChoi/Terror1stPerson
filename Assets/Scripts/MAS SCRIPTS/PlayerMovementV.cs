@@ -72,8 +72,6 @@ public class PlayerMovementV : MonoBehaviour
 
     private float pushTimer = 0f;
     
-    private bool puedeActivarPlataforma = false;
-    public PlataformaMovil plataforma;
     
     void Start()
     {
@@ -92,7 +90,6 @@ public class PlayerMovementV : MonoBehaviour
         HandleThrow();
         CheckHighlight();
         HandlePush();
-        HandlePlatform();
 
         if (pushTimer > 0)
             pushTimer -= Time.deltaTime;
@@ -167,7 +164,7 @@ public class PlayerMovementV : MonoBehaviour
     }
     void HandleGrab()
     {
-        if (!Input.GetKeyDown(KeyCode.E) || puedeActivarPlataforma) return;
+        if (!Input.GetKeyDown(KeyCode.E)) return;
 
         Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, grabDistance))
@@ -352,27 +349,6 @@ public class PlayerMovementV : MonoBehaviour
         else if (isMoving)
         {
             triggerSphere.radius = moveRadius;
-        }
-    }
-    void HandlePlatform()
-    {
-        if (puedeActivarPlataforma && Input.GetKeyDown(KeyCode.E))
-        {
-            plataforma.Activar();
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("BotonPlataforma"))
-        {
-            puedeActivarPlataforma = true;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("BotonPlataforma"))
-        {
-            puedeActivarPlataforma = false;
         }
     }
 }
