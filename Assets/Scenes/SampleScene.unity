@@ -37694,6 +37694,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8370731658078552829, guid: da838a3197fe0ba4ea99e2d45be337aa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.15
+      objectReference: {fileID: 0}
     - target: {fileID: 8787186765961630014, guid: da838a3197fe0ba4ea99e2d45be337aa, type: 3}
       propertyPath: m_Name
       value: BaseBoton
