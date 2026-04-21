@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2794235374887862200}
   - component: {fileID: 3968717664924501505}
   - component: {fileID: 8723333454571755945}
+  - component: {fileID: 7220932015605925798}
   m_Layer: 0
   m_Name: PuzzlePannel
   m_TagString: Untagged
@@ -148,3 +149,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SC_PuzzlePannel
   totalTimesToSuccess: 3
+--- !u!114 &7220932015605925798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3494610966642473739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 489f762f10bdf1247bb8b64bfe1fc562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SC_CursorPuzzle
+  HUD: {fileID: 0}
+  puzzlePanel: {fileID: 0}
+  cursor: {fileID: 0}
+  tutorialPanel: {fileID: 0}
+  beginPanel: {fileID: 0}
+  exitPanel: {fileID: 0}
+  zone: {fileID: 0}
+  zoneRect: {fileID: 0}
+  speed: 5
