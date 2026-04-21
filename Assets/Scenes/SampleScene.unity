@@ -8490,7 +8490,7 @@ GameObject:
   - component: {fileID: 618254855}
   - component: {fileID: 618254854}
   - component: {fileID: 618254853}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8506,7 +8506,7 @@ Transform:
   m_GameObject: {fileID: 618254851}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 4.325, y: 1.88, z: 5.26}
+  m_LocalPosition: {x: 4.325, y: 2.62, z: 5.26}
   m_LocalScale: {x: 1.6738318, y: 2.0073478, z: 2.6793427}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -35158,14 +35158,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 3389525741922306409, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7741208195819279593, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -35179,53 +35171,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 397818320301549647, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1232690880507627122, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2912355362262980800, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3255349065206847575, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3302105122379774813, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3706285832648250856, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5648069241497422959, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
       propertyPath: 'fusibles.Array.data[0]'
       value: 
       objectReference: {fileID: 1584939611}
-    - target: {fileID: 5894781746698475501, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5894781746698475501, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
-      propertyPath: field of view
-      value: 50.53402
-      objectReference: {fileID: 0}
-    - target: {fileID: 5894781746698475501, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
-      propertyPath: m_FOVAxisMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6373734664268282894, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.1868181
-      objectReference: {fileID: 0}
     - target: {fileID: 6373734664268282894, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -68.17
+      value: -74.9
       objectReference: {fileID: 0}
     - target: {fileID: 6373734664268282894, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -35233,7 +35189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6373734664268282894, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.74
+      value: -13.3
       objectReference: {fileID: 0}
     - target: {fileID: 6373734664268282894, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -35262,22 +35218,6 @@ PrefabInstance:
     - target: {fileID: 6373734664268282894, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7279639932052019653, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8634215348428034025, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8634215348428034025, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
-      propertyPath: field of view
-      value: 50.53402
-      objectReference: {fileID: 0}
-    - target: {fileID: 8634215348428034025, guid: fb49f0fceb7756147957a77ceb66737f, type: 3}
-      propertyPath: m_FOVAxisMode
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -153,8 +153,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 64, y: 14.6208}
-  m_SizeDelta: {x: 651.9684, y: 582.8762}
+  m_AnchoredPosition: {x: 108.71875, y: 14.6208}
+  m_SizeDelta: {x: 741.4059, y: 582.8762}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &176738350
 MonoBehaviour:
@@ -189,7 +189,9 @@ MonoBehaviour:
 
     Espacio = Saltar
 
-    Shift = Correr'
+    Shift = Correr
+
+    P= Abrir menu de pausa'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -255,7 +257,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 3.3861084, z: -12.317627, w: -1.6636963}
+  m_margin: {x: 0, y: 3.3861084, z: 0.10412598, w: -1.6636963}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
