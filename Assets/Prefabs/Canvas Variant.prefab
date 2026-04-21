@@ -381,7 +381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8921809790977265736
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1328,13 +1328,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3389525741922306409, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5114659536570809096, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5196785271924330926, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453739735630251147, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453739735630251147, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 575.23425
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453739735630251147, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 287.62
       objectReference: {fileID: 0}
     - target: {fileID: 7741208195819279593, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
       propertyPath: m_IsActive

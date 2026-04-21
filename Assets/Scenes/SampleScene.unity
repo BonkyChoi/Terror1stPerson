@@ -14387,38 +14387,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 4496778947237793161, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5179409030785939860, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5905143916286155658, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6445627155006756174, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8510897129801547883, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8510897129801547883, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 575.23425
-      objectReference: {fileID: 0}
-    - target: {fileID: 8510897129801547883, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 287.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 8510897129801547883, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
