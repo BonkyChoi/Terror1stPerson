@@ -250,7 +250,7 @@ public class PlayerMovementV : MonoBehaviour
                 fusibles.Remove(leftHandObject);
 
             leftHandObject.transform.SetParent(null);
-            rightHandObject.layer = LayerMask.NameToLayer("Default");
+            leftHandObject.layer = LayerMask.NameToLayer("Default");
             leftRb.isKinematic = false;
             leftRb.AddForce(cameraTransform.forward * throwForce, ForceMode.Impulse);
             leftHandObject = null;
@@ -258,8 +258,7 @@ public class PlayerMovementV : MonoBehaviour
         else if (heavyObject != null)
         {
             heavyObject.transform.SetParent(null);
-            if(rightHandObject)
-                rightHandObject.layer = LayerMask.NameToLayer("Default");
+            heavyObject.layer = LayerMask.NameToLayer("Default");
             heavyRb.isKinematic = false;
             heavyRb.AddForce(cameraTransform.forward * heavyThrowForce, ForceMode.Impulse);
             heavyObject = null;
