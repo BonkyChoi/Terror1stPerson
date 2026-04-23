@@ -41682,6 +41682,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 793901140049497764, guid: 4265ba3aee600db4abffca249db5a898, type: 3}
+      propertyPath: box
+      value: 
+      objectReference: {fileID: 7206439697837171216}
+    - target: {fileID: 793901140049497764, guid: 4265ba3aee600db4abffca249db5a898, type: 3}
       propertyPath: panelCodigo
       value: 
       objectReference: {fileID: 827313149}
@@ -41750,6 +41754,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4265ba3aee600db4abffca249db5a898, type: 3}
+--- !u!65 &7206439697837171216 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 8924234768123056499, guid: 4265ba3aee600db4abffca249db5a898, type: 3}
+  m_PrefabInstance: {fileID: 7206439697837171215}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7924737894579013400
 PrefabInstance:
   m_ObjectHideFlags: 0
