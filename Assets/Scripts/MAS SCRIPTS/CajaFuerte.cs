@@ -42,10 +42,11 @@ public class CajaFuerte : MonoBehaviour
     void AbrirPanel()
     {
         panelActivo = true;
-        panelCodigo.SetActive(true);
-        Resetear();
+        if (!panelCodigo.activeSelf)
+            panelCodigo.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        Resetear();
     }
     void CerrarPanel()
     {
