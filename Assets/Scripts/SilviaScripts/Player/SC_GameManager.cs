@@ -4,18 +4,18 @@ using UnityEngine.InputSystem;
 public class SC_GameManager : MonoBehaviour
 {
    public static SC_GameManager Instance {get; private set;}
-   [SerializeField] private PlayerInput playerInput;
+   [SerializeField] private  PlayerInput playerInput;
 
    private void Awake()
    {
-      if (Instance != this || Instance != null)
+      if (Instance != this && Instance != null)
       {
          Destroy(gameObject);
          return;
       }
       Instance = this;
       DontDestroyOnLoad(gameObject);
-      playerInput = GetComponent<PlayerInput>();
+      //playerInput = GetComponent<PlayerInput>();
    }
 
    public void OpenUI()
