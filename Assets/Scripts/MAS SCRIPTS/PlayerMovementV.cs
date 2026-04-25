@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -8,12 +9,13 @@ public class PlayerMovementV : MonoBehaviour
     public float runSpeed = 6f;
     public float gravity = -9.81f;
     public float jumpHeight = 1.5f;
-    
-    [Header("Trigger esfera")]
-    public SphereCollider triggerSphere;
-    public float moveRadius = 1.5f;
-    public float runRadius = 2.2f;
-    public float crouchRadius = 1f;
+
+    [Header("Trigger esfera")] //    --AHORA MISMO ESTE CÓDIGO SE ENCUENTRA EN DESACOPLAMIENTO, LAMENTAMOS LAS MOLESTIAS--
+    //public SphereCollider triggerSphere;
+    //public float moveRadius = 1.5f;
+    //public float runRadius = 2.2f;
+    //public float crouchRadius = 1f;
+    public static Action<string> OnMovementChanged;
 
     [Header("Mouse")]
     public Transform cameraTransform;
@@ -72,7 +74,8 @@ public class PlayerMovementV : MonoBehaviour
 
     private float pushTimer = 0f;
     
-    
+
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -140,6 +143,9 @@ public class PlayerMovementV : MonoBehaviour
     }
     void Crouch()
     {
+        //Hola, soy Silvia, voy a montar el evnto para las pisadas por aqui y ya vemos como lo pasamos luego al new inputs ;)
+        //Tranquilo, no toco nada tuyo
+        //Acabo d ver que lo tenias ya montado jasja, me lo llevo a otro script para desacoplar esto un poco :b
         bool quiereAgacharse = Input.GetKey(KeyCode.C);
         
         if (!quiereAgacharse)
@@ -332,22 +338,21 @@ public class PlayerMovementV : MonoBehaviour
     }
     void UpdateTriggerRadius(float x, float z)
     {
-        if (triggerSphere == null) return;
 
         bool isMoving = x != 0 || z != 0;
         bool isRunning = Input.GetKey(KeyCode.LeftShift) && isMoving && !isCrouching;
 
         if (isCrouching)
         {
-            triggerSphere.radius = crouchRadius;
+            OnMovementChanged?.Invoke("crouching");
         }
         else if (isRunning)
         {
-            triggerSphere.radius = runRadius;
+            OnMovementChanged?.Invoke("running");
         }
         else if (isMoving)
         {
-            triggerSphere.radius = moveRadius;
+            OnMovementChanged.Invoke("moving");
         }
     }
 }
