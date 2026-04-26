@@ -1406,6 +1406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2360337801845134195}
   - component: {fileID: 5724349132318077780}
+  - component: {fileID: 5724349132318077781}
   m_Layer: 3
   m_Name: DetectorEnemy
   m_TagString: DetectorEnemy
@@ -1526,7 +1527,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3302105122161025259}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1709,7 +1710,7 @@ Transform:
   m_GameObject: {fileID: 823579350977518904}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.92, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1886,7 +1887,7 @@ GameObject:
   - component: {fileID: 7660863885476259313}
   - component: {fileID: 7660863885476259312}
   m_Layer: 3
-  m_Name: Player
+  m_Name: PlayerSilvia
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2144,7 +2145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 505885901520208322, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6488869075951928511, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2186,7 +2187,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7690836276253599992, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
+    - {fileID: 7442375749263149963, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2273,10 +2276,6 @@ MonoBehaviour:
   runSpeed: 6
   gravity: -9.81
   jumpHeight: 1
-  triggerSphere: {fileID: 5724349132318077780}
-  moveRadius: 5
-  runRadius: 7
-  crouchRadius: 3
   cameraTransform: {fileID: 5874570739290143015}
   mouseSensitivity: 10
   maxLookUp: 100
@@ -2320,8 +2319,24 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 3.48
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &5724349132318077781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823579350977518904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5153ad8ec47db4342aa00791b22de3e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SC_StepsSound
+  stepsDetector: {fileID: 5724349132318077780}
+  moveRadius: 3.48
+  runRadius: 5.69
+  crouchRadius: 1.44
 --- !u!4 &5823313851782514707
 Transform:
   m_ObjectHideFlags: 0
