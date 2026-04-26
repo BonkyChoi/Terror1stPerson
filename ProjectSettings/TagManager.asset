@@ -11,7 +11,7 @@ TagManager:
   - Fusible
   - DetectorEnemy
   - BotonPlataforma
-  - CombineZone
+  - Puzzle
   layers:
   - Default
   - TransparentFX
