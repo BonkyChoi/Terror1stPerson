@@ -31,6 +31,11 @@ public class SC_InvestigateState : SC_State
         agent.SetDestination(perceptionSystem.LastPlayerPosition);
     }
 
+    public override void OnEnterState()
+    {
+        throw new NotImplementedException();
+    }
+
     public override void OnUpdateState()
     {
         if (perceptionSystem.CanSeePlayer)

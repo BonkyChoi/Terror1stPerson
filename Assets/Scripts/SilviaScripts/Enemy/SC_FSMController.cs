@@ -1,38 +1,87 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SC_FSMController : MonoBehaviour
 {
     private SC_State currentState;
-    private SC_PatrolState PatrolState { get; set; } //se puede acceder a este estado desde otras clases y modificarlo
-    private SC_ChaseAttackState ChaseState { get; set; }
-    private SC_InvestigateState InvestigateState { get; set; }
-    private SC_PerceptionSystem PerceptionSystem { get; set; }
+    private SC_PatrolState PatrolState; //se puede acceder a este estado desde otras clases y modificarlo
+    private SC_ChaseAttackState ChaseState;
+    private SC_InvestigateState InvestigateState;
+    public SC_PerceptionSystem PerceptionSystem { get; private set; }
+    public NavMeshAgent Agent { get; private set; }
+    
+    //Patrol
+    private List<Vector3> patrolPoints = new();
+    [SerializeField] private Transform patrolRoute;
+    
+    
+    //Attack
+    [SerializeField] private SphereCollider triggerCollider;
+    
     
     
     private void Awake()
     {
-        PatrolState = GetComponent<SC_PatrolState>();
-        ChaseState = GetComponent<SC_ChaseAttackState>();
-        InvestigateState = GetComponent<SC_InvestigateState>();
+        
         PerceptionSystem = GetComponent<SC_PerceptionSystem>();
-        ChangeState(PatrolState);
+        Agent = GetComponent<NavMeshAgent>();
+        //Patrol
+        foreach (Transform points in patrolRoute)
+        {
+            patrolPoints.Add(points.position);
+        }
+        ChaseState = new SC_ChaseAttackState();
+        PatrolState = new SC_PatrolState(this, patrolPoints);
+        InvestigateState = new SC_InvestigateState();
+        
         
     }
     
-
-    internal void ChangeState(SC_State newState)
+    private void Update()
     {
+        currentState?.OnUpdateState();
+        
+    }
+
+    public void ChangeState(SC_State newState)
+    {
+        if (currentState == newState) return;
         currentState?.OnExitState();
         currentState = newState;
         currentState.OnEnterState(this);
 
     }
-
-    private void Update()
+    
+    private void OnEnable()
     {
-        currentState.OnUpdateState();
+        SC_LightManager.OnSwitchOff += PatrolAndWait;
+        SC_LightManager.OnSwitchOn += StopMovement;
         
     }
+
+    private void StopMovement()
+    {
+        //bloquear al agente
+        Agent.isStopped = true;
+        triggerCollider.enabled = false;
+    }
+
+    private void PatrolAndWait()
+    {
+        ChangeState(PatrolState);
+        triggerCollider.enabled = true;
+    }
+
+    private void OnDisable()
+    {
+        SC_LightManager.OnSwitchOff -= PatrolAndWait;
+        SC_LightManager.OnSwitchOn -= StopMovement;
+    }
+
+    public SC_State Patrol => PatrolState;
+    public SC_State Chase => ChaseState;
+    public SC_State Investigate => InvestigateState;
     
     
 }
