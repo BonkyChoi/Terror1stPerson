@@ -29,7 +29,7 @@ public class SC_FSMController : MonoBehaviour
     
     private void Awake()
     {
-        
+        triggerCollider.enabled = true;
         PerceptionSystem = GetComponent<SC_PerceptionSystem>();
         Agent = GetComponent<NavMeshAgent>();
         //Patrol
@@ -90,17 +90,23 @@ public class SC_FSMController : MonoBehaviour
     
     private void OnTriggerStay(Collider other)
     {
-        if (other.TryGetComponent<SC_PlayerHealth>(out var playerHealth) && currentState == Chase)
+        
+        if (other.TryGetComponent<SC_PlayerHealth>(out var playerHealth))
         {
             playerHealth.ReciveDamage();
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<SC_PlayerHealth>(out var playerHealth) && currentState == Chase)
+        
+        
+        if (other.TryGetComponent<SC_PlayerHealth>(out var playerHealth)) 
         {
             playerHealth.ReciveDamage();
+            
         }
+        
+        
     }
     
     public Coroutine RunCoroutine(IEnumerator routine)//le permite al estado realizar lo que necesita

@@ -24,6 +24,7 @@ public class IA_Chase : IA_EnemyStates
     private SC_FSMController controller;
     private NavMeshAgent agent;
     private SC_PerceptionSystem perception;
+    private Coroutine myCoroutine;
     
     private float waitTimer;
     private float waitDuration;
@@ -51,7 +52,7 @@ public class IA_Chase : IA_EnemyStates
 
     public override void OnEnterState()
     {
-        controller.RunCoroutine(MakeRwarBeforeGo());
+       myCoroutine = controller.RunCoroutine(MakeRwarBeforeGo());
     }
 
     public override void OnUpdateState()
@@ -143,7 +144,7 @@ public class IA_Chase : IA_EnemyStates
             agent.updateRotation = true;
         }
 
-        controller.StopCoroutine(MakeRwarBeforeGo());//Quieres que pare todas? O deberia parar solo las del chase?
+        controller.StopCoroutine(myCoroutine);//Quieres que pare todas? O deberia parar solo las del chase?
     
     } 
             

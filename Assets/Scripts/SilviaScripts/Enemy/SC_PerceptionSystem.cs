@@ -24,7 +24,7 @@ public class SC_PerceptionSystem : MonoBehaviour
     //Lo de las tuberías se hará con waypoints en el lugar que hagan de zona donde finalice la tubería. Estas tuberías iran con eventos y
     //cuando detecten un sonido mandarán a todas las subscritas si escuchan al player, de escucharlo, le darán la localización al enemigo
 
-    [SerializeField] private SphereCollider monsterEars;//debe determinar el radio de escuha del monstruo
+    
     private NavMeshAgent agent;
     private bool haveATarget;
     private bool listeningCoroutine;
@@ -37,12 +37,15 @@ public class SC_PerceptionSystem : MonoBehaviour
         SensorAngle { get; private set; } //si son 33 grados, el sensor va a ser de 16.5 grados a cada lado del enemigo
 
     [field: SerializeField]
-    public float VisionDistance { get; private set; } //rango de unidades en las que detecta al jugador
+    public float VisionMagnitude { get; private set; } //rango de unidades en las que detecta al jugador
+    [field: SerializeField]
+    public float ListingMagnitude { get; private set; }
 
     [SerializeField] private float sphereOffset;
 
     [SerializeField] private LayerMask isAPlayer;
     [SerializeField] private LayerMask isAnObstacle;
+    [SerializeField]private float earSphereOffset;
 
     private void OnEnable()
     {
@@ -63,6 +66,7 @@ public class SC_PerceptionSystem : MonoBehaviour
     {
         canPercive = true;
         seeCoroutine = StartCoroutine(EyePerception());
+        hearCoroutine = StartCoroutine(EarPerception());
 
     }
     
@@ -74,38 +78,10 @@ public class SC_PerceptionSystem : MonoBehaviour
     
     //--OídoFunciones--
     
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("DetectorEnemy") && canPercive)
-        {
-            haveATarget = true;
-            if (listeningCoroutine) return;
-            listeningCoroutine = true;
-            CanHearPlayer = true;
-            hearCoroutine = StartCoroutine(InvokeHaveATarget(other.transform));
-        }
-    }
+    
 
-    private IEnumerator InvokeHaveATarget(Transform otherTransform)
-    {
-        while (haveATarget)
-        {
-            LastPlayerPosition = target.transform.position;
-            yield return new WaitForSeconds(5);
-        }
-    }
-
-   
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("DetectorEnemy"))
-        {
-            haveATarget = false;
-            if (hearCoroutine is not null)StopCoroutine(hearCoroutine);
-            listeningCoroutine = false;
-            CanHearPlayer = false;
-        }
-    }
+    
+    
     
     //--OjoFunciones--
 
@@ -118,7 +94,7 @@ public class SC_PerceptionSystem : MonoBehaviour
             Vector3 directionToPlayer = target.transform.position - transform.position;
             float distance = directionToPlayer.magnitude;
 
-            if (distance > VisionDistance)
+            if (distance > VisionMagnitude)
             {
                 yield return null;
                 continue;
@@ -148,12 +124,43 @@ public class SC_PerceptionSystem : MonoBehaviour
 
     }
 
-   
+
+    private IEnumerator EarPerception()
+    {
+        while (canPercive)
+        {
+            CanHearPlayer = false;
+
+            Collider[] hits = Physics.OverlapSphere(
+                transform.position,
+                ListingMagnitude,
+                isAPlayer
+            );
+
+            foreach (var hit in hits)
+            {
+                if (hit.CompareTag("Player"))
+                {
+                    CanHearPlayer = true;
+                    LastPlayerPosition = hit.transform.position;
+                    break;
+                }
+            }
+
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+
+
 
     private void OnDrawGizmos()
     {
         Gizmos.color = new Vector4(1, 0, 0, 0.7f);
-        Gizmos.DrawSphere(this.transform.position + this.transform.forward * sphereOffset, VisionDistance);
+        Gizmos.DrawSphere(this.transform.position + this.transform.forward * sphereOffset, VisionMagnitude);
+        
+        Gizmos.color = Color.chartreuse;
+        Gizmos.DrawSphere(this.transform.position + this.transform.forward * earSphereOffset, ListingMagnitude);
     }
     
 }

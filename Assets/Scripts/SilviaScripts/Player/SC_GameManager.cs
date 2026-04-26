@@ -1,10 +1,11 @@
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class SC_GameManager : MonoBehaviour
 {
    public static SC_GameManager Instance {get; private set;}
-   [SerializeField] private  PlayerInput playerInput;
+   private  PlayerInput playerInput;
 
    private void Awake()
    {
@@ -15,6 +16,7 @@ public class SC_GameManager : MonoBehaviour
       }
       Instance = this;
       DontDestroyOnLoad(gameObject);
+      playerInput = FindFirstObjectByType<PlayerInput>();
       //playerInput = GetComponent<PlayerInput>();
    }
 

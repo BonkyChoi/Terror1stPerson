@@ -50,7 +50,7 @@ public class IA_Patrol : IA_EnemyStates
         }
         if (perception.CanHearPlayer)
         {
-            controller.ChangeState(controller.Investigate);
+            controller.ChangeState(controller.Chase);
             return;
         }
         if (!waiting)
