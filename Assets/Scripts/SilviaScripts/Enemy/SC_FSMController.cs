@@ -31,14 +31,7 @@ public class SC_FSMController : MonoBehaviour
     private void Update()
     {
         currentState.OnUpdateState();
-        if (PerceptionSystem.canSeePlayer)
-            ChangeState(ChaseState);
-        else if (PerceptionSystem.canHearPlayer)
-            ChangeState(InvestigateState);
-        else
-        {
-            ChangeState(PatrolState);
-        }
+        
     }
     
     

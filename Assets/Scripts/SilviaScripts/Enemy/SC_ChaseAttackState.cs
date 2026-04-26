@@ -7,28 +7,26 @@ public class SC_ChaseAttackState : SC_State
     
     //hay que añadir que te persiga con la mirada para que no te pierda tan rapido
     private GameObject target => SC_PlayerHealth.player;
-    private SC_FSMController myController; 
-    private NavMeshAgent agent; 
+    
     [SerializeField] private float currentVelocity; 
-    [SerializeField] private float sprintFloat; private float distance; 
+    [SerializeField] private float sprintFloat; 
     private float sprintDistance; 
-    private SC_SensorSystem sensorSystem; 
-    [SerializeField] private LayerMask isAPlayer;
-    private SC_InvestigateState investigateState; 
-    private Vector3 lastDestination; 
-    public static System.Action<Vector3> OnPlayerLost;
+    
+    private float distance; 
+    
+    //[SerializeField] private LayerMask isAPlayer;
+    
     [SerializeField] Animator animator;
     private bool canAttack = false;
     private float sightLostTimer;
     [SerializeField] private float sightLostMaxTime = 2f;
 
 
-    private void Awake()
+    protected override void Awake()
     {
-        investigateState = GetComponent<SC_InvestigateState>(); 
-        agent = GetComponent<NavMeshAgent>(); 
+        base.Awake();
         agent.speed = currentVelocity;
-        sensorSystem = GetComponent<SC_SensorSystem>();
+        
     }
 
     
@@ -36,7 +34,7 @@ public class SC_ChaseAttackState : SC_State
     private IEnumerator MakeRwarBeforeGo()//te avisa de que te ha visto
     {
         Debug.Log("Esperame tantito");
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.01f);
         canAttack = true;
         Debug.Log("Te puedo atacar");
         
@@ -85,24 +83,24 @@ public class SC_ChaseAttackState : SC_State
                 agent.speed = currentVelocity;
             }
 
-            agent.SetDestination(target.transform.position);
-            
-            
-            lastDestination = target.transform.position;
-        //}
-        if (sensorSystem.FoundPlayer)
-        {
-            sightLostTimer = 0;
-        }
-        else
+        
+        //
+        if (!perceptionSystem.CanSeePlayer)
         {
             sightLostTimer += Time.deltaTime;
+
             if (sightLostTimer >= sightLostMaxTime)
             {
                 myController.ChangeState(investigateState);
-                OnPlayerLost?.Invoke(lastDestination);
+                return;
             }
         }
+        else
+        {
+            sightLostTimer = 0;
+        }
+
+        agent.SetDestination(perceptionSystem.LastPlayerPosition);
         
             
         

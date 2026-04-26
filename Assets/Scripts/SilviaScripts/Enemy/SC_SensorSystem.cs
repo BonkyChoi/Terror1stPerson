@@ -65,7 +65,7 @@ public class SC_SensorSystem : MonoBehaviour
                    // if (!FoundPlayer)
                     {
                         player = col[0].gameObject;
-                        OnPlayerFound?.Invoke(player);
+                        //OnPlayerFound?.Invoke(player);
                         FoundPlayer = true;
                     }
                     

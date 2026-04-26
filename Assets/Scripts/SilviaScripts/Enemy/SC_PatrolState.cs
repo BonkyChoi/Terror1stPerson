@@ -10,22 +10,17 @@ public class SC_PatrolState : SC_State
 {
     //Inicia el estado de patrulla, el enemigo se movera entre puntos de patrulla predefinidos
     
-    private SC_FSMController myController;
-    private SC_ChaseAttackState chaseAttackState;
-    
-    private NavMeshAgent agent;
 
     [SerializeField]private Transform patrolRoute;
     private List<Vector3> patrolPoints = new();
     private int currentPatrolPoint = 0;
     private bool patrolActive;
+    
+    
 
-    private void Awake()
+    protected override void Awake()
     {
-        chaseAttackState = GetComponent<SC_ChaseAttackState>();
-        agent = GetComponent<NavMeshAgent>();
-        myController = GetComponent<SC_FSMController>();
-
+        base.Awake();
         foreach (Transform points in patrolRoute)
         {
             patrolPoints.Add(points.position);
@@ -40,7 +35,14 @@ public class SC_PatrolState : SC_State
 
     public override void OnUpdateState()
     {
-        //nothing now
+        if (perceptionSystem.CanSeePlayer)
+        {
+            myController.ChangeState(chaseState);
+        }
+        else if (perceptionSystem.CanHearPlayer)
+        {
+            myController.ChangeState(investigateState);
+        }
     }
 
     public override void OnExitState()
@@ -55,17 +57,10 @@ public class SC_PatrolState : SC_State
     {
         SC_LightManager.OnSwitchOff += PatrolAndWait;
         SC_LightManager.OnSwitchOn += StopMovement;
-        SC_SensorSystem.OnPlayerFound += OnPlayerFound;
+        
     }
-
-    private void OnPlayerFound(GameObject obj)
-    {
-        Debug.Log("ChangeState>ToAttack");
-        myController.ChangeState(chaseAttackState);
-    }
-
     
-
+    
     private void StopMovement()
     {
         patrolActive = false;
@@ -76,7 +71,6 @@ public class SC_PatrolState : SC_State
     {
         SC_LightManager.OnSwitchOff -= PatrolAndWait;
         SC_LightManager.OnSwitchOn -= StopMovement;
-        SC_SensorSystem.OnPlayerFound -= OnPlayerFound;
     }
 
     private void PatrolAndWait()
