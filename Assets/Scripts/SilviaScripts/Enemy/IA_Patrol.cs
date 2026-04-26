@@ -1,12 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Random = UnityEngine.Random;
 
-
-public class SC_PatrolState : SC_State
+public class IA_Patrol : IA_EnemyStates
 {
     //Inicia el estado de patrulla, el enemigo se movera entre puntos de patrulla predefinidos
     
@@ -23,7 +19,7 @@ public class SC_PatrolState : SC_State
     private float waitDuration;
     private bool waiting;
 
-    public SC_PatrolState(SC_FSMController controller, List<Vector3> patrolPoints)
+    public IA_Patrol(SC_FSMController controller, List<Vector3> patrolPoints)
     {
         this.controller = controller;
         points = patrolPoints;
@@ -83,5 +79,4 @@ public class SC_PatrolState : SC_State
         agent.ResetPath();
     }
 
-    
 }

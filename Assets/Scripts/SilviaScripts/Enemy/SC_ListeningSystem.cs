@@ -53,6 +53,8 @@ public class SC_ListeningSystem : MonoBehaviour
             CantSeeTarget?.Invoke();
         }
     }
+    
+    //Me di cuenta de que esto estaba creciendo y me fui mejor a hacer algo como el perception de unreal
 
   
 }

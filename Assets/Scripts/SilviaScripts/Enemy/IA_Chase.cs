@@ -2,9 +2,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SC_ChaseAttackState : SC_State
+public class IA_Chase : IA_EnemyStates
 {
-    
     //hay que añadir que te persiga con la mirada para que no te pierda tan rapido
     private GameObject target => SC_PlayerHealth.player;
     private Transform transform => controller.transform;//el transform lo toma del controlador
@@ -30,7 +29,7 @@ public class SC_ChaseAttackState : SC_State
     private float waitDuration;
     private bool waiting;
     
-    public SC_ChaseAttackState(SC_FSMController controller)
+    public IA_Chase(SC_FSMController controller)
     {
         this.controller = controller;
         
@@ -144,7 +143,7 @@ public class SC_ChaseAttackState : SC_State
             agent.updateRotation = true;
         }
 
-        controller.StopAllCoroutines();//Quieres que pare todas? O deberia parar solo las del chase?
+        controller.StopCoroutine(MakeRwarBeforeGo());//Quieres que pare todas? O deberia parar solo las del chase?
     
     } 
             

@@ -1,8 +1,7 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SC_InvestigateState : SC_State
+public class IA_Investigate : IA_EnemyStates
 {
     //Aparece cuando pierde de vista al jugador mientras esta en chase state, o cuando escucha un sonido sospechoso mientras esta en patrol state
     //Debe buscar el origen del sonido, si encuentra algo sospechoso, cambiar a chase state, sino volver a patrol state
@@ -20,7 +19,7 @@ public class SC_InvestigateState : SC_State
     private NavMeshAgent agent;
     private SC_PerceptionSystem perception;
 
-    public SC_InvestigateState(SC_FSMController controller)
+    public IA_Investigate(SC_FSMController controller)
     {
         this.controller = controller;
         
@@ -60,9 +59,7 @@ public class SC_InvestigateState : SC_State
     {
         agent.isStopped = true;
         //target = null;
-        controller.StopAllCoroutines();
         agent.ResetPath();
     }
-
-   
+    
 }

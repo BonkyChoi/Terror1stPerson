@@ -101,7 +101,7 @@ public class SC_PerceptionSystem : MonoBehaviour
         if (other.CompareTag("DetectorEnemy"))
         {
             haveATarget = false;
-            StopCoroutine(hearCoroutine);
+            if (hearCoroutine is not null)StopCoroutine(hearCoroutine);
             listeningCoroutine = false;
             CanHearPlayer = false;
         }
@@ -118,18 +118,29 @@ public class SC_PerceptionSystem : MonoBehaviour
             Vector3 directionToPlayer = target.transform.position - transform.position;
             float distance = directionToPlayer.magnitude;
 
-            if (distance > VisionDistance) yield return null;
+            if (distance > VisionDistance)
+            {
+                yield return null;
+                continue;
+            }
             
 
             float angle = Vector3.Angle(transform.forward, directionToPlayer);
 
-            if (angle > SensorAngle) yield return null;
+            if (angle > SensorAngle)
+            {
+                yield return null;
+                continue;
+            }
             
 
-            if (!Physics.Raycast(transform.position, directionToPlayer.normalized, distance, isAnObstacle))
+            if (Physics.Raycast(transform.position, directionToPlayer.normalized, out RaycastHit hit, distance))
             {
-                CanSeePlayer = true;
-                LastPlayerPosition = target.transform.position;
+                if (hit.collider.CompareTag("Player"))
+                {
+                    CanSeePlayer = true;
+                    LastPlayerPosition = target.transform.position;
+                }
             }
 
             yield return new WaitForSeconds(0.2f);

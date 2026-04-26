@@ -5,10 +5,10 @@ using UnityEngine.AI;
 
 public class SC_FSMController : MonoBehaviour
 {
-    private SC_State currentState;
-    private SC_PatrolState PatrolState; //se puede acceder a este estado desde otras clases y modificarlo
-    private SC_ChaseAttackState ChaseState;
-    private SC_InvestigateState InvestigateState;
+    private IA_EnemyStates currentState;
+    private IA_Patrol PatrolState; //se puede acceder a este estado desde otras clases y modificarlo
+    private IA_Chase ChaseState;
+    private IA_Investigate InvestigateState;
     public SC_PerceptionSystem PerceptionSystem { get; private set; }
     public NavMeshAgent Agent { get; private set; }
     
@@ -37,12 +37,9 @@ public class SC_FSMController : MonoBehaviour
         {
             patrolPoints.Add(points.position);
         }
-        ChaseState = new SC_ChaseAttackState(this);
-        PatrolState = new SC_PatrolState(this, patrolPoints);
-        InvestigateState = new SC_InvestigateState(this);
-        
-        
-
+        ChaseState = new IA_Chase(this);
+        PatrolState = new IA_Patrol(this, patrolPoints);
+        InvestigateState = new IA_Investigate(this);
 
     }
     
@@ -52,7 +49,7 @@ public class SC_FSMController : MonoBehaviour
         
     }
 
-    public void ChangeState(SC_State newState)
+    public void ChangeState(IA_EnemyStates newState)
     {
         if (currentState == newState) return;
         currentState?.OnExitState();
@@ -111,9 +108,14 @@ public class SC_FSMController : MonoBehaviour
         return StartCoroutine(routine);
     }
 
-    public SC_State Patrol => PatrolState;
-    public SC_State Chase => ChaseState;
-    public SC_State Investigate => InvestigateState;
+    public Coroutine StopCoroutine(IEnumerator routine)
+    {
+        return StopCoroutine(routine);
+    }
+
+    public IA_EnemyStates Patrol => PatrolState;
+    public IA_EnemyStates Chase => ChaseState;
+    public IA_EnemyStates Investigate => InvestigateState;
     
     
 }

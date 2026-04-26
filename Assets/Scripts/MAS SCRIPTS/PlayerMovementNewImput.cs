@@ -100,12 +100,12 @@ public class PlayerMovementNewImput : MonoBehaviour
 
     void OnEnable()
     {
-        inputActions.Enable();
+        //inputActions.Enable();
     }
 
     void OnDisable()
     {
-        inputActions.Disable();
+        //inputActions.Disable();
     }
 
     void Start()
