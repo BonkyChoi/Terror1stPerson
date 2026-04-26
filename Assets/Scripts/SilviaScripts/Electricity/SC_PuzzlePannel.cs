@@ -12,7 +12,7 @@ public class SC_PuzzlePannel : MonoBehaviour
     [SerializeField] private int totalTimesToSuccess;
     private int currentTimesToSuccess;
     private bool canInteract;
-   [SerializeField] private PlayerMovementV playerMovement;
+   
    [SerializeField] private PlayerInput playerInput;
 
     private void OnTriggerStay(Collider other)
@@ -25,7 +25,7 @@ public class SC_PuzzlePannel : MonoBehaviour
                 if (canInteract)
                 {
                     //era esto, como no lo ha hecho en inputs al querer desactivar el movimiento desactivo el componente entero y ya no pilla el try get component
-                    playerMovement.enabled = false; //a cambiar
+                    SC_GameManager.Instance.OpenUI();
                     
                     ShowPuzzlePannel?.Invoke(); 
                     //SC_GameManager.Instance.OpenUI();
@@ -37,9 +37,9 @@ public class SC_PuzzlePannel : MonoBehaviour
             }
             else
             { 
-                playerMovement.enabled = true; 
-               ReactivateUIButton?.Invoke(); //puedes volver a pulsar ya que ya no esta el menu
                SC_GameManager.Instance.CloseUI();
+               ReactivateUIButton?.Invoke(); //puedes volver a pulsar ya que ya no esta el menu
+               
                //segun el tipo de puzle (se vera en herencia) le dice al correspondiente PuzzleLightCounter que se encienda
             }
     }
