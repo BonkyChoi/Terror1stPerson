@@ -220,6 +220,10 @@ public class PlayerMovementNewImput : MonoBehaviour
 
             else if (hit.collider.CompareTag("Pesado"))
                 GrabHeavy(hit.collider.gameObject);
+            if (hit.collider.CompareTag("Puzzle"))
+            {
+                hit.collider.GetComponentInParent<Rotaciones>()?.Interact();
+            }
         }
     }
 
