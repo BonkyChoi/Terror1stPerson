@@ -21,6 +21,7 @@ public class SC_FSMController : MonoBehaviour
     [SerializeField] private CapsuleCollider triggerCollider;
     
     //Animator
+    [SerializeField] private Animator animator;
     
     
     

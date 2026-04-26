@@ -8,19 +8,19 @@ public class SC_ChaseAttackState : SC_State
     //hay que añadir que te persiga con la mirada para que no te pierda tan rapido
     private GameObject target => SC_PlayerHealth.player;
     private Transform transform => controller.transform;//el transform lo toma del controlador
-    
-    [SerializeField] private float currentVelocity; 
-    [SerializeField] private float sprintFloat; 
+
+    private float currentVelocity = 1f;
+    private float sprintFloat = 3f; 
     private float sprintDistance; 
     
     private float distance; 
     
     //[SerializeField] private LayerMask isAPlayer;
     
-    [SerializeField] Animator animator;
+    
     private bool canAttack = false;
     private float sightLostTimer;
-    [SerializeField] private float sightLostMaxTime = 2f;
+    private float sightLostMaxTime = 2f;
     
     private SC_FSMController controller;
     private NavMeshAgent agent;

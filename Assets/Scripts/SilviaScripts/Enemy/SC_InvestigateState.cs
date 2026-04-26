@@ -11,9 +11,9 @@ public class SC_InvestigateState : SC_State
     private GameObject target => SC_PlayerHealth.player;
     private Transform transform => controller.transform;
     
-    [SerializeField] private Animator animator;
+    
 
-    [SerializeField] private float maxTimer;
+    private float maxTimer = 30f;
     private float timer;
     
     private SC_FSMController controller;
