@@ -149,6 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SC_PuzzlePannel
   totalTimesToSuccess: 3
+  playerMovement: {fileID: 0}
+  playerInput: {fileID: 0}
 --- !u!114 &7220932015605925798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,4 +171,5 @@ MonoBehaviour:
   exitPanel: {fileID: 0}
   zone: {fileID: 0}
   zoneRect: {fileID: 0}
-  speed: 5
+  speed: 172
+  playerInput: {fileID: 0}
