@@ -4,12 +4,24 @@ using System.Collections.Generic;
 
 public class PlayerMovementNewImput : MonoBehaviour
 {
+    [Header("Input")]
+    public InputActionAsset inputActions;
+
+    private InputAction move;
+    private InputAction look;
+    private InputAction jump;
+    private InputAction run;
+    private InputAction crouch;
+    private InputAction interact;
+    private InputAction throwAction;
+    private InputAction push;
+
     [Header("Movimiento")]
     public float walkSpeed = 3.5f;
     public float runSpeed = 6f;
     public float gravity = -9.81f;
     public float jumpHeight = 1.5f;
-    
+
     [Header("Trigger esfera")]
     public SphereCollider triggerSphere;
     public float moveRadius = 1.5f;
@@ -26,7 +38,7 @@ public class PlayerMovementNewImput : MonoBehaviour
     public float crouchHeight = 1f;
     public float standingHeight = 1.8f;
     public float crouchSpeed = 2f;
-    
+
     [Header("Detección techo")]
     public Transform headCheck;
     public float headRadius = 0.25f;
@@ -53,8 +65,6 @@ public class PlayerMovementNewImput : MonoBehaviour
     public List<GameObject> fusibles = new List<GameObject>();
 
     private CharacterController controller;
-    private IA_Player input;
-
     private float xRotation = 0f;
     private float yVelocity = 0f;
     private bool isCrouching = false;
@@ -76,17 +86,26 @@ public class PlayerMovementNewImput : MonoBehaviour
 
     void Awake()
     {
-        input = new IA_Player();
+        var player = inputActions.FindActionMap("Player");
+
+        move = player.FindAction("Move");
+        look = player.FindAction("Look");
+        jump = player.FindAction("Jump");
+        run = player.FindAction("Run");
+        crouch = player.FindAction("Crouch");
+        interact = player.FindAction("Interact");
+        throwAction = player.FindAction("Throw");
+        push = player.FindAction("Push");
     }
 
     void OnEnable()
     {
-        input.Enable();
+        inputActions.Enable();
     }
 
     void OnDisable()
     {
-        input.Disable();
+        inputActions.Disable();
     }
 
     void Start()
@@ -112,26 +131,26 @@ public class PlayerMovementNewImput : MonoBehaviour
 
     void HandleInput()
     {
-        if (input.Player.Interact.triggered)
+        if (interact.triggered)
             TryInteract();
 
-        if (input.Player.Throw.triggered)
+        if (throwAction.triggered)
             ThrowObject();
 
-        if (input.Player.Push.triggered)
+        if (push.triggered)
             HandlePush();
     }
 
     void Move()
     {
-        Vector2 moveInput = input.Player.Move.ReadValue<Vector2>();
+        Vector2 moveInput = move.ReadValue<Vector2>();
         float x = moveInput.x;
         float z = moveInput.y;
 
-        float currentSpeed = input.Player.Run.IsPressed() ? runSpeed : walkSpeed;
+        float currentSpeed = run.IsPressed() ? runSpeed : walkSpeed;
         if (isCrouching) currentSpeed = crouchSpeed;
 
-        Vector3 move = (transform.right * x + transform.forward * z) * currentSpeed;
+        Vector3 moveVec = (transform.right * x + transform.forward * z) * currentSpeed;
 
         UpdateTriggerRadius(x, z);
 
@@ -140,19 +159,19 @@ public class PlayerMovementNewImput : MonoBehaviour
             if (yVelocity < 0)
                 yVelocity = -1f;
 
-            if (!isCrouching && input.Player.Jump.triggered)
+            if (!isCrouching && jump.triggered)
                 yVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
         yVelocity += gravity * Time.deltaTime;
-        move.y = yVelocity;
+        moveVec.y = yVelocity;
 
-        controller.Move(move * Time.deltaTime);
+        controller.Move(moveVec * Time.deltaTime);
     }
 
     void Look()
     {
-        Vector2 lookInput = input.Player.Look.ReadValue<Vector2>();
+        Vector2 lookInput = look.ReadValue<Vector2>();
 
         float mouseX = lookInput.x * mouseSensitivity * Time.deltaTime;
         float mouseY = lookInput.y * mouseSensitivity * Time.deltaTime;
@@ -171,7 +190,7 @@ public class PlayerMovementNewImput : MonoBehaviour
 
     void Crouch()
     {
-        bool quiereAgacharse = input.Player.Crouch.IsPressed();
+        bool quiereAgacharse = crouch.IsPressed();
 
         if (!quiereAgacharse && HayTecho())
             quiereAgacharse = true;
@@ -216,16 +235,17 @@ public class PlayerMovementNewImput : MonoBehaviour
         {
             rightHandObject = obj;
             rightRb = rb;
+            obj.transform.SetParent(holdPointRight);
         }
         else if (leftHandObject == null)
         {
             leftHandObject = obj;
             leftRb = rb;
+            obj.transform.SetParent(holdPointLeft);
         }
         else return;
 
         rb.isKinematic = true;
-        obj.transform.SetParent(rightHandObject == obj ? holdPointRight : holdPointLeft);
         obj.transform.localPosition = Vector3.zero;
         obj.transform.localRotation = Quaternion.identity;
 
@@ -350,7 +370,7 @@ public class PlayerMovementNewImput : MonoBehaviour
         if (triggerSphere == null) return;
 
         bool isMoving = x != 0 || z != 0;
-        bool isRunning = input.Player.Run.IsPressed() && isMoving && !isCrouching;
+        bool isRunning = run.IsPressed() && isMoving && !isCrouching;
 
         if (isCrouching)
             triggerSphere.radius = crouchRadius;

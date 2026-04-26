@@ -74026,6 +74026,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 839560067470522829, guid: 25742a717c35880419da40a840454a3a, type: 3}
+      propertyPath: inputActions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 3c21ef9b613ee504a9bb85d5d010eff4, type: 3}
+    - target: {fileID: 839560067470522829, guid: 25742a717c35880419da40a840454a3a, type: 3}
       propertyPath: 'fusibles.Array.data[0]'
       value: 
       objectReference: {fileID: 1584939611}
