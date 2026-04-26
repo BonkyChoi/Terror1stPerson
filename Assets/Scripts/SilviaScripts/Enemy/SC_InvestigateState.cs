@@ -9,38 +9,39 @@ public class SC_InvestigateState : SC_State
 
     
     private GameObject target => SC_PlayerHealth.player;
+    private Transform transform => controller.transform;
     
     [SerializeField] private Animator animator;
 
     [SerializeField] private float maxTimer;
     private float timer;
+    
+    private SC_FSMController controller;
+    private NavMeshAgent agent;
+    private SC_PerceptionSystem perception;
 
-
-    protected override void Awake()
+    public SC_InvestigateState(SC_FSMController controller)
     {
-        base.Awake();
-        timer = maxTimer;
-    }
-
-    public override void OnEnterState(SC_FSMController fsmController)
-    {
-        myController = fsmController;
-        timer = maxTimer;
-        //animator.SetTrigger("lookAround");
-        agent.isStopped = false;
-        agent.SetDestination(perceptionSystem.LastPlayerPosition);
+        this.controller = controller;
+        
+        agent = controller.Agent;
+        perception = controller.PerceptionSystem;
     }
 
     public override void OnEnterState()
     {
-        throw new NotImplementedException();
+        timer = maxTimer;
+        //animator.SetTrigger("lookAround");
+        agent.isStopped = false;
+        agent.SetDestination(perception.LastPlayerPosition);
     }
+    
 
     public override void OnUpdateState()
     {
-        if (perceptionSystem.CanSeePlayer)
+        if (perception.CanSeePlayer)
         {
-            myController.ChangeState(chaseState);
+            controller.ChangeState(controller.Chase);
             return;
         }
 
@@ -50,7 +51,7 @@ public class SC_InvestigateState : SC_State
 
             if (timer <= 0f)
             {
-                myController.ChangeState(chaseState);
+                controller.ChangeState(controller.Patrol);
             }
         }
     }
@@ -59,7 +60,7 @@ public class SC_InvestigateState : SC_State
     {
         agent.isStopped = true;
         //target = null;
-        StopAllCoroutines();
+        controller.StopAllCoroutines();
         agent.ResetPath();
     }
 

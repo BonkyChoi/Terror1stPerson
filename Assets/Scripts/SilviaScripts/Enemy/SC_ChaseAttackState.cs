@@ -7,6 +7,7 @@ public class SC_ChaseAttackState : SC_State
     
     //hay que añadir que te persiga con la mirada para que no te pierda tan rapido
     private GameObject target => SC_PlayerHealth.player;
+    private Transform transform => controller.transform;//el transform lo toma del controlador
     
     [SerializeField] private float currentVelocity; 
     [SerializeField] private float sprintFloat; 
@@ -20,13 +21,21 @@ public class SC_ChaseAttackState : SC_State
     private bool canAttack = false;
     private float sightLostTimer;
     [SerializeField] private float sightLostMaxTime = 2f;
-
-
-    protected override void Awake()
+    
+    private SC_FSMController controller;
+    private NavMeshAgent agent;
+    private SC_PerceptionSystem perception;
+    
+    private float waitTimer;
+    private float waitDuration;
+    private bool waiting;
+    
+    public SC_ChaseAttackState(SC_FSMController controller)
     {
-        base.Awake();
-        agent.speed = currentVelocity;
+        this.controller = controller;
         
+        agent = controller.Agent;
+        perception = controller.PerceptionSystem;
     }
 
     
@@ -40,11 +49,10 @@ public class SC_ChaseAttackState : SC_State
         
     }
 
-    public override void OnEnterState(SC_FSMController fsmController)
+
+    public override void OnEnterState()
     {
-        myController = fsmController;
-        agent.isStopped = false;
-        StartCoroutine(MakeRwarBeforeGo());
+        controller.RunCoroutine(MakeRwarBeforeGo());
     }
 
     public override void OnUpdateState()
@@ -85,13 +93,13 @@ public class SC_ChaseAttackState : SC_State
 
         
         //
-        if (!perceptionSystem.CanSeePlayer)
+        if (!perception.CanSeePlayer)
         {
             sightLostTimer += Time.deltaTime;
 
             if (sightLostTimer >= sightLostMaxTime)
             {
-                myController.ChangeState(investigateState);
+                controller.ChangeState(controller.Investigate);
                 return;
             }
         }
@@ -100,7 +108,7 @@ public class SC_ChaseAttackState : SC_State
             sightLostTimer = 0;
         }
 
-        agent.SetDestination(perceptionSystem.LastPlayerPosition);
+        agent.SetDestination(perception.LastPlayerPosition);
         
             
         
@@ -110,24 +118,11 @@ public class SC_ChaseAttackState : SC_State
     }
 
 
-    private void OnTriggerStay(Collider other)
-      {
-          if (other.TryGetComponent<SC_PlayerHealth>(out var playerHealth) && canAttack)
-          {
-              playerHealth.ReciveDamage();
-          }
-      }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent<SC_PlayerHealth>(out var playerHealth) && canAttack)
-        {
-            playerHealth.ReciveDamage();
-        }
-    }
+    
     private void FaceToTarget()
     {
         //Sacar direccion a objetivo (Destino - origer)
-        Vector3 targetDirection = (target.transform.position - agent.transform.position).normalized;
+        Vector3 targetDirection = (target.transform.position - transform.position).normalized; //--Ahora no tienes acceso a transform, tienes que dejar que te pasen este
         targetDirection.y = 0;
         //Discriminar la y o ponerla a 0
         Quaternion rotationToTarget = Quaternion.LookRotation(targetDirection);
@@ -149,7 +144,7 @@ public class SC_ChaseAttackState : SC_State
             agent.updateRotation = true;
         }
 
-        StopAllCoroutines();
+        controller.StopAllCoroutines();//Quieres que pare todas? O deberia parar solo las del chase?
     
     } 
             

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -21,6 +22,8 @@ public class SC_FSMController : MonoBehaviour
     
     
     
+    
+    
     private void Awake()
     {
         
@@ -31,11 +34,13 @@ public class SC_FSMController : MonoBehaviour
         {
             patrolPoints.Add(points.position);
         }
-        ChaseState = new SC_ChaseAttackState();
+        ChaseState = new SC_ChaseAttackState(this);
         PatrolState = new SC_PatrolState(this, patrolPoints);
-        InvestigateState = new SC_InvestigateState();
+        InvestigateState = new SC_InvestigateState(this);
         
         
+
+
     }
     
     private void Update()
@@ -49,9 +54,11 @@ public class SC_FSMController : MonoBehaviour
         if (currentState == newState) return;
         currentState?.OnExitState();
         currentState = newState;
-        currentState.OnEnterState(this);
+        currentState.OnEnterState();
 
     }
+    
+    //__PATROL_
     
     private void OnEnable()
     {
@@ -77,6 +84,28 @@ public class SC_FSMController : MonoBehaviour
     {
         SC_LightManager.OnSwitchOff -= PatrolAndWait;
         SC_LightManager.OnSwitchOn -= StopMovement;
+    }
+    
+    //__CHASE__
+    
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.TryGetComponent<SC_PlayerHealth>(out var playerHealth) && currentState == Chase)
+        {
+            playerHealth.ReciveDamage();
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent<SC_PlayerHealth>(out var playerHealth) && currentState == Chase)
+        {
+            playerHealth.ReciveDamage();
+        }
+    }
+    
+    public Coroutine RunCoroutine(IEnumerator routine)//le permite al estado realizar lo que necesita
+    {
+        return StartCoroutine(routine);
     }
 
     public SC_State Patrol => PatrolState;
