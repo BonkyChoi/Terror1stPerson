@@ -18,7 +18,9 @@ public class SC_FSMController : MonoBehaviour
     
     
     //Attack
-    [SerializeField] private SphereCollider triggerCollider;
+    [SerializeField] private CapsuleCollider triggerCollider;
+    
+    //Animator
     
     
     
