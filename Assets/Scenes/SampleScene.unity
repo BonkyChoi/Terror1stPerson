@@ -3871,6 +3871,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 9057367515999883963}
+    - target: {fileID: 6862029625048115269, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878101062345313741, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+      propertyPath: m_text
+      value: Y asi fue como encontre a tus muertos encima de un caballo
+      objectReference: {fileID: 0}
     - target: {fileID: 7380198663101116416, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3895,6 +3903,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 9057367515999883963}
+    - target: {fileID: 8875110726850747052, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -112509,7 +112521,7 @@ PrefabInstance:
       objectReference: {fileID: 1584939611}
     - target: {fileID: 5357331168721486958, guid: 25742a717c35880419da40a840454a3a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.34
+      value: -71.43
       objectReference: {fileID: 0}
     - target: {fileID: 5357331168721486958, guid: 25742a717c35880419da40a840454a3a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -112517,7 +112529,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5357331168721486958, guid: 25742a717c35880419da40a840454a3a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 76.7
+      value: -24.87
       objectReference: {fileID: 0}
     - target: {fileID: 5357331168721486958, guid: 25742a717c35880419da40a840454a3a, type: 3}
       propertyPath: m_LocalRotation.w
