@@ -6,6 +6,9 @@ public class TriggerActivador : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        plataforma.ActivarMovimiento();
+        if (other.CompareTag("Lanzable"))
+        {
+            plataforma.ActivarMovimiento();
+        }
     }
 }

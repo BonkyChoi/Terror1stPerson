@@ -8027,6 +8027,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 287.62
       objectReference: {fileID: 0}
+    - target: {fileID: 7557467171962463978, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
+      propertyPath: otherPanels.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7557467171962463978, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
+      propertyPath: 'otherPanels.Array.data[0]'
+      value: 
+      objectReference: {fileID: 5179409030785939860}
+    - target: {fileID: 7557467171962463978, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
+      propertyPath: 'otherPanels.Array.data[1]'
+      value: 
+      objectReference: {fileID: 7739887894781092986}
+    - target: {fileID: 7557467171962463978, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
+      propertyPath: 'otherPanels.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8875110726850747052}
+    - target: {fileID: 7557467171962463978, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
+      propertyPath: 'otherPanels.Array.data[3]'
+      value: 
+      objectReference: {fileID: 6862029625048115269}
+    - target: {fileID: 7557467171962463978, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
+      propertyPath: 'otherPanels.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8792025664286134281}
     - target: {fileID: 7741208195819279593, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -8051,5 +8075,10 @@ PrefabInstance:
 --- !u!224 &2114555629242698858 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 879800826507446410, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
+  m_PrefabInstance: {fileID: 1255878762164258016}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8792025664286134281 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7741208195819279593, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
   m_PrefabInstance: {fileID: 1255878762164258016}
   m_PrefabAsset: {fileID: 0}
