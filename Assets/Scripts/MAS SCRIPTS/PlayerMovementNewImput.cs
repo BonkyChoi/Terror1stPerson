@@ -259,6 +259,7 @@ public class PlayerMovementNewImput : MonoBehaviour
 
     void GrabHeavy(GameObject obj)
     {
+        obj.layer = LayerMask.NameToLayer("Se ve");
         if (rightHandObject != null || leftHandObject != null || heavyObject != null) return;
 
         heavyObject = obj;
