@@ -274,6 +274,12 @@ public class PlayerMovementNewImput : MonoBehaviour
 
     void ThrowObject()
     {
+        Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
+        
+        if (Physics.Raycast(ray, out RaycastHit hit, 1f))
+        {
+            return;
+        }
         if (rightHandObject != null)
         {
             ReleaseAndThrow(rightHandObject, rightRb, throwForce);
