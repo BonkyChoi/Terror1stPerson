@@ -77,8 +77,21 @@ public class SC_PerceptionSystem : MonoBehaviour
     }
     
     //--OídoFunciones--
-    
-    
+
+    public void NewPlayerLocation(Vector3 location)
+    {
+        if (location != Vector3.zero)
+        {
+            Debug.Log(location);
+            CanSeePlayer = true;
+            LastPlayerPosition = location;
+        }
+
+        else
+        {
+            Debug.Log("I cant See Player");
+        }
+    }
 
     
     
