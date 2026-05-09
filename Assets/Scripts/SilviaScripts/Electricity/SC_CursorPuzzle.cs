@@ -25,28 +25,88 @@ public class SC_CursorPuzzle : MonoBehaviour
     private bool cursorCanMove;
     [SerializeField]private float speed;
     private bool beginPlay;
-    [SerializeField] private PlayerInput playerInput; //a
+    //[SerializeField] private PlayerInput playerInput; //a
+    
+    
+    //Desde este script se crea delegado y en el start de este mismo script por el game player controller
+    //al delegado de este script bindear la funcion de desactivar o activar del player controller
 
+    // delegate void Delegate();
+    // private Delegate enableMiniGame;
+    // private Delegate disableMiniGame;
+    private bool resolving;
+    private bool puzzleActive;
+    private bool gameStarted;
 
     private void Start()
     {
-        //playerInput.actions["PauseCursor"].Disable();
+        // enableMiniGame = SC_GameUtilitys.GetPlayerController().EnableBeginMiniGame;
+        // enableMiniGame.Invoke();
+        // disableMiniGame = SC_GameUtilitys.GetPlayerController().DisableBeginMiniGame;
         puzzlePanel.SetActive(false);
-        
         tutorialPanel.SetActive(false);
         beginPanel.SetActive(false);
         exitPanel.SetActive(false);
     }
-
     private void OnEnable()
     {
+        SC_InputEvent.OnBeginMiniGame += StartMiniGame;
+        SC_InputEvent.OnPauseCursor += TryStopCursor;
         SC_PuzzlePannel.ShowPuzzlePannel += ShowPuzzlePannel;
-        playerInput.actions["BeginMiniGame"].started += Onstarted;
-        //playerInput.actions["PauseCursor"].started += OnPauseCursor;
-        //SC_UIBrain.OnMiniGame += OnMiniGame;
-        SC_UIBrain.OnExitGame += OnExitGame;
         SC_PuzzlePannel.ReactivateUIButton += ReactivateUIButton;
+        SC_UIBrain.OnExitGame += OnExitGame;
+        
     }
+
+    private void StartMiniGame()
+    {
+        if (!puzzleActive) return;
+
+        if (gameStarted) return;
+
+        gameStarted = true;
+
+        tutorialPanel.SetActive(false);
+        beginPanel.SetActive(false);
+
+        BeginPlay();
+    }
+
+    private void OnDisable()
+    {
+      
+       SC_InputEvent.OnBeginMiniGame -= StartMiniGame;
+       SC_InputEvent.OnPauseCursor -= TryStopCursor;
+
+       SC_PuzzlePannel.ShowPuzzlePannel -= ShowPuzzlePannel;
+       SC_PuzzlePannel.ReactivateUIButton -= ReactivateUIButton;
+       SC_UIBrain.OnExitGame -= OnExitGame;
+    }
+
+    private void TryStopCursor()
+    {
+        if (!puzzleActive) return;
+
+        if (!gameStarted) return;
+
+        if (!cursorCanMove) return;
+
+        if (resolving) return;
+
+        resolving = true;
+
+        cursorCanMove = false;
+
+        StartCoroutine(MouseDownCoroutine());
+    }
+
+    /*private void OnEnable()
+    {
+        
+        //playerInput.actions["BeginMiniGame"].started += Onstarted;
+        //playerInput.actions["PauseCursor"].started += OnPauseCursor;
+        
+    }*/
 
     private void ReactivateUIButton()
     {
@@ -83,40 +143,43 @@ public class SC_CursorPuzzle : MonoBehaviour
         }
         //si el cursor esta entre zona inicio objetivo [la rotación en z] y zona final objetivo [que tanto fill amount tiene] es success:es fail;
         yield return new WaitForSeconds(0.7f);
+        resolving = false;
+        if (!puzzleActive) yield break;
         BeginPlay();
     }
 
-    private void Onstarted(InputAction.CallbackContext obj)
-    {
-        Debug.LogWarning("MiniGame");
-        tutorialPanel.SetActive(false);
-        beginPanel.SetActive(false);
-        BeginPlay();
-    }
+    // private void Onstarted(InputAction.CallbackContext obj)
+    // {
+    //     Debug.LogWarning("MiniGame");
+    //     tutorialPanel.SetActive(false);
+    //     beginPanel.SetActive(false);
+    //     BeginPlay();
+    // }
 
     private void OnExitGame()
     {
-        playerInput.actions["BeginMiniGame"].Enable();
+        //playerInput.actions["BeginMiniGame"].Enable();
+        //enableMiniGame.Invoke();
+        puzzleActive = false;
+        gameStarted = false;
+        cursorCanMove = false;
+
         HUD.SetActive(true);
         puzzlePanel.SetActive(false);
     }
-
-    private void OnDisable()
-    {
-        SC_PuzzlePannel.ShowPuzzlePannel -= ShowPuzzlePannel;
-        
-    }
     
-
-
+    
     private void ShowPuzzlePannel()
     {
-        Debug.Log("ShowPuzzlePannel");//no aparece
+        puzzleActive = true;
+
         HUD.SetActive(false);
         puzzlePanel.SetActive(true);
-         
-        if (PuzzleLightCounter.Instance.lightCounter == 0) tutorialPanel.SetActive(true);
-        else beginPanel.SetActive(true);
+
+        if (PuzzleLightCounter.Instance.lightCounter == 0)
+            tutorialPanel.SetActive(true);
+        else
+            beginPanel.SetActive(true);
         //cuando pulse una tecla que se le permitira pulsar comienza el juego
         //programar bien el puzle
         
@@ -127,12 +190,12 @@ public class SC_CursorPuzzle : MonoBehaviour
         //currentTimesToSuccess++;
         //si falla -> substract invoke
        // Substract15Seconds?.Invoke();
-        Debug.Log("Substract15Seconds");
     }
-
+    
     private void BeginPlay()
     {
-        playerInput.actions["BeginMiniGame"].Disable();
+        //playerInput.actions["BeginMiniGame"].Disable();
+        //disableMiniGame.Invoke();
         exitPanel.SetActive(true);
 
         float safeZone = Random.value;
@@ -148,7 +211,8 @@ public class SC_CursorPuzzle : MonoBehaviour
     private void CursorBeginMovement()
     {
         //playerInput.actions["PauseCursor"].Enable();
-        playerInput.actions["PauseCursor"].started += OnPauseCursor;
+        //playerInput.actions["PauseCursor"].started += OnPauseCursor;
+        
         cursorCanMove = true;
         
     }

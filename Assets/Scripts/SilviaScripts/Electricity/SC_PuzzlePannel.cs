@@ -49,7 +49,8 @@ public class SC_PuzzlePannel : MonoBehaviour
         SC_CursorPuzzle.AddSuccess += AddSuccess; //recibe que has acertado y lo añade al contador
         SC_PlayerBrain.OnInteract += OnInteract;
     }
-    
+
+
     //
 
 
