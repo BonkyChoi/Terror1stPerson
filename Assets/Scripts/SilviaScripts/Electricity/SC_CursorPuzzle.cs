@@ -26,19 +26,13 @@ public class SC_CursorPuzzle : MonoBehaviour
     [SerializeField]private float speed;
     private bool beginPlay;
     [SerializeField] private PlayerInput playerInput; //a
-    
-    
-    //Desde este script se crea delegado y en el start de este mismo script por el game player controller
-    //al delegado de este script bindear la funcion de desactivar o activar del player controller
 
-    delegate void Delegate();
-    private Delegate tryDelegate;
 
     private void Start()
     {
-        tryDelegate = SC_GameUtilitys.GetPlayerController().EnableBeginMiniGame;
-        tryDelegate.Invoke(); 
+        //playerInput.actions["PauseCursor"].Disable();
         puzzlePanel.SetActive(false);
+        
         tutorialPanel.SetActive(false);
         beginPanel.SetActive(false);
         exitPanel.SetActive(false);
