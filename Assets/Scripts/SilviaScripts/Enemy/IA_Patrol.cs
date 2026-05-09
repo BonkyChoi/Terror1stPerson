@@ -25,6 +25,7 @@ public class IA_Patrol : IA_EnemyStates
         points = patrolPoints;
         agent = controller.Agent;
         perception = controller.PerceptionSystem;
+        controller.Agent.speed = 3.5f;
     }
 
 

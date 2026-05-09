@@ -8,7 +8,7 @@ namespace SilviaScripts.Pipes
     {
         //como este sc s usa en  todas las instancias de cañeria no ncesita tener eventos
         [SerializeField] private float seconds = 180f;
-        private static Vector3 playerLastPosition;
+        public static Vector3 playerLastPosition;
         private Coroutine resetCoroutine;
 
 

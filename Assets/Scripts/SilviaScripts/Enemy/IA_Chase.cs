@@ -53,6 +53,8 @@ public class IA_Chase : IA_EnemyStates
     public override void OnEnterState()
     {
        myCoroutine = controller.RunCoroutine(MakeRwarBeforeGo());
+       controller.Agent.speed = 8f;
+       controller.Agent.acceleration = 25f;
     }
 
     public override void OnUpdateState()
