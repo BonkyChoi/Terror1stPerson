@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1474541012310223900, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
       propertyPath: m_Speed
-      value: 5.81
+      value: 12.52
       objectReference: {fileID: 0}
     - target: {fileID: 2622516408833546226, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
       propertyPath: m_Height
@@ -59,6 +59,14 @@ PrefabInstance:
     - target: {fileID: 5172800312722677907, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
       propertyPath: triggerCollider
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6477068320477203693, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6477068320477203693, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.32
       objectReference: {fileID: 0}
     - target: {fileID: 6488869075951928511, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
       propertyPath: m_LocalPosition.x
