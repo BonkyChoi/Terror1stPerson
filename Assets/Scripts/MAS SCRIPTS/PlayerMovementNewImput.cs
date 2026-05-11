@@ -322,7 +322,7 @@ public class PlayerMovementNewImput : MonoBehaviour
                 return;
             }
 
-            if (hit.collider.CompareTag("Lanzable") || hit.collider.CompareTag("Pesado") || hit.collider.CompareTag("Fusible"))
+            if (hit.collider.CompareTag("Lanzable") || hit.collider.CompareTag("Pesado") || hit.collider.CompareTag("Fusible") || hit.collider.CompareTag("Empujable")|| hit.collider.CompareTag("Iluminado"))
             {
                 Renderer rend = hit.collider.GetComponent<Renderer>();
 

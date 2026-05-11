@@ -12,6 +12,7 @@ TagManager:
   - DetectorEnemy
   - BotonPlataforma
   - Puzzle
+  - Iluminado
   layers:
   - Default
   - TransparentFX
