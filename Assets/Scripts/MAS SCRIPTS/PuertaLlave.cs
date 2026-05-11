@@ -1,12 +1,22 @@
 using UnityEngine;
+using System.Collections;
 
 public class PuertaLlave : MonoBehaviour
 {
     public Animator anim;
     public Llave llaveCorrecta;
 
-    private bool enAnimacion = false;
+    [Header("UI")]
+    public GameObject mensajeUI;
 
+    private bool enAnimacion = false;
+    private Coroutine mensajeCoroutine;
+
+    private void Start()
+    {
+        if (mensajeUI != null)
+            mensajeUI.SetActive(false);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (enAnimacion) return;
@@ -19,6 +29,10 @@ public class PuertaLlave : MonoBehaviour
             {
                 AbrirPuerta(llaveJugador);
             }
+            else
+            {
+                MostrarMensaje();
+            }
         }
     }
     private void AbrirPuerta(Llave llave)
@@ -28,6 +42,23 @@ public class PuertaLlave : MonoBehaviour
         anim.SetBool("PuertaActiv", true);
 
         Destroy(llave.gameObject);
+    }
+    private void MostrarMensaje()
+    {
+        if (mensajeUI == null) return;
+
+        mensajeUI.SetActive(true);
+        
+        if (mensajeCoroutine != null)
+            StopCoroutine(mensajeCoroutine);
+
+        mensajeCoroutine = StartCoroutine(OcultarMensaje());
+    }
+    private IEnumerator OcultarMensaje()
+    {
+        yield return new WaitForSeconds(3f);
+
+        mensajeUI.SetActive(false);
     }
     public void FinAnimacion()
     {
