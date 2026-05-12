@@ -86,9 +86,9 @@ public class SC_PerceptionSystem : MonoBehaviour
     }
     
     //--OídoFunciones--
- HEAD
+ 
 
-    public void NewPlayerLocation(Vector3 location)
+    /*public void NewPlayerLocation(Vector3 location)
     {
         if (location != Vector3.zero)
         {
@@ -101,9 +101,7 @@ public class SC_PerceptionSystem : MonoBehaviour
         {
             Debug.Log("I cant See Player");
         }
-    }
-
- Updated upstream
+    }*/
     
     
 
@@ -126,9 +124,10 @@ public class SC_PerceptionSystem : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         Debug.Log("Tiro trigger de la pipe");
-        SC_Pipes.OnPlayerPosition += OnPlayerPosition;
+        
+        if(other.CompareTag("Pipe") && (pipeCoroutine != null)) SC_Pipes.OnPlayerPosition += OnPlayerPosition;
     }
- Stashed changes
+
 
     private void OnPlayerPosition(Vector3 obj)
     {
@@ -146,7 +145,7 @@ public class SC_PerceptionSystem : MonoBehaviour
         HasPipeTarget = false;
     }
 
- 7a044f5 (ur ur)
+
 
     //--OjoFunciones--
 

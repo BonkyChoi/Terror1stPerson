@@ -665,7 +665,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d7115df0547774a83800998f489cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SC_InitialFlickeerAnimation
-  hudImage: {fileID: 0}
 --- !u!114 &3594278243708682360
 MonoBehaviour:
   m_ObjectHideFlags: 0

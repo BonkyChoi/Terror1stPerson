@@ -8,7 +8,7 @@ namespace SilviaScripts.Pipes
     {
         //como este sc s usa en  todas las instancias de cañeria no ncesita tener eventos
         [SerializeField] private float seconds = 180f;
- HEAD
+ 
         public static Vector3 playerLastPosition;
         private Coroutine resetCoroutine;
 
@@ -16,7 +16,6 @@ namespace SilviaScripts.Pipes
         //public static float lastTimeHeard;
         public static Action<Vector3> OnPlayerPosition;
 
- 7a044f5 (ur ur)
 
 
         private void OnTriggerEnter(Collider other)
@@ -25,15 +24,12 @@ namespace SilviaScripts.Pipes
             {
                
                 Debug.Log("detecto al player");
- HEAD
-                playerLastPosition = other.transform.position;
-                if (resetCoroutine != null) StopCoroutine(resetCoroutine);
-                resetCoroutine = StartCoroutine(WaitUntilTimeFinish());
+                OnPlayerPosition?.Invoke(other.gameObject.transform.position);
                
             }
         }
 
-        private void OnTriggerStay(Collider other)
+        /*private void OnTriggerStay(Collider other)
         {
            
             if (other.TryGetComponent<SC_PerceptionSystem>(out var perceptionSystem))
@@ -58,6 +54,7 @@ namespace SilviaScripts.Pipes
                 
             }
         }
+        */
 
        //rivate void OnTriggerStay(Collider other)
        //
@@ -80,6 +77,6 @@ namespace SilviaScripts.Pipes
         //{
           //  return Time.time - lastTimeHeard <= maxTime;
         //}
-7a044f5 (ur ur)
+
     }
 }

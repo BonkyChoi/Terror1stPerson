@@ -14,7 +14,7 @@ namespace SilviaScripts.Enemy
 
         private void OnTriggerEnter(Collider other)
         {
-            _perceptionSystem.OnTriggerEnter(other);
+           if(other.CompareTag("Pipe") && _perceptionSystem != null) _perceptionSystem.OnTriggerEnter(other);
         }
     }
 }

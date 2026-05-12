@@ -8,8 +8,10 @@ using Random = UnityEngine.Random;
 
 public class SC_InitialFlickeerAnimation : MonoBehaviour
 {
-    [SerializeField]private Image hudImage;
+    // [SerializeField]private Image hudImage;
     private int timesDeath = 0;
+    
+    public static event Action OnBeginToFlick;
 
     private void Awake()
     {
@@ -18,23 +20,30 @@ public class SC_InitialFlickeerAnimation : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(StartStart());
+
+    }
+
+    private IEnumerator StartStart()
+    {
+        yield return null;//para ir al siguiente frame y asegurarse de que este todo cargado
         if (SC_DeathCounter.Instance.DeathCounter == 0)
         {
-            hudImage.enabled = false;
+            //if (hudImage!=null)hudImage.enabled = false;
             
             timesDeath++;
             SC_GameManager.Instance.CloseUI();
         }
         else
         {
-            BeginToFlick();
+            OnBeginToFlick?.Invoke();
+            //
+            timesDeath++;
         }
-       
-        
     }
-    
 
-    private void BeginToFlick()
+
+    /*private void BeginToFlick()
     {
         Debug.Log("Voy a flickear");
         
@@ -71,7 +80,7 @@ public class SC_InitialFlickeerAnimation : MonoBehaviour
         SC_GameManager.Instance.CloseUI();
         
         
-    }
+    }*/
     // Para el movimiento del jugador y su interaccion
     // Realiza un flicker con una animacion en el ca
     

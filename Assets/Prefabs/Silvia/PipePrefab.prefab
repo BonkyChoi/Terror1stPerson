@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 440478020513145294}
   m_Layer: 0
   m_Name: PipePrefab
-  m_TagString: Untagged
+  m_TagString: Pipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,4 +147,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f07072cd193414eaba9ca2e0d488007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SilviaScripts.Pipes.SC_Pipes
-  seconds: 180
+  seconds: 10
