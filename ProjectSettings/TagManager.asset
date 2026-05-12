@@ -13,6 +13,7 @@ TagManager:
   - BotonPlataforma
   - Puzzle
   - Iluminado
+  - Pipe
   layers:
   - Default
   - TransparentFX

@@ -55,7 +55,7 @@ public class SC_ChangeIntensity : MonoBehaviour
     private IEnumerator BeginToTurnWhite()
     {
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("PruebasElectricidad");//Esto es provisional, te debe mandar al centro de la sala que es de donde sales en un primer momeento
+        SceneManager.LoadScene("SampleScene");//[Esto es provisional, te debe mandar al centro de la sala que es de donde sales en un primer momeento] - Actualizacion: Ya lo hace :D
         
         //El progreso que hayas logrado se debe guardar en una instancia que no se destruya para no volver a repetir el juego
     }

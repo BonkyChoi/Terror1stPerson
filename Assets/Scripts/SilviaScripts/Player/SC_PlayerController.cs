@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class SC_PlayerController : MonoBehaviour
 {
-    public static SC_PlayerController Instance;
+    //public static SC_PlayerController Instance;
     [SerializeField] private PlayerInput playerInput;
     
     //hacer public void de acctivar el input 
@@ -55,6 +55,8 @@ public class SC_PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
+        if (playerInput == null) return;
+
         playerInput.actions["BeginMiniGame"].started -= BeginMiniGame;
         playerInput.actions["PauseCursor"].started -= PauseCursor;
     }
