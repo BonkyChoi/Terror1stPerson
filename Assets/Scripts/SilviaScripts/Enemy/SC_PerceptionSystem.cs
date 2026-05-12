@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using SilviaScripts.Pipes;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,6 +10,9 @@ public class SC_PerceptionSystem : MonoBehaviour
     public bool CanHearPlayer { get; set; }
     public bool CanSeePlayer{ get; set; }
     
+    public bool HasPipeTarget { get; private set; }
+
+    
     public Vector3 LastPlayerPosition { get; set; }
     
     private GameObject target => SC_PlayerHealth.player;
@@ -17,6 +21,9 @@ public class SC_PerceptionSystem : MonoBehaviour
     
     private Coroutine hearCoroutine;
     private Coroutine seeCoroutine;
+    private Coroutine pipeCoroutine;
+
+    //[SerializeField] private Collider triggerPipe;
     
     
     //--OidoReferencias--
@@ -46,6 +53,8 @@ public class SC_PerceptionSystem : MonoBehaviour
     [SerializeField] private LayerMask isAPlayer;
     [SerializeField] private LayerMask isAnObstacle;
     [SerializeField]private float earSphereOffset;
+    private float lastPipeTime;
+    [SerializeReference] private float pipeMemoryTime = 30;
 
     private void OnEnable()
     {
@@ -77,6 +86,7 @@ public class SC_PerceptionSystem : MonoBehaviour
     }
     
     //--OídoFunciones--
+ HEAD
 
     public void NewPlayerLocation(Vector3 location)
     {
@@ -93,9 +103,51 @@ public class SC_PerceptionSystem : MonoBehaviour
         }
     }
 
+ Updated upstream
     
     
-    
+
+
+    // public void NewPlayerLocation(Vector3 location)
+    // {
+    //     // if (location == Vector3.zero)
+    //     //     return;
+    //
+    //     LastPlayerPosition = location;
+    //
+    //     HasPipeTarget = true;
+    //     lastPipeTime = Time.time;
+    // }
+    // public void ClearPipeTarget()
+    // {
+    //     HasPipeTarget = false;
+    // }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Tiro trigger de la pipe");
+        SC_Pipes.OnPlayerPosition += OnPlayerPosition;
+    }
+ Stashed changes
+
+    private void OnPlayerPosition(Vector3 obj)
+    {
+        LastPlayerPosition = obj;
+        HasPipeTarget = true;
+        
+        //si tiene una corrutina que borre la anterior
+        if (pipeCoroutine != null) StopCoroutine(pipeCoroutine);
+        pipeCoroutine = StartCoroutine(PipeTimer());
+    }
+
+    private IEnumerator PipeTimer()
+    {
+        yield return new WaitForSeconds(pipeMemoryTime);
+        HasPipeTarget = false;
+    }
+
+ 7a044f5 (ur ur)
+
     //--OjoFunciones--
 
     private IEnumerator EyePerception()
@@ -175,5 +227,13 @@ public class SC_PerceptionSystem : MonoBehaviour
         Gizmos.color = Color.chartreuse;
         Gizmos.DrawSphere(this.transform.position + this.transform.forward * earSphereOffset, ListingMagnitude);
     }
-    
+    //Update a cambiar
+    // private void Update()
+    // {
+    //     if (HasPipeTarget &&
+    //         Time.time - lastPipeTime > pipeMemoryTime)
+    //     {
+    //         ClearPipeTarget();
+    //     }
+    // }
 }

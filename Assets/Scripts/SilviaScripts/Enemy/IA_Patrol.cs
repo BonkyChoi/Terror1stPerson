@@ -37,6 +37,7 @@ public class IA_Patrol : IA_EnemyStates
 
     public override void OnEnterState()
     {
+        Debug.Log("Entering Patrol");
         currentPatrolPoint = 0;
         waiting = false;
         GoToNextPoint();
@@ -54,6 +55,18 @@ public class IA_Patrol : IA_EnemyStates
             controller.ChangeState(controller.Chase);
             return;
         }
+        if (perception.HasPipeTarget)
+        {
+            controller.ChangeState(controller.Investigate);
+            return;
+        }
+
+        // if (perception.LastPlayerPosition != Vector3.zero)
+        // {
+        //     //perception.CanPipePlayer = false;
+        //     controller.ChangeState(controller.Investigate);
+        //     return;
+        // }
         if (!waiting)
         {
             if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)

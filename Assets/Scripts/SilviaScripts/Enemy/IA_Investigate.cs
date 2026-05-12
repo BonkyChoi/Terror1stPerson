@@ -29,15 +29,16 @@ public class IA_Investigate : IA_EnemyStates
 
     public override void OnEnterState()
     {
+        Debug.Log("Entering Investigate");
         timer = maxTimer;
         //animator.SetTrigger("lookAround");
         agent.isStopped = false;
-        agent.SetDestination(perception.LastPlayerPosition);
     }
     
 
     public override void OnUpdateState()
     {
+            agent.SetDestination(perception.LastPlayerPosition);
         if (perception.CanSeePlayer)
         {
             controller.ChangeState(controller.Chase);

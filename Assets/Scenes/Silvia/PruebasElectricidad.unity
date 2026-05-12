@@ -1386,6 +1386,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+ HEAD
+
+ Updated upstream
+
+ 7a044f5 (ur ur)
 --- !u!54 &166694253781468363
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1413,6 +1418,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+ HEAD
+
+--- !u!114 &166694253781468373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973511886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d41ac1b5f02e9943a59c4f5ac5e3a08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SC_PlayerController
+  playerInput: {fileID: 166694253781468353}
+ Stashed changes
+ 7a044f5 (ur ur)
 --- !u!1001 &651228426559645640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1571,6 +1593,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1023cbc6d980bd945905f0760e171745, type: 3}
+ HEAD
+ Updated upstream
+7a044f5 (ur ur)
 --- !u!1001 &1797728461280010405
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1579,6 +1604,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+ HEAD
+
+    - target: {fileID: 440478020513145294, guid: 2186787ac26a26240a049fa7ea4891b9, type: 3}
+      propertyPath: seconds
+      value: 30
+      objectReference: {fileID: 0}
+ 7a044f5 (ur ur)
     - target: {fileID: 804851425358647443, guid: 2186787ac26a26240a049fa7ea4891b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.32018
@@ -1628,6 +1660,10 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2186787ac26a26240a049fa7ea4891b9, type: 3}
+ HEAD
+
+ Stashed changes
+ 7a044f5 (ur ur)
 --- !u!1001 &1886382785626445274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1807,6 +1843,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 841177540199780812, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1571674759511802092, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -1903,6 +1943,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3438880381131479490, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3597454851673918430, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
       propertyPath: m_Color.b
       value: 0.87547165
@@ -1921,7 +1965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5179409030785939860, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7291397837884809054, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
       propertyPath: m_IsActive
@@ -2089,10 +2133,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewEnemy
       objectReference: {fileID: 0}
+ HEAD
     - target: {fileID: 8673795220701428038, guid: 3506142ca2258554fb32afbea66f421c, type: 3}
       propertyPath: m_Speed
       value: 12.52
       objectReference: {fileID: 0}
+
+ Updated upstream
+
+    - target: {fileID: 8673795220701428038, guid: 3506142ca2258554fb32afbea66f421c, type: 3}
+      propertyPath: m_Speed
+      value: 229.3
+      objectReference: {fileID: 0}
+ Stashed changes
+ 7a044f5 (ur ur)
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2234,10 +2288,23 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
+ HEAD
+
+ Updated upstream
+    m_AddedComponents: []
+
+ 7a044f5 (ur ur)
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7110672631998491897, guid: 25742a717c35880419da40a840454a3a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 166694253781468363}
+ HEAD
+
+    - targetCorrespondingSourceObject: {fileID: 7110672631998491897, guid: 25742a717c35880419da40a840454a3a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 166694253781468373}
+ Stashed changes
+ 7a044f5 (ur ur)
   m_SourcePrefab: {fileID: 100100000, guid: 25742a717c35880419da40a840454a3a, type: 3}
 --- !u!1001 &6825261868694216424
 PrefabInstance:
