@@ -32,13 +32,12 @@ public class IA_Chase : IA_EnemyStates
     
     public IA_Chase(SC_FSMController controller)
     {
+        
         this.controller = controller;
         
         agent = controller.Agent;
         perception = controller.PerceptionSystem;
     }
-
-    
     
     private IEnumerator MakeRwarBeforeGo()//te avisa de que te ha visto
     {
@@ -52,6 +51,7 @@ public class IA_Chase : IA_EnemyStates
 
     public override void OnEnterState()
     {
+        Debug.Log("OnEnterChase");
        myCoroutine = controller.RunCoroutine(MakeRwarBeforeGo());
     }
 
@@ -65,7 +65,8 @@ public class IA_Chase : IA_EnemyStates
         // {
         //     Debug.Log("No m da la gana atacars");
         //     return;
-        // }
+        // 
+        Debug.Log("Chase");
         if (!target)
         {
             Debug.Log("No se ha encontrado el target");
