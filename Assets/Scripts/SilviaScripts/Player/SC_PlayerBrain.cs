@@ -28,6 +28,5 @@ public class SC_PlayerBrain : MonoBehaviour
         Debug.Log("OnInteractionStarted");
         OnInteract?.Invoke();
     }
-
-
+    
 }

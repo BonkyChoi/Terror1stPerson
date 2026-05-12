@@ -16,18 +16,26 @@ public class SC_GameManager : MonoBehaviour
       }
       Instance = this;
       DontDestroyOnLoad(gameObject);
-      playerInput = FindFirstObjectByType<PlayerInput>();
+      //playerInput = FindFirstObjectByType<PlayerInput>();
       //playerInput = GetComponent<PlayerInput>();
+   }
+   
+   public void RegisterPlayerInput(PlayerInput input)
+   {
+      playerInput = input;
+      Debug.Log("RegisterPlayerInput");
    }
 
    public void OpenUI()
    {
       playerInput.SwitchCurrentActionMap("UI");
+      Debug.Log("OpenUILOL");
    }
 
    public void CloseUI()
    {
       playerInput.SwitchCurrentActionMap("Player");
+      Debug.Log("OpenPlayerssLOL");
    }
    
 }
