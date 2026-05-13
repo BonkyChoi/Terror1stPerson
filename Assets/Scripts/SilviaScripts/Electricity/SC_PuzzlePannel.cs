@@ -11,22 +11,24 @@ public class SC_PuzzlePannel : MonoBehaviour
 
     [SerializeField] private UnityEvent onPuzzleCompleted;
 
-    [SerializeField] private int totalTimesToSuccess;
+    
 
-    private int currentTimesToSuccess;
-    public bool CanInteract {get; private set;}
+    private bool CanSuccess;
+    private bool canInteract;
 
     private void OnTriggerStay(Collider other)
     {
         if (!other.CompareTag("Player")) return;
 
-        if (currentTimesToSuccess < totalTimesToSuccess)
+        if (CanSuccess)
         {
-            if (CanInteract)
+            //Quiero que solo si le he dado al boton de interactuar dentro de esto pueda hacerlo
+            if (canInteract)
             {
                 SC_GameManager.Instance.OpenUI();
 
                 ShowPuzzlePannel?.Invoke();
+                canInteract = false;
                 
             }
         }
@@ -42,25 +44,30 @@ public class SC_PuzzlePannel : MonoBehaviour
 
     private void OnEnable()
     {
-        cursorPuzzle.AddSuccess += CursorPuzzleOnAddSuccess;
+        cursorPuzzle.AddSuccess += CursorSendSuccess;
         SC_PlayerBrain.OnInteract += OnInteract;
     }
 
-    private void CursorPuzzleOnAddSuccess()
-    {
-        currentTimesToSuccess++;
-    }
+    // private void CursorPuzzleOnAddSuccess()
+    // {
+    //     CanSuccess++;
+    // }
 
     private void OnDisable()
     {
-        cursorPuzzle.AddSuccess -= CursorPuzzleOnAddSuccess;
+        cursorPuzzle.AddSuccess -= CursorSendSuccess;
         SC_PlayerBrain.OnInteract -= OnInteract;
+    }
+
+    private void CursorSendSuccess()
+    {
+        CanSuccess = true;
     }
 
     private void OnInteract()
     {
         Debug.Log("Interact");
-        CanInteract = true;
+        canInteract = true;
     }
 
 //     public void CantInteract()

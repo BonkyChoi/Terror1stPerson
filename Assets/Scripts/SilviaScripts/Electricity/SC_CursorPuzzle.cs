@@ -11,7 +11,9 @@ using Random = UnityEngine.Random;
 public class SC_CursorPuzzle : MonoBehaviour
 {
     public static System.Action Substract15Seconds;
-    public event System.Action AddSuccess;
+    public event System.Action AddSuccess;//le añade el success cuando ya lo ha logrado
+
+    private int successTimes;
     
     //con problemas para ahora hacer varios, se va a pasar a eventos asi que nos quitamos las acciones estaticas
     
@@ -39,6 +41,8 @@ public class SC_CursorPuzzle : MonoBehaviour
     private bool resolving;
     private bool puzzleActive;
     private bool gameStarted;
+    
+    [SerializeField] private int totalTimesToSuccess;
 
     private void Start()
     {
@@ -136,7 +140,8 @@ public class SC_CursorPuzzle : MonoBehaviour
         {
             Debug.Log("Ha funcionado");
             //throw (new ArgumentException("todo bien"));
-            AddSuccess?.Invoke();
+            successTimes++;
+            if (successTimes >= totalTimesToSuccess) AddSuccess?.Invoke();
         }
         else
         {
