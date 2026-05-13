@@ -3,6 +3,7 @@ using System.Collections;
 using NUnit.Framework.Constraints;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -11,7 +12,7 @@ using Random = UnityEngine.Random;
 public class SC_CursorPuzzle : MonoBehaviour
 {
     public static System.Action Substract15Seconds;
-    public event System.Action AddSuccess;//le añade el success cuando ya lo ha logrado
+    //public event System.Action AddSuccess;//le añade el success cuando ya lo ha logrado
 
     private int successTimes;
     
@@ -43,6 +44,8 @@ public class SC_CursorPuzzle : MonoBehaviour
     private bool gameStarted;
     
     [SerializeField] private int totalTimesToSuccess;
+    
+    [SerializeField] private UnityEvent OnSuccess;
 
     private void Start()
     {
@@ -58,8 +61,8 @@ public class SC_CursorPuzzle : MonoBehaviour
     {
         SC_InputEvent.OnBeginMiniGame += StartMiniGame;
         SC_InputEvent.OnPauseCursor += TryStopCursor;
-        SC_PuzzlePannel.ShowPuzzlePannel += ShowPuzzlePannel;
-        SC_PuzzlePannel.ReactivateUIButton += ReactivateUIButton;
+        //SC_PuzzlePannel.ShowPuzzlePannel += ShowPuzzlePannel;
+        //SC_PuzzlePannel.ReactivateUIButton += ReactivateUIButton;
         SC_UIBrain.OnExitGame += OnExitGame;
         
     }
@@ -84,8 +87,8 @@ public class SC_CursorPuzzle : MonoBehaviour
        SC_InputEvent.OnBeginMiniGame -= StartMiniGame;
        SC_InputEvent.OnPauseCursor -= TryStopCursor;
 
-       SC_PuzzlePannel.ShowPuzzlePannel -= ShowPuzzlePannel;
-       SC_PuzzlePannel.ReactivateUIButton -= ReactivateUIButton;
+       //SC_PuzzlePannel.ShowPuzzlePannel -= ShowPuzzlePannel;
+       //SC_PuzzlePannel.ReactivateUIButton -= ReactivateUIButton;
        SC_UIBrain.OnExitGame -= OnExitGame;
     }
 
@@ -106,18 +109,12 @@ public class SC_CursorPuzzle : MonoBehaviour
         StartCoroutine(MouseDownCoroutine());
     }
 
-    /*private void OnEnable()
-    {
-        
-        //playerInput.actions["BeginMiniGame"].started += Onstarted;
-        //playerInput.actions["PauseCursor"].started += OnPauseCursor;
-        
-    }*/
+    
 
-    private void ReactivateUIButton()
-    {
-        OnExitGame();
-    }
+    // public void ReactivateUIButton()
+    // {
+    //     OnExitGame();
+    // }
 
     private void OnPauseCursor(InputAction.CallbackContext obj)
     {
@@ -141,7 +138,8 @@ public class SC_CursorPuzzle : MonoBehaviour
             Debug.Log("Ha funcionado");
             //throw (new ArgumentException("todo bien"));
             successTimes++;
-            if (successTimes >= totalTimesToSuccess) AddSuccess?.Invoke();
+            if (successTimes <= totalTimesToSuccess) AddSuccess();
+            else OnSuccess?.Invoke();
         }
         else
         {
@@ -155,6 +153,11 @@ public class SC_CursorPuzzle : MonoBehaviour
         BeginPlay();
     }
 
+    private void AddSuccess()
+    {
+        successTimes++;
+    }
+
     // private void Onstarted(InputAction.CallbackContext obj)
     // {
     //     Debug.LogWarning("MiniGame");
@@ -163,7 +166,7 @@ public class SC_CursorPuzzle : MonoBehaviour
     //     BeginPlay();
     // }
 
-    private void OnExitGame()
+    public void OnExitGame() //reactivas la UI
     {
         //playerInput.actions["BeginMiniGame"].Enable();
         //enableMiniGame.Invoke();
@@ -176,7 +179,7 @@ public class SC_CursorPuzzle : MonoBehaviour
     }
     
     
-    private void ShowPuzzlePannel()
+    public void ShowPuzzlePannel()//le llamas con los unity events
     {
         puzzleActive = true;
 

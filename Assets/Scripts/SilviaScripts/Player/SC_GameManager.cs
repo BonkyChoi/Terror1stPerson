@@ -38,4 +38,6 @@ public class SC_GameManager : MonoBehaviour
       Debug.Log("OpenPlayerssLOL");
    }
    
+   //creo que falla pq uno le dice cierrate minetras el otro le dice q s abra
+   
 }

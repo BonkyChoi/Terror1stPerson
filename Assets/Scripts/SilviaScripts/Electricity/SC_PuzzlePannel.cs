@@ -3,48 +3,62 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class SC_PuzzlePannel : MonoBehaviour
+public class SC_PuzzlePannel : SC_PuzzleFather
 {
-    public static System.Action ShowPuzzlePannel;
-    public static System.Action ReactivateUIButton;
+    
+    
     [SerializeField] private SC_CursorPuzzle cursorPuzzle;
 
     [SerializeField] private UnityEvent onPuzzleCompleted;
+    [SerializeField] private UnityEvent onPuzzleInteract;
 
     
 
     private bool CanSuccess;
     private bool canInteract;
 
+    private void Awake()
+    {
+        CanSuccess = false;
+        canInteract = false;
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (!other.CompareTag("Player")) return;
 
-        if (CanSuccess)
+        if (!CanSuccess)
         {
             //Quiero que solo si le he dado al boton de interactuar dentro de esto pueda hacerlo
             if (canInteract)
             {
-                SC_GameManager.Instance.OpenUI();
+                // SC_GameManager.Instance.OpenUI();
+                //OpenUI();
+                //
+                onPuzzleInteract?.Invoke();
+                Debug.Log("OnInteractionStartedHola");
 
-                ShowPuzzlePannel?.Invoke();
+                //no solo hay que ligarlo al puzle, debes abrir la UI del game manager
+                //ShowPuzzlePannel?.Invoke(); en el cursor pannel
                 canInteract = false;
-                
+
             }
-        }
-        else
-        {
-            SC_GameManager.Instance.CloseUI();
 
-            ReactivateUIButton?.Invoke();
+            else
+            {
+                // SC_GameManager.Instance.CloseUI();
+                //CloseUI();
+                //ReactivateUIButton?.Invoke(); ESTA EN EL CURSOR PUZLE
 
-            onPuzzleCompleted?.Invoke();
+                onPuzzleCompleted?.Invoke();
+                //tambien debes cerrar la ui y reactivar el botón de sta
+            }
         }
     }
 
     private void OnEnable()
     {
-        cursorPuzzle.AddSuccess += CursorSendSuccess;
+        //cursorPuzzle.AddSuccess += CursorSendSuccess;
         SC_PlayerBrain.OnInteract += OnInteract;
     }
 
@@ -55,11 +69,11 @@ public class SC_PuzzlePannel : MonoBehaviour
 
     private void OnDisable()
     {
-        cursorPuzzle.AddSuccess -= CursorSendSuccess;
+        //cursorPuzzle.AddSuccess -= CursorSendSuccess;
         SC_PlayerBrain.OnInteract -= OnInteract;
     }
 
-    private void CursorSendSuccess()
+    public void CursorSendSuccess()
     {
         CanSuccess = true;
     }
