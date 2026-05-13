@@ -11,7 +11,9 @@ using Random = UnityEngine.Random;
 public class SC_CursorPuzzle : MonoBehaviour
 {
     public static System.Action Substract15Seconds;
-    public static System.Action AddSuccess;
+    public event System.Action AddSuccess;
+    
+    //con problemas para ahora hacer varios, se va a pasar a eventos asi que nos quitamos las acciones estaticas
     
 
     [SerializeField] private GameObject HUD; 

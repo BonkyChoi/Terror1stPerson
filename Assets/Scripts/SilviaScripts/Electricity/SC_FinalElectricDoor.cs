@@ -33,27 +33,27 @@ public class SC_FinalElectricDoor : MonoBehaviour
         if (PuzzleLightCounter.Instance.puzzleCounterD > 0) SwitchOnLightD();
     }
 
-    private void SwitchOnLightD()
+    public void SwitchOnLightD()
     {
         lightD.material = materials[1];
     }
 
-    private void SwitchOnLightC()
+    public void SwitchOnLightC()
     {
         lightC.material = materials[1];
     }
 
-    private void SwitchOnLightB()
+    public void SwitchOnLightB()
     {
         lightB.material = materials[1];
     }
 
-    private void SwitchOnLightA()
+    public void SwitchOnLightA()
     {
         lightA.material = materials[1];
     }
 
-    private void OpenDoor()
+    public void OpenDoor()
     {
         //Pausar gameplay
         //Ir a cinemática de la puerta abriéndose
@@ -71,20 +71,19 @@ public class SC_FinalElectricDoor : MonoBehaviour
     private void OnEnable()
     {
         PuzzleLightCounter.OpenFinalDoor += OpenDoor;
-        PuzzleLightCounter.OnPuzleAComplete += InstanceOnOnPuzleAComplete;
     }
 
-    private void InstanceOnOnPuzleAComplete()
-    {
-        Debug.Log("On puzle complete A");
-        lightA.material = materials[1];
-        //lightA.enabled = false;
-        //por dios compila
-    }
+    // private void InstanceOnOnPuzleAComplete()
+    // {
+    //     Debug.Log("On puzle complete A");
+    //     lightA.material = materials[1];
+    //     //lightA.enabled = false;
+    //     //por dios compila
+    // }
 
     private void OnDisable()
     {
        PuzzleLightCounter.OpenFinalDoor -= OpenDoor; 
-       PuzzleLightCounter.OnPuzleAComplete -= InstanceOnOnPuzleAComplete;
+       
     }
 }
