@@ -8,6 +8,7 @@ public class SC_PlayerBrain : MonoBehaviour
     private PlayerInput playerInput;
     
     public static Action OnInteract;
+    public static Action OnDesinteract;
 
     private void Awake()
     {
@@ -17,11 +18,18 @@ public class SC_PlayerBrain : MonoBehaviour
     private void OnEnable()
     {
         playerInput.actions["Interact"].started += OnInteractionStarted;
+        playerInput.actions["Interact"].canceled += OnInteractionCanceled;
+    }
+
+    private void OnInteractionCanceled(InputAction.CallbackContext obj)
+    {
+        OnDesinteract?.Invoke();
     }
 
     private void OnDisable()
     {
         playerInput.actions["Interact"].started -= OnInteractionStarted;
+        playerInput.actions["Interact"].canceled -= OnInteractionCanceled;
     }
     private void OnInteractionStarted(InputAction.CallbackContext obj)
     {

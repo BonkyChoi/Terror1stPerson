@@ -42,8 +42,8 @@ public class SC_CursorPuzzle : MonoBehaviour
     private bool resolving;
     private bool puzzleActive;
     private bool gameStarted;
-    
-    [SerializeField] private int totalTimesToSuccess;
+
+    private int totalTimesToSuccess = 3;
     
     [SerializeField] private UnityEvent OnSuccess;
 
@@ -56,6 +56,7 @@ public class SC_CursorPuzzle : MonoBehaviour
         tutorialPanel.SetActive(false);
         beginPanel.SetActive(false);
         exitPanel.SetActive(false);
+        successTimes = 0;
     }
     private void OnEnable()
     {
@@ -138,8 +139,11 @@ public class SC_CursorPuzzle : MonoBehaviour
             Debug.Log("Ha funcionado");
             //throw (new ArgumentException("todo bien"));
             successTimes++;
-            if (successTimes <= totalTimesToSuccess) AddSuccess();
-            else OnSuccess?.Invoke();
+            if (successTimes >= totalTimesToSuccess)
+            {
+                OnExitGame();
+                OnSuccess?.Invoke();
+            }
         }
         else
         {
@@ -153,10 +157,10 @@ public class SC_CursorPuzzle : MonoBehaviour
         BeginPlay();
     }
 
-    private void AddSuccess()
-    {
-        successTimes++;
-    }
+    // private void AddSuccess()
+    // {
+    //     successTimes++;
+    // }
 
     // private void Onstarted(InputAction.CallbackContext obj)
     // {
@@ -166,8 +170,9 @@ public class SC_CursorPuzzle : MonoBehaviour
     //     BeginPlay();
     // }
 
-    public void OnExitGame() //reactivas la UI
+    public void OnExitGame() //quitas la UI
     {
+        Debug.Log("OnExitGame");
         //playerInput.actions["BeginMiniGame"].Enable();
         //enableMiniGame.Invoke();
         puzzleActive = false;
