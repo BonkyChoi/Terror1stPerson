@@ -7,6 +7,7 @@ public class PuzzleLightCounter : MonoBehaviour
 
     public static System.Action OpenFinalDoor;
     
+    public static Action OnPuzleAComplete;
     public int lightCounter {get; private set;}
 
     public int puzzleCounterA;
@@ -29,8 +30,11 @@ public class PuzzleLightCounter : MonoBehaviour
     public void PuzzleAComplete()
     {
         if (puzzleCounterA > 0) return;
+        
         lightCounter++;
         puzzleCounterA++;
+        OnPuzleAComplete?.Invoke();
+        Debug.Log("Puzzle complete A mando evento");
         if (lightCounter == 4)
         {
             puzzleCounterA = 0;
@@ -70,6 +74,7 @@ public class PuzzleLightCounter : MonoBehaviour
             OpenFinalDoor?.Invoke();
         }
     }
+    
     
     
     

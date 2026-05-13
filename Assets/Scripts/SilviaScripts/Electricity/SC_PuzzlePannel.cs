@@ -13,7 +13,7 @@ public class SC_PuzzlePannel : MonoBehaviour
     private int currentTimesToSuccess;
     private bool canInteract;
    
-   [SerializeField] private PlayerInput playerInput;
+   //[SerializeField] private PlayerInput playerInput; --HAY QUE MOVERLO A LA OTRA MANERA DE HACERLO A LIMPIO--
 
     private void OnTriggerStay(Collider other)
     {
@@ -30,7 +30,7 @@ public class SC_PuzzlePannel : MonoBehaviour
                     ShowPuzzlePannel?.Invoke(); 
                     //SC_GameManager.Instance.OpenUI();
                     SC_GameManager.Instance.OpenUI();
-                    Debug.Log(playerInput.currentActionMap);
+                    //Debug.Log(playerInput.currentActionMap);
                     canInteract = false;
                     
                 }
@@ -40,6 +40,9 @@ public class SC_PuzzlePannel : MonoBehaviour
                SC_GameManager.Instance.CloseUI();
                ReactivateUIButton?.Invoke(); //puedes volver a pulsar ya que ya no esta el menu
                
+               //esto se hará por herencia es solo para comprobar q funciona
+               PuzzleLightCounter.Instance.PuzzleAComplete();//si funciona!! :DD
+
                //segun el tipo de puzle (se vera en herencia) le dice al correspondiente PuzzleLightCounter que se encienda
             }
     }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SC_FinalElectricDoor : MonoBehaviour
@@ -7,15 +8,25 @@ public class SC_FinalElectricDoor : MonoBehaviour
     
     public static System.Action ShowCredits;
 
-    [SerializeField] private Light lightA;
-    [SerializeField] private Light lightB;
-    [SerializeField] private Light lightC;
-    [SerializeField] private Light lightD;
+    [SerializeField] private MeshRenderer lightA;
+    [SerializeField] private MeshRenderer lightB;
+    [SerializeField] private MeshRenderer lightC;
+    [SerializeField] private MeshRenderer lightD;
+    
+    [SerializeField] private Material[] materials;
     
     // Esto ahora se va a mandar por un evento desde la instancia -> OpenDoor();
+    private void Awake()
+    {
+        lightA.material = materials[0];
+        lightB.material = materials[0];
+        lightC.material = materials[0];
+        lightD.material = materials[0];
+    }
 
     private void Start()
     {
+        if (PuzzleLightCounter.Instance == null) return;
         if (PuzzleLightCounter.Instance.puzzleCounterA > 0) SwitchOnLightA();
         if (PuzzleLightCounter.Instance.puzzleCounterB > 0) SwitchOnLightB();
         if (PuzzleLightCounter.Instance.puzzleCounterC > 0) SwitchOnLightC();
@@ -24,22 +35,22 @@ public class SC_FinalElectricDoor : MonoBehaviour
 
     private void SwitchOnLightD()
     {
-        lightD.intensity = 1;
+        lightD.material = materials[1];
     }
 
     private void SwitchOnLightC()
     {
-        lightC.intensity = 1;
+        lightC.material = materials[1];
     }
 
     private void SwitchOnLightB()
     {
-        lightB.intensity = 1;
+        lightB.material = materials[1];
     }
 
     private void SwitchOnLightA()
     {
-        lightA.intensity = 1;
+        lightA.material = materials[1];
     }
 
     private void OpenDoor()
@@ -60,9 +71,20 @@ public class SC_FinalElectricDoor : MonoBehaviour
     private void OnEnable()
     {
         PuzzleLightCounter.OpenFinalDoor += OpenDoor;
+        PuzzleLightCounter.OnPuzleAComplete += InstanceOnOnPuzleAComplete;
     }
+
+    private void InstanceOnOnPuzleAComplete()
+    {
+        Debug.Log("On puzle complete A");
+        lightA.material = materials[1];
+        //lightA.enabled = false;
+        //por dios compila
+    }
+
     private void OnDisable()
     {
        PuzzleLightCounter.OpenFinalDoor -= OpenDoor; 
+       PuzzleLightCounter.OnPuzleAComplete -= InstanceOnOnPuzleAComplete;
     }
 }
