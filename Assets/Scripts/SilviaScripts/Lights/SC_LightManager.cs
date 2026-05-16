@@ -42,12 +42,10 @@ public class SC_LightManager : MonoBehaviour
         currentState = LightState.Normal;
 
         StartCoroutine(StateTimer());
-        Debug.Log("Luz encendida hasta dentro de 3 minutos");
 
         foreach (Light light in lights)
         {
             StartCoroutine(LightRoutine(light));
-            Debug.Log("Corutina de luz iniciada para " + light.name);
         }
     }
 
@@ -108,7 +106,7 @@ public class SC_LightManager : MonoBehaviour
     private IEnumerator Flick(Light light, float waitTime)//luz a apagar y tiempo de espera entre cada parpadeo
     {
         float originalIntensity = light.intensity;
-        Debug.Log("Flicker en " + light.name + " con tiempo de espera de " + waitTime + " segundos");
+        //Debug.Log("Flicker en " + light.name + " con tiempo de espera de " + waitTime + " segundos");
         float randomIntensity = originalIntensity * Random.Range(0.7f, 0.9f);//baja entre un 70 y 90
         light.intensity = -1 * randomIntensity;
         yield return new WaitForSeconds(0.3f);
@@ -119,7 +117,6 @@ public class SC_LightManager : MonoBehaviour
 
     public void SubstractTime()
     {
-        Debug.Log("Han reducido el tiempo de luces");
         startTime += timeReductionOnEvent;//tiempo que le añade al contador para apagar la luz antes
     }
 
@@ -131,7 +128,6 @@ public class SC_LightManager : MonoBehaviour
         foreach (Light light in lights)
         {
             StartCoroutine(LightRoutine(light));
-            Debug.Log("Corutina de luz iniciada para " + light.name);
         }
     }
 

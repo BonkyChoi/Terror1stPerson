@@ -14,17 +14,6 @@ public class SC_PlayerHealth : MonoBehaviour
         player = gameObject;
     }
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ReciveDamage()
     {
         health--;

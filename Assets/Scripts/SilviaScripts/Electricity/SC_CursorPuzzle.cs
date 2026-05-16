@@ -136,7 +136,6 @@ public class SC_CursorPuzzle : MonoBehaviour
         
         if (delta <= zoneSize)
         {
-            Debug.Log("Ha funcionado");
             //throw (new ArgumentException("todo bien"));
             successTimes++;
             if (successTimes >= totalTimesToSuccess)
@@ -147,7 +146,6 @@ public class SC_CursorPuzzle : MonoBehaviour
         }
         else
         {
-            Debug.Log("Has fallado");
             Substract15Seconds?.Invoke();
         }
         //si el cursor esta entre zona inicio objetivo [la rotación en z] y zona final objetivo [que tanto fill amount tiene] es success:es fail;
@@ -172,7 +170,6 @@ public class SC_CursorPuzzle : MonoBehaviour
 
     public void OnExitGame() //quitas la UI
     {
-        Debug.Log("OnExitGame");
         //playerInput.actions["BeginMiniGame"].Enable();
         //enableMiniGame.Invoke();
         puzzleActive = false;

@@ -23,19 +23,24 @@ public class SC_GameManager : MonoBehaviour
    public void RegisterPlayerInput(PlayerInput input)
    {
       playerInput = input;
-      Debug.Log("RegisterPlayerInput");
    }
 
    public void OpenUI()
    {
+      playerInput.currentActionMap.Disable();
       playerInput.SwitchCurrentActionMap("UI");
-      Debug.Log("OpenUILOL");
+      playerInput.currentActionMap.Enable();
+      
+      print("OPENUI " + playerInput.currentActionMap);
    }
 
    public void CloseUI()
    {
+      playerInput.currentActionMap.Disable();
       playerInput.SwitchCurrentActionMap("Player");
-      Debug.Log("OpenPlayerssLOL");
+      playerInput.currentActionMap.Enable();
+      
+      print("CLOSEUI " + playerInput.currentActionMap);
    }
    
    //creo que falla pq uno le dice cierrate minetras el otro le dice q s abra

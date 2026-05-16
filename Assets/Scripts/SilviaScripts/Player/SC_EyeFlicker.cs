@@ -25,10 +25,8 @@ public class SC_EyeFlicker : MonoBehaviour
 
     private void BeginFlicker()
     {
-        Debug.Log("Voy a flickear");
         
         SC_GameManager.Instance.OpenUI();
-        Debug.LogWarning("He abierto la UI");
         StartCoroutine(BeginToFlickCoroutine());
     }
 
@@ -37,7 +35,6 @@ public class SC_EyeFlicker : MonoBehaviour
 
     private IEnumerator BeginToFlickCoroutine()
     {
-        Debug.Log("Voy a flickear la corrutina");
         float randomFloat = Random.value;
         float secondsForWhite = Random.Range(0.05f, 0.1f);
         float secondsForTransparent = Random.Range(0.05f,0.1f);

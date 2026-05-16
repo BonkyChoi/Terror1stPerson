@@ -33,7 +33,7 @@ public class SC_PlayerBrain : MonoBehaviour
     }
     private void OnInteractionStarted(InputAction.CallbackContext obj)
     {
-        Debug.Log("OnInteractionStarted");
+        print("playerInteraction");
         OnInteract?.Invoke();
     }
     

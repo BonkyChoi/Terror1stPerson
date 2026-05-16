@@ -33,7 +33,6 @@ public class SC_UIBrain : MonoBehaviour
 
     private void OnMiniGameVoid(InputAction.CallbackContext obj)
     {
-        Debug.LogWarning("MiniGame");
         OnMiniGame?.Invoke();
         
     }

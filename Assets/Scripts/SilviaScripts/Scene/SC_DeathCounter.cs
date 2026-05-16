@@ -15,6 +15,5 @@ public class SC_DeathCounter : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
-        Debug.Log(DeathCounter);
     }
 }

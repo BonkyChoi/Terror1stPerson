@@ -76,7 +76,6 @@ public class SC_FSMController : MonoBehaviour
 
     private void PatrolAndWait()
     {
-        Debug.Log("llamo a Patrol");
         ChangeState(PatrolState);
         triggerCollider.enabled = true;
     }

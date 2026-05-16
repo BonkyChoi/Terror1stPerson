@@ -23,7 +23,6 @@ namespace SilviaScripts.Pipes
             if(other.gameObject.CompareTag("Player"))
             {
                
-                Debug.Log("detecto al player");
                 OnPlayerPosition?.Invoke(other.gameObject.transform.position);
                
             }

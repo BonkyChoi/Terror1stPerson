@@ -29,7 +29,6 @@ public class IA_Investigate : IA_EnemyStates
 
     public override void OnEnterState()
     {
-        Debug.Log("Entering Investigate");
         timer = maxTimer;
         //animator.SetTrigger("lookAround");
         agent.isStopped = false;

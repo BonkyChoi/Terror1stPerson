@@ -32,22 +32,13 @@ public class SC_PuzzlePannel : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
         
-        Debug.Log("------------ISPLATYER");
-
         if (CanSuccess) return;
         
-        Debug.Log("------------!CANSUCCESS");
-        
-        print(canInteract);
-        print(puzzleOpened);
-
         if (canInteract && !puzzleOpened)
         {
             puzzleOpened = true;
 
             onPuzzleInteract?.Invoke();
-
-            Debug.Log("Puzzle Opened");
         }
     }
     public void ResetPuzzle()
@@ -109,6 +100,7 @@ public class SC_PuzzlePannel : MonoBehaviour
     public void CursorSendSuccess()
     {
         CanSuccess = true;
+        SC_GameManager.Instance.CloseUI();
     }
 
     private void OnInteract()

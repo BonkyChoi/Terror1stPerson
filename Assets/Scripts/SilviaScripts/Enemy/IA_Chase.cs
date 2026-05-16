@@ -41,17 +41,14 @@ public class IA_Chase : IA_EnemyStates
     
     private IEnumerator MakeRwarBeforeGo()//te avisa de que te ha visto
     {
-        Debug.Log("Esperame tantito");
         yield return new WaitForSeconds(0.01f);
         canAttack = true;
-        Debug.Log("Te puedo atacar");
         
     }
 
 
     public override void OnEnterState()
     {
-        Debug.Log("OnEnterChase");
        myCoroutine = controller.RunCoroutine(MakeRwarBeforeGo());
        controller.Agent.speed = 8f;
        controller.Agent.acceleration = 25f;
@@ -68,10 +65,8 @@ public class IA_Chase : IA_EnemyStates
         //     Debug.Log("No m da la gana atacars");
         //     return;
         // 
-        Debug.Log("Chase");
         if (!target)
         {
-            Debug.Log("No se ha encontrado el target");
             return;
         }
         FaceToTarget();
@@ -140,7 +135,7 @@ public class IA_Chase : IA_EnemyStates
     {
         canAttack = false;
 
-        if (agent != null)
+        if (agent is not null)
         {
             agent.isStopped = true;
             agent.ResetPath();

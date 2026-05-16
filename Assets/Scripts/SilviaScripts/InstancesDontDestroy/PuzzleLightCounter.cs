@@ -34,7 +34,6 @@ public class PuzzleLightCounter : MonoBehaviour
         lightCounter++;
         puzzleCounterA++;
         //OnPuzleAComplete?.Invoke();
-        Debug.Log("Puzzle complete A mando evento");
         if (lightCounter == 4)
         {
             puzzleCounterA = 0;

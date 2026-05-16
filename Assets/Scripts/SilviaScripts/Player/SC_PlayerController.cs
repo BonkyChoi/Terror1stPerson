@@ -43,7 +43,6 @@ public class SC_PlayerController : MonoBehaviour
     private void Start()
     {
         SC_GameManager.Instance.RegisterPlayerInput(playerInput);
-        
     }
 
 
@@ -70,9 +69,4 @@ public class SC_PlayerController : MonoBehaviour
     {
         SC_InputEvent.OnPauseCursor?.Invoke();
     }
-    
-  
-
-    
-    
 }

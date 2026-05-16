@@ -37,7 +37,6 @@ public class IA_Patrol : IA_EnemyStates
 
     public override void OnEnterState()
     {
-        Debug.Log("Entering Patrol");
         currentPatrolPoint = 0;
         waiting = false;
         GoToNextPoint();

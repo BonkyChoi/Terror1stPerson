@@ -123,8 +123,6 @@ public class SC_PerceptionSystem : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Tiro trigger de la pipe");
-        
         if(other.CompareTag("Pipe") && (pipeCoroutine != null)) SC_Pipes.OnPlayerPosition += OnPlayerPosition;
     }
 

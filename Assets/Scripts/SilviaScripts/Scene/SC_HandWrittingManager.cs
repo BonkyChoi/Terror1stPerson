@@ -24,11 +24,7 @@ public class SC_HandWrittingManager : MonoBehaviour
 
     public static Action OnTextWritted;
     public static Action CharacterRevealer;
-
-    private void Awake()
-    {
-        
-    }
+    
    private void Start()
     {
         //Randomiza el mensaje que sale 

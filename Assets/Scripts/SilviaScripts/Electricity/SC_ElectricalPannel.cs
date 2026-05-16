@@ -46,22 +46,15 @@ public class SC_ElectricalPannel : MonoBehaviour
     {
         if (other.CompareTag("Player"))//falta poner tanto la UI como quetenga el fusible
         {
-            Debug.Log("Player detected");
             if (currentLight > 0)
             {
-                Debug.Log("Current light is on");
                 if (Input.GetKey(KeyCode.E))
                 {
-                    Debug.Log("E detected");
                     if (!isLightOn)
                     {
-                        Debug.Log("Light is off");
-
                         if (GetComponentInChildren<SC_ImAFusible>())
                         {
-                            Debug.Log("Has a fussible");
                             SwitchOnTheLights?.Invoke();
-                            Debug.Log("Mando que la luz se encienda"); 
                             currentLight--;
                         }
                         
