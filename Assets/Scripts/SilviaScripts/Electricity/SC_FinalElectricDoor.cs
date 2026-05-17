@@ -7,7 +7,6 @@ public class SC_FinalElectricDoor : MonoBehaviour
     [SerializeField] private int lightsToOpenDoor;
     private int currentLightsOn;
     
-    public static System.Action ShowCredits;
 
     [SerializeField] private MeshRenderer lightA;
     [SerializeField] private MeshRenderer lightB;
@@ -70,11 +69,7 @@ public class SC_FinalElectricDoor : MonoBehaviour
         
     }
 
-    private void OnTriggerExit(Collider other)//cuando el jugador sale por la puerta termina el juego
-    {
-        if(other.CompareTag("Player"))
-            ShowCredits?.Invoke();
-    }
+    
 
     private void OnEnable()
     {
