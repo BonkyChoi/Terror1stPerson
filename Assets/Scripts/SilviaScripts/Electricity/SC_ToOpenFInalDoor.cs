@@ -23,6 +23,7 @@ public class SC_ToOpenFInalDoor : MonoBehaviour
     {
         if (isOpening) return;
         StartCoroutine(OpenFinalDoorCoroutine());
+        isOpening = true;
     }
 
     private IEnumerator OpenFinalDoorCoroutine()
