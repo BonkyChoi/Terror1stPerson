@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7684101746755884136, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 40.43681
+      value: 36.77
       objectReference: {fileID: 0}
     - target: {fileID: 7684101746755884136, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7684101746755884136, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -31.7
+      value: -36.06
       objectReference: {fileID: 0}
     - target: {fileID: 7684101746755884136, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -121,13 +121,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8723333454571755945, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
+      propertyPath: onPuzzleInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3532935151100928044}
+    - target: {fileID: 8723333454571755945, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
       propertyPath: onPuzzleInteract.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723333454571755945, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
+      propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 3532935151100928044}
     - target: {fileID: 8723333454571755945, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
       propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 3532935151100928044}
+      objectReference: {fileID: 0}
     - target: {fileID: 8723333454571755945, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
       propertyPath: onPuzzleInteract.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -150,11 +158,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8723333454571755945, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
       propertyPath: onPuzzleInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenUI
+      value: ShowPuzzlePannel
       objectReference: {fileID: 0}
     - target: {fileID: 8723333454571755945, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
       propertyPath: onPuzzleInteract.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ShowPuzzlePannel
+      value: OpenUI
       objectReference: {fileID: 0}
     - target: {fileID: 8723333454571755945, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
       propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -166,19 +174,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8723333454571755945, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
       propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: CloseUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 8723333454571755945, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
-      propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
       value: OnExitGame
       objectReference: {fileID: 0}
     - target: {fileID: 8723333454571755945, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
+      propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: CloseUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723333454571755945, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
       propertyPath: onPuzzleInteract.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SC_GameManager, Assembly-CSharp
+      value: SC_CursorPuzzle, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8723333454571755945, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
       propertyPath: onPuzzleInteract.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: SC_CursorPuzzle, Assembly-CSharp
+      value: SC_GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8723333454571755945, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
       propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -186,11 +194,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8723333454571755945, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
       propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: SC_GameManager, Assembly-CSharp
+      value: SC_CursorPuzzle, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8723333454571755945, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
       propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
-      value: SC_CursorPuzzle, Assembly-CSharp
+      value: SC_GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8723333454571755945, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
       propertyPath: onPuzzleInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
