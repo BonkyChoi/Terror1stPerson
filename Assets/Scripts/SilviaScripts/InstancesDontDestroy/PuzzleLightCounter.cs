@@ -14,6 +14,8 @@ public class PuzzleLightCounter : MonoBehaviour
     public int puzzleCounterB;
     public int puzzleCounterC;
     public int puzzleCounterD;
+
+    public int puzzleTutorial;
     
     void Awake()
     {
@@ -34,7 +36,7 @@ public class PuzzleLightCounter : MonoBehaviour
         lightCounter++;
         puzzleCounterA++;
         //OnPuzleAComplete?.Invoke();
-        if (lightCounter == 4)
+        if (lightCounter == 5)
         {
             puzzleCounterA = 0;
             OpenFinalDoor?.Invoke();
@@ -45,7 +47,7 @@ public class PuzzleLightCounter : MonoBehaviour
         if (puzzleCounterB > 0) return;
         lightCounter++;
         puzzleCounterB++;
-        if (lightCounter == 4)
+        if (lightCounter == 5)
         {
             puzzleCounterB = 0;
             OpenFinalDoor?.Invoke();
@@ -56,7 +58,7 @@ public class PuzzleLightCounter : MonoBehaviour
         if (puzzleCounterC > 0) return;
         puzzleCounterC++;
         lightCounter++;
-        if (lightCounter == 4)
+        if (lightCounter == 5)
         {
             puzzleCounterC = 0;
             OpenFinalDoor?.Invoke();
@@ -67,7 +69,19 @@ public class PuzzleLightCounter : MonoBehaviour
         if (puzzleCounterD > 0) return;
         puzzleCounterD++;
         lightCounter++;
-        if (lightCounter == 4)
+        if (lightCounter == 5)
+        {
+            puzzleCounterD = 0;
+            OpenFinalDoor?.Invoke();
+        }
+    }
+
+    public void PuzzleTutorialComplete()
+    {
+        if (puzzleTutorial > 0) return;
+        puzzleTutorial++;
+        lightCounter++;
+        if (lightCounter == 5)
         {
             puzzleCounterD = 0;
             OpenFinalDoor?.Invoke();
