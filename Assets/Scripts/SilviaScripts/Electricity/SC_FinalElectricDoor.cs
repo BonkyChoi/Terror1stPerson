@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SC_FinalElectricDoor : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class SC_FinalElectricDoor : MonoBehaviour
     [SerializeField] private MeshRenderer lightD;
     
     [SerializeField] private Material[] materials;
+
+    [SerializeField] private UnityEvent OnOpenDoor;
     
     // Esto ahora se va a mandar por un evento desde la instancia -> OpenDoor();
     private void Awake()
@@ -60,6 +63,11 @@ public class SC_FinalElectricDoor : MonoBehaviour
         //Reanudar gameplay
         //Apagar las luces (esta ultima parte se debe hacer a oscuras)
         //Volver al gameplay normal
+        Time.timeScale = 0;
+        //cinemática/poner sonido en el que se oye una puerta y dice "PARECE QUE LA PUERTA SE ABRIÓ"
+        Time.timeScale = 1;
+        OnOpenDoor?.Invoke();
+        
     }
 
     private void OnTriggerExit(Collider other)//cuando el jugador sale por la puerta termina el juego

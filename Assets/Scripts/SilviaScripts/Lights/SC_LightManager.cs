@@ -94,10 +94,8 @@ public class SC_LightManager : MonoBehaviour
                         light.enabled = !light.enabled;//cambia el estado de la luz 10 veces
                         yield return new WaitForSeconds(0.1f);
                     }
-
-                    light.enabled = false;
-                    currentState = LightState.Off;
-                    OnSwitchOff?.Invoke();
+                    SwitchOff();
+                    
                     break;
             }
         }
@@ -118,6 +116,16 @@ public class SC_LightManager : MonoBehaviour
     public void SubstractTime()
     {
         startTime += timeReductionOnEvent;//tiempo que le añade al contador para apagar la luz antes
+    }
+
+    public void SwitchOff()
+    {
+        foreach (Light light in lights)
+        {
+            light.enabled = false;
+        }
+        currentState = LightState.Off;
+        OnSwitchOff?.Invoke();
     }
 
     public void SwitchOn()
