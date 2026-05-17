@@ -18,5 +18,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Silvia/PruebasElectricidad.unity
     guid: 6722d60926e4a664391e8b5704ebea37
   m_configObjects:
+    com.unity.adaptivePerformance.basic.provider_settings: {fileID: 11400000, guid: f353b03beccfb0d44bbb8242a31df48e, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 436f512d6809fd248ab75fdf1d465dad, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 2b6d3d6c7d812224893763edb5fc3206, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
