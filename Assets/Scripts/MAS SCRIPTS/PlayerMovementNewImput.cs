@@ -83,6 +83,7 @@ public class PlayerMovementNewImput : MonoBehaviour
     private Material originalMaterial;
 
     private float pushTimer = 0f;
+    public float currentSpeed { get; set; }//necesito esta referencia para hacer una chapuza hasta que me responda german a un problema srry
 
     void Awake()
     {
@@ -147,7 +148,7 @@ public class PlayerMovementNewImput : MonoBehaviour
         float x = moveInput.x;
         float z = moveInput.y;
 
-        float currentSpeed = run.IsPressed() ? runSpeed : walkSpeed;
+        currentSpeed = run.IsPressed() ? runSpeed : walkSpeed;
         if (isCrouching) currentSpeed = crouchSpeed;
 
         Vector3 moveVec = (transform.right * x + transform.forward * z) * currentSpeed;

@@ -13,7 +13,8 @@ public class SC_PuzzlePannel : MonoBehaviour
     [SerializeField] private UnityEvent onPuzzleCompleted;
     [SerializeField] private UnityEvent onPuzzleInteract;
 
-    
+    //a borrar mas tarde
+    private PlayerMovementV move;
 
     private bool CanSuccess;
     private bool canInteract;
@@ -31,20 +32,29 @@ public class SC_PuzzlePannel : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        
+        if (other.GetComponent<PlayerMovementV>())
+        {
+            move = other.GetComponent<PlayerMovementV>();
+        }
         if (CanSuccess) return;
         
         if (canInteract && !puzzleOpened)
         {
             puzzleOpened = true;
-
+            move.enabled = false;
             onPuzzleInteract?.Invoke();
         }
+        
+        
     }
     public void ResetPuzzle()
     {
+        print("Reset puzzle");
         puzzleOpened = false;
         canInteract = false;
+        // move.enabled = true;
+        
+        //creo que ahora este script lo tengo duplicado
     }
 
     /*if (!other.CompareTag("Player")) return;
@@ -100,7 +110,11 @@ public class SC_PuzzlePannel : MonoBehaviour
     public void CursorSendSuccess()
     {
         CanSuccess = true;
+        move.enabled = true;
+        
         SC_GameManager.Instance.CloseUI();
+        onPuzzleCompleted?.Invoke();
+        
     }
 
     private void OnInteract()
