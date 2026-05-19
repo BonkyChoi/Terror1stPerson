@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5708403266346521141
+--- !u!1 &6263587887042816318
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2151886220265225929}
-  - component: {fileID: 7081118279837942841}
-  - component: {fileID: 1661030059297374493}
-  - component: {fileID: 7954002450959133938}
-  - component: {fileID: 5183166547612617260}
-  - component: {fileID: 760477295500654809}
+  - component: {fileID: 7448574901904885548}
+  - component: {fileID: 4706807201915434579}
+  - component: {fileID: 590083657391508710}
+  - component: {fileID: 7062027181502871000}
+  - component: {fileID: 207252217019499042}
+  - component: {fileID: 9120252958490335401}
   m_Layer: 0
-  m_Name: Llave
+  m_Name: Visual llave
   m_TagString: Lanzable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2151886220265225929
+--- !u!4 &7448574901904885548
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5708403266346521141}
+  m_GameObject: {fileID: 6263587887042816318}
   serializedVersion: 2
-  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
-  m_ConstrainProportionsScale: 1
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.01304, y: -0.00204, z: -0.00006}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
---- !u!23 &7081118279837942841
+  m_Father: {fileID: 4013073437672577305}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!33 &4706807201915434579
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6263587887042816318}
+  m_Mesh: {fileID: -8602939383064019894, guid: 303f49d1886b82d4aa9db5221cfd73f4, type: 3}
+--- !u!23 &590083657391508710
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5708403266346521141}
+  m_GameObject: {fileID: 6263587887042816318}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -85,25 +93,34 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1661030059297374493
-MonoBehaviour:
+--- !u!65 &7062027181502871000
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5708403266346521141}
+  m_GameObject: {fileID: 6263587887042816318}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c8f9da87d9d07146931791eaee7ae10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Llave
---- !u!54 &7954002450959133938
+  serializedVersion: 3
+  m_Size: {x: 0.0026141535, y: 0.00022696744, z: 0.006577017}
+  m_Center: {x: -0.012945948, y: 0.000000007628842, z: 0.003049492}
+--- !u!54 &207252217019499042
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5708403266346521141}
+  m_GameObject: {fileID: 6263587887042816318}
   serializedVersion: 5
   m_Mass: 1
   m_LinearDamping: 0
@@ -124,32 +141,47 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!33 &5183166547612617260
-MeshFilter:
+--- !u!114 &9120252958490335401
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5708403266346521141}
-  m_Mesh: {fileID: -8602939383064019894, guid: 303f49d1886b82d4aa9db5221cfd73f4, type: 3}
---- !u!65 &760477295500654809
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5708403266346521141}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_GameObject: {fileID: 6263587887042816318}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.0026141535, y: 0.00022696744, z: 0.006577017}
-  m_Center: {x: -0.012945933, y: 0.000000007628842, z: 0.003049492}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c8f9da87d9d07146931791eaee7ae10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Llave
+--- !u!1 &6388814015612356782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4013073437672577305}
+  m_Layer: 0
+  m_Name: Llave2.0
+  m_TagString: Lanzable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4013073437672577305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6388814015612356782}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -88.234, y: 0.07127, z: -98.125}
+  m_LocalScale: {x: 105.19485, y: 105.19485, z: 105.19485}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7448574901904885548}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
