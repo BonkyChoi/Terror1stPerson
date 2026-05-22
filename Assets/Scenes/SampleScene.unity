@@ -850,6 +850,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 90044d9b5389c484881cff1968838dbb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 955db013ae564814ca9f022e550e1ef4, type: 2}
     - target: {fileID: 919132149155446097, guid: 90044d9b5389c484881cff1968838dbb, type: 3}
       propertyPath: m_Name
       value: comoda madera
@@ -3915,6 +3919,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 61b409de49af18f4da663ea6683d830b, type: 2}
     - target: {fileID: 919132149155446097, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
       propertyPath: m_Name
       value: comoda cocina (1)
@@ -85306,6 +85314,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 61b409de49af18f4da663ea6683d830b, type: 2}
     - target: {fileID: 919132149155446097, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
       propertyPath: m_Name
       value: comoda cocina
@@ -108724,75 +108736,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5275808562292274493, guid: 6ff72efead2c8eb459459ea9484c437e, type: 3}
   m_PrefabInstance: {fileID: 1798246362}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1678786923
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 199.82115
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 95.29949
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 230.30421
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -78.1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.4
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.57
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.49999997
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.50000006
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.50000006
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.50000006
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
-      propertyPath: m_Name
-      value: comoda cocina (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
 --- !u!43 &1680327328
 Mesh:
   m_ObjectHideFlags: 0
@@ -195357,7 +195300,6 @@ SceneRoots:
   - {fileID: 6688295842267691161}
   - {fileID: 1280824032}
   - {fileID: 83879451}
-  - {fileID: 1678786923}
   - {fileID: 837491535}
   - {fileID: 2036176928}
   - {fileID: 1087067513}
