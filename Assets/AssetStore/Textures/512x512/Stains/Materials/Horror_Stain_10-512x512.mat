@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-158730746592980130
+--- !u!114 &-2648178860863921015
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,12 +20,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Horror_Stain_09-512x512
+  m_Name: Horror_Stain_10-512x512
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _NORMALMAP
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -40,11 +39,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: fef314809f31ca745b17d00022cb557c, type: 3}
-        m_Scale: {x: 0.19, y: 0.21}
+        m_Texture: {fileID: 2800000, guid: 1789f654da6050e45a0b8c0442bf33b2, type: 3}
+        m_Scale: {x: -0.07, y: 0.34}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 4e7bc4ed6825b3545803541a6c25861c, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -64,8 +63,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: fef314809f31ca745b17d00022cb557c, type: 3}
-        m_Scale: {x: 0.19, y: 0.21}
+        m_Texture: {fileID: 2800000, guid: 1789f654da6050e45a0b8c0442bf33b2, type: 3}
+        m_Scale: {x: -0.07, y: 0.34}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
