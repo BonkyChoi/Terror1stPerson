@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1883186355442587182}
   - component: {fileID: 3383380034252848908}
   - component: {fileID: 1153214262308653962}
+  - component: {fileID: 3491408476555059709}
   m_Layer: 0
   m_Name: Formula 12
   m_TagString: Lanzable
@@ -42,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141960914471504793}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 3475b932e25f196499c2c98f6fc6367a, type: 3}
 --- !u!23 &1883186355442587182
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -140,3 +141,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &3491408476555059709
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141960914471504793}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.06639976, y: 0.25495017, z: 0.066398926}
+  m_Center: {x: 0, y: -0.000000007450581, z: 0}
