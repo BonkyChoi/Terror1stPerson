@@ -84889,6 +84889,75 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1001 &1280824032
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 230.30421
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 109.3185
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 230.30421
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -77.76
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.41
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -31.48
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.49999997
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
+      propertyPath: m_Name
+      value: comoda cocina
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5148b74e6fcf8cd44a7ac4f8ec63bd8e, type: 3}
 --- !u!108 &1282316586 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 1819643919786049390, guid: 6ff72efead2c8eb459459ea9484c437e, type: 3}
@@ -194787,3 +194856,4 @@ SceneRoots:
   - {fileID: 4552280713991182792}
   - {fileID: 2291575932656680225}
   - {fileID: 6688295842267691161}
+  - {fileID: 1280824032}
