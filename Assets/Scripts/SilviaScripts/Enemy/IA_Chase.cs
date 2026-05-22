@@ -29,6 +29,9 @@ public class IA_Chase : IA_EnemyStates
     private float waitTimer;
     private float waitDuration;
     private bool waiting;
+
+
+    private AudioSource audio;
     
     public IA_Chase(SC_FSMController controller)
     {
@@ -37,6 +40,7 @@ public class IA_Chase : IA_EnemyStates
         
         agent = controller.Agent;
         perception = controller.PerceptionSystem;
+        audio = controller.ChaseAudio;
     }
     
     private IEnumerator MakeRwarBeforeGo()//te avisa de que te ha visto
@@ -52,6 +56,7 @@ public class IA_Chase : IA_EnemyStates
        myCoroutine = controller.RunCoroutine(MakeRwarBeforeGo());
        controller.Agent.speed = 8f;
        controller.Agent.acceleration = 25f;
+       audio.Play();
     }
 
     public override void OnUpdateState()
@@ -143,6 +148,7 @@ public class IA_Chase : IA_EnemyStates
         }
 
         controller.StopCoroutine(myCoroutine);//Quieres que pare todas? O deberia parar solo las del chase?
+        audio.Stop();
     
     } 
             

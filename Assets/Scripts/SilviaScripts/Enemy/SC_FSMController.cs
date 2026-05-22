@@ -12,6 +12,8 @@ public class SC_FSMController : MonoBehaviour
     public SC_PerceptionSystem PerceptionSystem { get; private set; }
     public NavMeshAgent Agent { get; private set; }
     
+    public AudioSource ChaseAudio { get; set;}
+    
     //Patrol
     private List<Vector3> patrolPoints = new();
     [SerializeField] private Transform patrolRoute;
@@ -32,6 +34,7 @@ public class SC_FSMController : MonoBehaviour
         triggerCollider.enabled = true;
         PerceptionSystem = GetComponent<SC_PerceptionSystem>();
         Agent = GetComponent<NavMeshAgent>();
+        ChaseAudio = GetComponent<AudioSource>();
         //Patrol
         foreach (Transform points in patrolRoute)
         {
