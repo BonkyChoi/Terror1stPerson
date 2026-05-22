@@ -252,7 +252,7 @@ public class PlayerMovementNewImput : MonoBehaviour
 
         rb.isKinematic = true;
         obj.transform.localPosition = Vector3.zero;
-        obj.transform.localRotation = Quaternion.identity;
+        obj.transform.localRotation = Quaternion.Euler(-90f, 0f, 0f);
 
         if (obj.CompareTag("Fusible") && !fusibles.Contains(obj))
             fusibles.Add(obj);
