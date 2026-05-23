@@ -6418,12 +6418,40 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
+      propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
+      propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 587651750}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
+      propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1069987572}
+    - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
+      propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SwitchOff
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
+      propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
+      propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.Playables.PlayableDirector, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
+      propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1359737947438298334, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: m_Name
@@ -6501,6 +6529,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1613666514}
   m_SourcePrefab: {fileID: 100100000, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
+--- !u!114 &104788984 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
+  m_PrefabInstance: {fileID: 104788983}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613666508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6aaf89de3d3b2b4db2fc8f8387379a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SC_FinalElectricDoor
 --- !u!4 &109149784 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4580459296967668706, guid: 4ff482a5347c7d245947d92fc5915a4d, type: 3}
@@ -78732,6 +78771,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1069987573}
   - component: {fileID: 1069987572}
+  - component: {fileID: 1069987574}
   m_Layer: 0
   m_Name: PlayableDirector
   m_TagString: Untagged
@@ -78760,6 +78800,8 @@ PlayableDirector:
     value: {fileID: 1168317566}
   - key: {fileID: 5661817636952627900, guid: b149ebbae87ecbf4cab24b3faf61f6c4, type: 2}
     value: {fileID: 1644316977}
+  - key: {fileID: 2149811232229300543, guid: b149ebbae87ecbf4cab24b3faf61f6c4, type: 2}
+    value: {fileID: 1069987574}
   m_ExposedReferences:
     m_References:
     - f5336679979ae444685b9c4b6b500cfa: {fileID: 1168317568}
@@ -78779,6 +78821,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1069987574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069987571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalReceiver
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: dc715390267fecc44bc83eecb04cf547, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 104788984}
+          m_TargetAssemblyTypeName: SC_FinalElectricDoor, Assembly-CSharp
+          m_MethodName: ReturnGameplay
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!43 &1078487243
 Mesh:
   m_ObjectHideFlags: 0
@@ -99912,15 +99984,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5291862271203402153, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.300595
+      value: -8.248003
       objectReference: {fileID: 0}
     - target: {fileID: 5291862271203402153, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.4299998
+      value: 2.6133332
       objectReference: {fileID: 0}
     - target: {fileID: 5291862271203402153, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.748291
+      value: -20.624357
       objectReference: {fileID: 0}
     - target: {fileID: 5291862271203402153, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
       propertyPath: m_LocalRotation.w

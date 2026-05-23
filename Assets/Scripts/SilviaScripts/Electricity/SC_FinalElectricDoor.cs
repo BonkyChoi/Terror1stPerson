@@ -64,12 +64,14 @@ public class SC_FinalElectricDoor : MonoBehaviour
         //Volver al gameplay normal
         Time.timeScale = 0;
         //cinemática/poner sonido en el que se oye una puerta y dice "PARECE QUE LA PUERTA SE ABRIÓ"
-        Time.timeScale = 1;
         OnOpenDoor?.Invoke();
         
     }
 
-    
+    public void ReturnGameplay()
+    {
+        Time.timeScale = 1;
+    }
 
     private void OnEnable()
     {
