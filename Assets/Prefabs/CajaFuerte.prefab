@@ -303,6 +303,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 270
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2a9132ab7494fd54da1d9d14a19cfbe2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2611097bf9d1a1245a5de3ee600cb7f8, type: 2}
     - target: {fileID: 919132149155446097, guid: 2a9132ab7494fd54da1d9d14a19cfbe2, type: 3}
       propertyPath: m_Name
       value: caja fuerte
@@ -502,6 +506,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90.037
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2b96a9d13dc5cb5419b0ab7d64723cb0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2611097bf9d1a1245a5de3ee600cb7f8, type: 2}
     - target: {fileID: 919132149155446097, guid: 2b96a9d13dc5cb5419b0ab7d64723cb0, type: 3}
       propertyPath: m_Name
       value: puerta caja fuerte
@@ -608,6 +616,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 92b3304c1504c544cbdafa49edb05c7c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2611097bf9d1a1245a5de3ee600cb7f8, type: 2}
     - target: {fileID: 919132149155446097, guid: 92b3304c1504c544cbdafa49edb05c7c, type: 3}
       propertyPath: m_Name
       value: panel caja fuerte
