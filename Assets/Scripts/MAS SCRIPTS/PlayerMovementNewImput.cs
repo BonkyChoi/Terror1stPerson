@@ -299,7 +299,7 @@ public class PlayerMovementNewImput : MonoBehaviour
     {
         Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
         
-        if (Physics.Raycast(ray, out RaycastHit hit, 1.2f))
+        if (Physics.Raycast(ray, out RaycastHit hit, 3f))
         {
             return;
         }

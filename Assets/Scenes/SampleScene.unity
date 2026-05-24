@@ -107648,42 +107648,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 537968509855479728, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
-      propertyPath: m_CameraType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 537968509855479728, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
-      propertyPath: m_ClearDepth
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2070922723629599028, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2392120501074488754, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
-      propertyPath: LensModeOverride.Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2810006625845668486, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
-      propertyPath: m_OcclusionCulling
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2810006625845668486, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 5291862271203402153, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -8.300595
-      objectReference: {fileID: 0}
-    - target: {fileID: 5291862271203402153, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.4299998
-      objectReference: {fileID: 0}
-    - target: {fileID: 5291862271203402153, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -20.748291
-      objectReference: {fileID: 0}
     - target: {fileID: 6253531530720180199, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.1
@@ -107724,25 +107688,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6418215036263499804, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8017830720816136093, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
       propertyPath: m_Name
       value: PlayerSilvia
-      objectReference: {fileID: 0}
-    - target: {fileID: 8810498020647863417, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
-      propertyPath: m_Cameras.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8810498020647863417, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
-      propertyPath: 'm_Cameras.Array.data[1]'
-      value: 
-      objectReference: {fileID: 1533948940}
-    - target: {fileID: 8810498020647863417, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
-      propertyPath: m_RequiresDepthTextureOption
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -119647,11 +119595,6 @@ Transform:
   - {fileID: 2038900956}
   m_Father: {fileID: 632290738}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!20 &1533948940 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 2810006625845668486, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
-  m_PrefabInstance: {fileID: 1371429412}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1541768333
 PrefabInstance:
   m_ObjectHideFlags: 0
