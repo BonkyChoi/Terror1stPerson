@@ -46,6 +46,17 @@ public class SC_CursorPuzzle : MonoBehaviour
     private int totalTimesToSuccess = 3;
     
     [SerializeField] private UnityEvent OnSuccess;
+    
+    //--SOUND--
+    [SerializeField] private AudioClip[] audio;
+    //fallar=0,acertar=1,ganar=2,completar=3
+    //completado se loopea
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void Start()
     {
@@ -138,10 +149,12 @@ public class SC_CursorPuzzle : MonoBehaviour
         {
             //throw (new ArgumentException("todo bien"));
             successTimes++;
+            audioSource.PlayOneShot(audio[1]);
             if (successTimes >= totalTimesToSuccess)
             {
                 OnExitGame();
                 OnSuccess?.Invoke();
+                StartCoroutine(WinSequence());
             }
         }
         else
@@ -153,6 +166,15 @@ public class SC_CursorPuzzle : MonoBehaviour
         resolving = false;
         if (!puzzleActive) yield break;
         BeginPlay();
+    }
+
+    private IEnumerator WinSequence()
+    {
+        audioSource.PlayOneShot(audio[2]);
+        yield return new WaitForSeconds(audio[2].length);
+        audioSource.clip = audio[3];
+        audioSource.loop = true;
+        audioSource.Play();
     }
 
     // private void AddSuccess()
