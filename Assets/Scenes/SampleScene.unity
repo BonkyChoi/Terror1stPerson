@@ -32300,6 +32300,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuertaCorrederaAuto (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7937869421571735935, guid: f5a67f0dee9cd9e4b830522f5f95b382, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6646a8d12eb335a43b0a69053e6a13a3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -74266,6 +74270,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuertaCorrederaAuto
       objectReference: {fileID: 0}
+    - target: {fileID: 7937869421571735935, guid: f5a67f0dee9cd9e4b830522f5f95b382, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6646a8d12eb335a43b0a69053e6a13a3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -119957,6 +119965,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuertaCorrederaAuto (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7937869421571735935, guid: f5a67f0dee9cd9e4b830522f5f95b382, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6646a8d12eb335a43b0a69053e6a13a3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
