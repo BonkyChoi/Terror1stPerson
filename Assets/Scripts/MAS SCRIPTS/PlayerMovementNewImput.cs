@@ -60,10 +60,9 @@ public class PlayerMovementNewImput : MonoBehaviour
     public float pushForce = 5f;
     public float pushDistance = 2f;
     public float pushCooldown = 2f;
-    
+
     [Header("Audio")]
     public AudioSource audioSource;
-
     public AudioClip throwClip;
 
     [Header("Pasos")]
@@ -77,6 +76,22 @@ public class PlayerMovementNewImput : MonoBehaviour
 
     [Header("Fusibles")]
     public List<GameObject> fusibles = new List<GameObject>();
+
+    [Header("Balanceo Objetos")]
+    public Transform objetoBalanceo1;
+    public Transform objetoBalanceo2;
+
+    public float swayAmount = 0.03f;
+    public float swaySpeed = 7f;
+    public float rotationAmount = 2f;
+
+    private Vector3 obj1InitialPos;
+    private Vector3 obj2InitialPos;
+
+    private Quaternion obj1InitialRot;
+    private Quaternion obj2InitialRot;
+
+    private float swayTimer;
 
     private CharacterController controller;
     private float xRotation = 0f;
@@ -97,7 +112,8 @@ public class PlayerMovementNewImput : MonoBehaviour
     private Material originalMaterial;
 
     private float pushTimer = 0f;
-    public float currentSpeed { get; set; }//necesito esta referencia para hacer una chapuza hasta que me responda german a un problema srry
+
+    public float currentSpeed { get; set; }
 
     void Awake()
     {
@@ -112,26 +128,27 @@ public class PlayerMovementNewImput : MonoBehaviour
         throwAction = player.FindAction("Throw");
         push = player.FindAction("Push");
     }
-
-    void OnEnable()
-    {
-        //inputActions.Enable();
-    }
-
-    void OnDisable()
-    {
-        //inputActions.Disable();
-    }
-
     void Start()
     {
         controller = GetComponent<CharacterController>();
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         currentHeight = standingHeight;
-    }
 
+        if (objetoBalanceo1 != null)
+        {
+            obj1InitialPos = objetoBalanceo1.localPosition;
+            obj1InitialRot = objetoBalanceo1.localRotation;
+        }
+
+        if (objetoBalanceo2 != null)
+        {
+            obj2InitialPos = objetoBalanceo2.localPosition;
+            obj2InitialRot = objetoBalanceo2.localRotation;
+        }
+    }
     void Update()
     {
         Move();
@@ -140,11 +157,11 @@ public class PlayerMovementNewImput : MonoBehaviour
         HandleInput();
         CheckHighlight();
         HandleFootsteps();
+        HandleObjectSway();
 
         if (pushTimer > 0)
             pushTimer -= Time.deltaTime;
     }
-
     void HandleInput()
     {
         if (interact.triggered)
@@ -156,17 +173,20 @@ public class PlayerMovementNewImput : MonoBehaviour
         if (push.triggered)
             HandlePush();
     }
-
     void Move()
     {
         Vector2 moveInput = move.ReadValue<Vector2>();
+
         float x = moveInput.x;
         float z = moveInput.y;
 
         currentSpeed = run.IsPressed() ? runSpeed : walkSpeed;
-        if (isCrouching) currentSpeed = crouchSpeed;
 
-        Vector3 moveVec = (transform.right * x + transform.forward * z) * currentSpeed;
+        if (isCrouching)
+            currentSpeed = crouchSpeed;
+
+        Vector3 moveVec =
+            (transform.right * x + transform.forward * z) * currentSpeed;
 
         UpdateTriggerRadius(x, z);
 
@@ -180,11 +200,11 @@ public class PlayerMovementNewImput : MonoBehaviour
         }
 
         yVelocity += gravity * Time.deltaTime;
+
         moveVec.y = yVelocity;
 
         controller.Move(moveVec * Time.deltaTime);
     }
-
     void Look()
     {
         Vector2 lookInput = look.ReadValue<Vector2>();
@@ -195,15 +215,19 @@ public class PlayerMovementNewImput : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, maxLookDown, maxLookUp);
 
-        cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        cameraTransform.localRotation =
+            Quaternion.Euler(xRotation, 0f, 0f);
+
         transform.Rotate(Vector3.up * mouseX);
     }
-
     bool HayTecho()
     {
-        return Physics.CheckSphere(headCheck.position, headRadius, ceilingMask);
+        return Physics.CheckSphere(
+            headCheck.position,
+            headRadius,
+            ceilingMask
+        );
     }
-
     void Crouch()
     {
         bool quiereAgacharse = crouch.IsPressed();
@@ -213,43 +237,78 @@ public class PlayerMovementNewImput : MonoBehaviour
 
         isCrouching = quiereAgacharse;
 
-        float targetHeight = isCrouching ? crouchHeight : standingHeight;
-        currentHeight = Mathf.Lerp(currentHeight, targetHeight, Time.deltaTime * 10f);
+        float targetHeight =
+            isCrouching ? crouchHeight : standingHeight;
+
+        currentHeight =
+            Mathf.Lerp(
+                currentHeight,
+                targetHeight,
+                Time.deltaTime * 10f
+            );
 
         controller.height = currentHeight;
         controller.center = new Vector3(0, currentHeight / 2f, 0);
 
         Vector3 camPos = cameraTransform.localPosition;
+
         float targetCamY = currentHeight - 0.2f;
-        camPos.y = Mathf.Lerp(camPos.y, targetCamY, Time.deltaTime * 10f);
+
+        camPos.y =
+            Mathf.Lerp(
+                camPos.y,
+                targetCamY,
+                Time.deltaTime * 10f
+            );
+
         cameraTransform.localPosition = camPos;
     }
-
     void TryInteract()
     {
-        Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
+        Ray ray =
+            new Ray(
+                cameraTransform.position,
+                cameraTransform.forward
+            );
 
         if (Physics.Raycast(ray, out RaycastHit hit, grabDistance))
         {
-            if (hit.collider.CompareTag("Lanzable") || hit.collider.CompareTag("Fusible"))
+            if (hit.collider.CompareTag("Lanzable") ||
+                hit.collider.CompareTag("Fusible"))
+            {
                 GrabSmall(hit.collider.gameObject);
-
+            }
             else if (hit.collider.CompareTag("Pesado"))
+            {
                 GrabHeavy(hit.collider.gameObject);
+            }
+
             if (hit.collider.CompareTag("Puzzle"))
             {
-                hit.collider.GetComponentInParent<Rotaciones>()?.Interact();
+                hit.collider
+                    .GetComponentInParent<Rotaciones>()
+                    ?.Interact();
+            }
+
+            Nota nota = hit.collider.GetComponent<Nota>();
+
+            if (nota != null)
+            {
+                nota.Interact();
             }
         }
     }
-
     void GrabSmall(GameObject obj)
     {
         obj.layer = LayerMask.NameToLayer("Se ve");
-        if (heavyObject != null) return;
+
+        if (heavyObject != null)
+            return;
 
         Rigidbody rb = obj.GetComponent<Rigidbody>();
-        if (rb == null) return;
+
+        if (rb == null)
+            return;
 
         if (rightHandObject == null)
         {
@@ -263,10 +322,15 @@ public class PlayerMovementNewImput : MonoBehaviour
             leftRb = rb;
             obj.transform.SetParent(holdPointLeft);
         }
-        else return;
+        else
+        {
+            return;
+        }
 
         rb.isKinematic = true;
+
         obj.transform.localPosition = Vector3.zero;
+
         if (obj.GetComponent<Llave>() != null)
         {
             obj.transform.localRotation = Quaternion.Euler(-90f, 0f, 0f);
@@ -277,32 +341,47 @@ public class PlayerMovementNewImput : MonoBehaviour
         }
 
         if (obj.CompareTag("Fusible") && !fusibles.Contains(obj))
+            obj.transform.localRotation = Quaternion.Euler(-90f, 0f, 0f);
             fusibles.Add(obj);
     }
-
     void GrabHeavy(GameObject obj)
     {
         obj.layer = LayerMask.NameToLayer("Se ve");
-        if (rightHandObject != null || leftHandObject != null || heavyObject != null) return;
+
+        if (rightHandObject != null ||
+            leftHandObject != null ||
+            heavyObject != null)
+        {
+            return;
+        }
 
         heavyObject = obj;
+
         heavyRb = obj.GetComponent<Rigidbody>();
-        if (heavyRb == null) return;
+
+        if (heavyRb == null)
+            return;
 
         heavyRb.isKinematic = true;
+
         obj.transform.SetParent(holdPointHeavy);
+
         obj.transform.localPosition = Vector3.zero;
         obj.transform.localRotation = Quaternion.identity;
     }
-
     void ThrowObject()
     {
-        Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
-        
+        Ray ray =
+            new Ray(
+                cameraTransform.position,
+                cameraTransform.forward
+            );
+
         if (Physics.Raycast(ray, out RaycastHit hit, 3f))
         {
             return;
         }
+
         if (rightHandObject != null)
         {
             ReleaseAndThrow(rightHandObject, rightRb, throwForce);
@@ -319,38 +398,52 @@ public class PlayerMovementNewImput : MonoBehaviour
             heavyObject = null;
         }
     }
-
     void ReleaseAndThrow(GameObject obj, Rigidbody rb, float force)
     {
         if (obj.CompareTag("Fusible"))
             fusibles.Remove(obj);
 
         obj.transform.SetParent(null);
+
         obj.layer = LayerMask.NameToLayer("Default");
+
         rb.isKinematic = false;
-        rb.AddForce(cameraTransform.forward * force, ForceMode.Impulse);
-        
+
+        rb.AddForce(
+            cameraTransform.forward * force,
+            ForceMode.Impulse
+        );
+
         if (throwClip != null)
         {
             audioSource.PlayOneShot(throwClip);
         }
     }
-
     void CheckHighlight()
     {
-        Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
+        Ray ray =
+            new Ray(
+                cameraTransform.position,
+                cameraTransform.forward
+            );
 
         if (Physics.Raycast(ray, out RaycastHit hit, grabDistance))
         {
             GameObject obj = hit.collider.gameObject;
 
-            if (obj == rightHandObject || obj == leftHandObject || obj == heavyObject)
+            if (obj == rightHandObject ||
+                obj == leftHandObject ||
+                obj == heavyObject)
             {
                 RemoveHighlight();
                 return;
             }
 
-            if (hit.collider.CompareTag("Lanzable") || hit.collider.CompareTag("Pesado") || hit.collider.CompareTag("Fusible") || hit.collider.CompareTag("Empujable")|| hit.collider.CompareTag("Iluminado"))
+            if (hit.collider.CompareTag("Lanzable") ||
+                hit.collider.CompareTag("Pesado") ||
+                hit.collider.CompareTag("Fusible") ||
+                hit.collider.CompareTag("Empujable") ||
+                hit.collider.CompareTag("Iluminado"))
             {
                 Renderer rend = hit.collider.GetComponent<Renderer>();
 
@@ -364,13 +457,13 @@ public class PlayerMovementNewImput : MonoBehaviour
 
                     rend.material = outlineMaterial;
                 }
+
                 return;
             }
         }
 
         RemoveHighlight();
     }
-
     void RemoveHighlight()
     {
         if (highlightedObject != null)
@@ -379,37 +472,60 @@ public class PlayerMovementNewImput : MonoBehaviour
             highlightedObject = null;
         }
     }
-
     void HandlePush()
     {
-        if (pushTimer > 0) return;
-
-        if (rightHandObject != null || leftHandObject != null || heavyObject != null)
+        if (pushTimer > 0)
             return;
 
-        Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
+        if (rightHandObject != null ||
+            leftHandObject != null ||
+            heavyObject != null)
+        {
+            return;
+        }
+
+        Ray ray =
+            new Ray(
+                cameraTransform.position,
+                cameraTransform.forward
+            );
 
         if (Physics.Raycast(ray, out RaycastHit hit, pushDistance))
         {
             if (hit.collider.CompareTag("Empujable"))
             {
                 Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
+
                 if (rb != null)
                 {
-                    Vector3 dir = new Vector3(cameraTransform.forward.x, 0, cameraTransform.forward.z).normalized;
-                    rb.AddForce(dir * pushForce, ForceMode.Impulse);
+                    Vector3 dir =
+                        new Vector3(
+                            cameraTransform.forward.x,
+                            0,
+                            cameraTransform.forward.z
+                        ).normalized;
+
+                    rb.AddForce(
+                        dir * pushForce,
+                        ForceMode.Impulse
+                    );
+
                     pushTimer = pushCooldown;
                 }
             }
         }
     }
-
     void UpdateTriggerRadius(float x, float z)
     {
-        if (triggerSphere == null) return;
+        if (triggerSphere == null)
+            return;
 
         bool isMoving = x != 0 || z != 0;
-        bool isRunning = run.IsPressed() && isMoving && !isCrouching;
+
+        bool isRunning =
+            run.IsPressed() &&
+            isMoving &&
+            !isCrouching;
 
         if (isCrouching)
             triggerSphere.radius = crouchRadius;
@@ -448,14 +564,98 @@ public class PlayerMovementNewImput : MonoBehaviour
             stepTimer = currentDelay;
         }
     }
-
     void PlayFootstep()
     {
         if (footstepClips.Length == 0)
             return;
 
-        int index = Random.Range(0, footstepClips.Length);
+        int index =
+            Random.Range(0, footstepClips.Length);
 
         audioSource.PlayOneShot(footstepClips[index]);
+    }
+    void HandleObjectSway()
+    {
+        Vector2 moveInput = move.ReadValue<Vector2>();
+
+        bool isMoving =
+            moveInput.magnitude > 0.1f &&
+            controller.isGrounded;
+
+        if (isMoving)
+        {
+            swayTimer += Time.deltaTime * swaySpeed;
+
+            float swayX =
+                Mathf.Sin(swayTimer) * swayAmount;
+
+            float swayY =
+                Mathf.Cos(swayTimer * 2f) *
+                swayAmount *
+                0.5f;
+
+            Quaternion rot =
+                Quaternion.Euler(
+                    Mathf.Cos(swayTimer) * rotationAmount,
+                    0f,
+                    Mathf.Sin(swayTimer) * rotationAmount
+                );
+
+            if (objetoBalanceo1 != null)
+            {
+                objetoBalanceo1.localPosition =
+                    obj1InitialPos +
+                    new Vector3(swayX, swayY, 0f);
+
+                objetoBalanceo1.localRotation =
+                    obj1InitialRot * rot;
+            }
+
+            if (objetoBalanceo2 != null)
+            {
+                objetoBalanceo2.localPosition =
+                    obj2InitialPos +
+                    new Vector3(-swayX, swayY, 0f);
+
+                objetoBalanceo2.localRotation =
+                    obj2InitialRot * rot;
+            }
+        }
+        else
+        {
+            if (objetoBalanceo1 != null)
+            {
+                objetoBalanceo1.localPosition =
+                    Vector3.Lerp(
+                        objetoBalanceo1.localPosition,
+                        obj1InitialPos,
+                        Time.deltaTime * 8f
+                    );
+
+                objetoBalanceo1.localRotation =
+                    Quaternion.Lerp(
+                        objetoBalanceo1.localRotation,
+                        obj1InitialRot,
+                        Time.deltaTime * 8f
+                    );
+            }
+
+            if (objetoBalanceo2 != null)
+            {
+                objetoBalanceo2.localPosition =
+                    Vector3.Lerp(
+                        objetoBalanceo2.localPosition,
+                        obj2InitialPos,
+                        Time.deltaTime * 8f
+                    );
+
+                objetoBalanceo2.localRotation =
+                    Quaternion.Lerp(
+                        objetoBalanceo2.localRotation,
+                        obj2InitialRot,
+                        Time.deltaTime * 8f
+                    );
+            }
+        }
     }
 }
