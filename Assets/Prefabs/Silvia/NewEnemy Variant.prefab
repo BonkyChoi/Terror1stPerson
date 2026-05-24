@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 505885901520208322, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1474541012310223900, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
       propertyPath: m_Speed
       value: 51.2
@@ -82,15 +86,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6488869075951928511, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 47.12479
+      value: 3.7
       objectReference: {fileID: 0}
     - target: {fileID: 6488869075951928511, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.38
+      value: 0.918
       objectReference: {fileID: 0}
     - target: {fileID: 6488869075951928511, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -28.09
+      value: -18.56
       objectReference: {fileID: 0}
     - target: {fileID: 6488869075951928511, guid: 4f5dd0269ef88ad47a574e7b4abcb0fb, type: 3}
       propertyPath: m_LocalRotation.w
