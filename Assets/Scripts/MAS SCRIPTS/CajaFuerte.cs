@@ -6,6 +6,12 @@ public class CajaFuerte : MonoBehaviour
 {
     [Header("ANIMACION")]
     public Animator anim;
+    
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip openSound;
+    public AudioClip successSound;
+    public AudioClip failSound;
 
     [Header("UI PANEL")]
     public GameObject panelCodigo;
@@ -85,7 +91,17 @@ public class CajaFuerte : MonoBehaviour
         {
             indicadores[i].color = correcto ? Color.green : Color.red;
         }
-
+        if (correcto)
+        {
+            if (successSound != null)
+                audioSource.PlayOneShot(successSound);
+        }
+        else
+        {
+            if (failSound != null)
+                audioSource.PlayOneShot(failSound);
+        }
+        
         yield return new WaitForSeconds(2f);
 
         if (correcto)
@@ -102,6 +118,11 @@ public class CajaFuerte : MonoBehaviour
         panelActivo = false;
 
         anim.SetBool("PuertaActiv", true);
+        
+        if (openSound != null)
+        {
+            audioSource.PlayOneShot(openSound);
+        }
     }
     public void FinAnimacion()
     {

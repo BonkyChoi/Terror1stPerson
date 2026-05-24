@@ -22,6 +22,10 @@ public class SistemaCombinacion : MonoBehaviour
 
     
     public Transform spawnPoint;
+    
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip combineSound;
 
     private List<Item> itemsInside = new List<Item>();
 
@@ -63,6 +67,11 @@ public class SistemaCombinacion : MonoBehaviour
                             : (a.transform.position + b.transform.position) / 2f;
 
                         Instantiate(combo.result, spawnPos, Quaternion.identity);
+                        
+                        if (combineSound != null)
+                        {
+                            audioSource.PlayOneShot(combineSound);
+                        }
 
                         Destroy(a);
                         Destroy(b);

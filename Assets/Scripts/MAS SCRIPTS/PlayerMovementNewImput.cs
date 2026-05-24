@@ -60,6 +60,20 @@ public class PlayerMovementNewImput : MonoBehaviour
     public float pushForce = 5f;
     public float pushDistance = 2f;
     public float pushCooldown = 2f;
+    
+    [Header("Audio")]
+    public AudioSource audioSource;
+
+    public AudioClip throwClip;
+
+    [Header("Pasos")]
+    public AudioClip[] footstepClips;
+
+    public float walkStepDelay = 0.5f;
+    public float runStepDelay = 0.3f;
+    public float crouchStepDelay = 0.75f;
+
+    private float stepTimer;
 
     [Header("Fusibles")]
     public List<GameObject> fusibles = new List<GameObject>();
@@ -125,6 +139,7 @@ public class PlayerMovementNewImput : MonoBehaviour
         Crouch();
         HandleInput();
         CheckHighlight();
+        HandleFootsteps();
 
         if (pushTimer > 0)
             pushTimer -= Time.deltaTime;
@@ -314,6 +329,11 @@ public class PlayerMovementNewImput : MonoBehaviour
         obj.layer = LayerMask.NameToLayer("Default");
         rb.isKinematic = false;
         rb.AddForce(cameraTransform.forward * force, ForceMode.Impulse);
+        
+        if (throwClip != null)
+        {
+            audioSource.PlayOneShot(throwClip);
+        }
     }
 
     void CheckHighlight()
@@ -397,5 +417,45 @@ public class PlayerMovementNewImput : MonoBehaviour
             triggerSphere.radius = runRadius;
         else if (isMoving)
             triggerSphere.radius = moveRadius;
+    }
+    void HandleFootsteps()
+    {
+        if (!controller.isGrounded)
+            return;
+
+        Vector2 moveInput = move.ReadValue<Vector2>();
+
+        bool isMoving = moveInput.magnitude > 0.1f;
+
+        if (!isMoving)
+        {
+            stepTimer = 0;
+            return;
+        }
+
+        float currentDelay = walkStepDelay;
+
+        if (isCrouching)
+            currentDelay = crouchStepDelay;
+        else if (run.IsPressed())
+            currentDelay = runStepDelay;
+
+        stepTimer -= Time.deltaTime;
+
+        if (stepTimer <= 0)
+        {
+            PlayFootstep();
+            stepTimer = currentDelay;
+        }
+    }
+
+    void PlayFootstep()
+    {
+        if (footstepClips.Length == 0)
+            return;
+
+        int index = Random.Range(0, footstepClips.Length);
+
+        audioSource.PlayOneShot(footstepClips[index]);
     }
 }

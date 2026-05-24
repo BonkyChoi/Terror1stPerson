@@ -5,6 +5,10 @@ public class PuertaLlave : MonoBehaviour
 {
     public Animator anim;
     public Llave llaveCorrecta;
+    
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip openSound;
 
     [Header("UI")]
     public GameObject mensajeUI;
@@ -40,6 +44,11 @@ public class PuertaLlave : MonoBehaviour
         enAnimacion = true;
 
         anim.SetBool("PuertaActiv", true);
+        
+        if (openSound != null)
+        {
+            audioSource.PlayOneShot(openSound);
+        }
 
         Destroy(llave.gameObject);
     }

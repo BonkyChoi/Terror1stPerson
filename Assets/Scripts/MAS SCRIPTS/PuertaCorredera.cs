@@ -7,6 +7,13 @@ public class PuertaCorredera : MonoBehaviour
     public Transform closedPoint;
 
     public float speed = 5f;
+    
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip openSound;
+    public AudioClip closeSound;
+
+    private bool isOpen = false;
 
     private int insideCount = 0;
     private Vector3 target;
@@ -22,6 +29,23 @@ public class PuertaCorredera : MonoBehaviour
             target,
             speed * Time.deltaTime
         );
+
+        bool shouldBeOpen = (target == openPoint.position);
+
+        if (shouldBeOpen && !isOpen)
+        {
+            isOpen = true;
+
+            if (openSound != null)
+                audioSource.PlayOneShot(openSound);
+        }
+        else if (!shouldBeOpen && isOpen)
+        {
+            isOpen = false;
+
+            if (closeSound != null)
+                audioSource.PlayOneShot(closeSound);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
