@@ -673,7 +673,7 @@ MonoBehaviour:
   runRadius: 2.2
   crouchRadius: 1
   cameraTransform: {fileID: 8862180756585350986}
-  mouseSensitivity: 80
+  mouseSensitivity: 20
   maxLookUp: 60
   maxLookDown: -60
   crouchHeight: 1
@@ -704,6 +704,11 @@ MonoBehaviour:
   runStepDelay: 0.3
   crouchStepDelay: 0.75
   fusibles: []
+  objetoBalanceo1: {fileID: 8268801767059037992}
+  objetoBalanceo2: {fileID: 7666147624160423386}
+  swayAmount: 0.03
+  swaySpeed: 7
+  rotationAmount: 2
 --- !u!143 &6081443176328577178
 CharacterController:
   m_ObjectHideFlags: 0
