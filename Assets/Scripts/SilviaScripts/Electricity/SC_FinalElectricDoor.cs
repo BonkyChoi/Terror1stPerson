@@ -62,6 +62,7 @@ public class SC_FinalElectricDoor : MonoBehaviour
         //Reanudar gameplay
         //Apagar las luces (esta ultima parte se debe hacer a oscuras)
         //Volver al gameplay normal
+        print("Abro la puerta");
         Time.timeScale = 0;
         //cinemática/poner sonido en el que se oye una puerta y dice "PARECE QUE LA PUERTA SE ABRIÓ"
         OnOpenDoor?.Invoke();
