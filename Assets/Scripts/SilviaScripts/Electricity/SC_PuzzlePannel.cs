@@ -14,7 +14,7 @@ public class SC_PuzzlePannel : MonoBehaviour
     [SerializeField] private UnityEvent onPuzzleInteract;
 
     //a borrar mas tarde
-    private PlayerMovementV move;
+    private PlayerMovementNewImput move;
 
     private bool CanSuccess;
     private bool canInteract;
@@ -32,9 +32,9 @@ public class SC_PuzzlePannel : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        if (other.GetComponent<PlayerMovementV>())
+        if (other.GetComponent<PlayerMovementNewImput>())
         {
-            move = other.GetComponent<PlayerMovementV>();
+            move = other.GetComponent<PlayerMovementNewImput>();
         }
         if (CanSuccess) return;
         

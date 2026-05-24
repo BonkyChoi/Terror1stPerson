@@ -148,17 +148,19 @@ public class SC_CursorPuzzle : MonoBehaviour
         if (delta <= zoneSize)
         {
             //throw (new ArgumentException("todo bien"));
-            successTimes++;
             audioSource.PlayOneShot(audio[1]);
+            successTimes++;
             if (successTimes >= totalTimesToSuccess)
             {
+                StartCoroutine(WinSequence());
                 OnExitGame();
                 OnSuccess?.Invoke();
-                StartCoroutine(WinSequence());
             }
         }
         else
         {
+            audioSource.PlayOneShot(audio[0]);
+            print("fallo tiro");
             Substract15Seconds?.Invoke();
         }
         //si el cursor esta entre zona inicio objetivo [la rotación en z] y zona final objetivo [que tanto fill amount tiene] es success:es fail;
@@ -170,9 +172,16 @@ public class SC_CursorPuzzle : MonoBehaviour
 
     private IEnumerator WinSequence()
     {
-        audioSource.PlayOneShot(audio[2]);
-        yield return new WaitForSeconds(audio[2].length);
-        audioSource.clip = audio[3];
+        audioSource.clip = audio[2];
+        audioSource.Play();
+        yield return new WaitForSeconds(0.9f);
+        audioSource.PlayOneShot(audio[3]);
+        print("sueno");
+        yield return new WaitForSeconds(audio[3].length-2f);
+        print("sueno4");
+        audioSource.PlayOneShot(audio[3]);
+        yield return new WaitForSeconds(audio[3].length-2.1f);
+        audioSource.clip = audio[4];
         audioSource.loop = true;
         audioSource.Play();
     }
