@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SC_ElectricalPannel : MonoBehaviour
@@ -11,6 +12,7 @@ public class SC_ElectricalPannel : MonoBehaviour
     private int currentLight;
     private bool isLightOn;
     [SerializeField] private Light[] allLightsInObject;
+    private bool canInteract;
     public static System.Action SwitchOnTheLights;
 
     private void Awake()
@@ -23,9 +25,21 @@ public class SC_ElectricalPannel : MonoBehaviour
     {
         SC_LightManager.OnSwitchOff += LightIsOff;
         SC_LightManager.OnSwitchOn += LightIsOn;
+        SC_PlayerBrain.OnInteract += OnInteract;
+        SC_PlayerBrain.OnDesinteract += OnDesinteract;
     }
-    
-    
+
+    private void OnDesinteract()
+    {
+        canInteract = false;
+    }
+
+    private void OnInteract()
+    {
+        canInteract = true;
+    }
+
+
     private void OnDisable()
     {
         SC_LightManager.OnSwitchOff -= LightIsOff;
@@ -41,24 +55,33 @@ public class SC_ElectricalPannel : MonoBehaviour
     {
         isLightOn = false;
     }
+    
+    
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))//falta poner tanto la UI como quetenga el fusible
         {
+            print("Es player");
             if (currentLight > 0)
             {
-                if (Input.GetKey(KeyCode.E))
+                print("lasLuceSon mayores a 0");
+                if (canInteract)
                 {
+                    print("playerHasInteracted");
                     if (!isLightOn)
                     {
+                        print("light is off");
                         foreach (Transform t in transform)
                         {
                             if (t.TryGetComponent(out SC_ImAFusible fusible))
                             {
+                                print("encontre un fusible");
+                                //referencia serializada a mano derecha y de ahi se coge
                                 SwitchOnTheLights?.Invoke();
                                 currentLight--;
                                 Destroy(t.gameObject);
+                                print("enciendo luz");
                                 break;
                             }
                         }
