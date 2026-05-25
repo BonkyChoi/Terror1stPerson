@@ -52,12 +52,16 @@ public class SC_ElectricalPannel : MonoBehaviour
                 {
                     if (!isLightOn)
                     {
-                        if (GetComponentInChildren<SC_ImAFusible>())
+                        foreach (Transform t in transform)
                         {
-                            SwitchOnTheLights?.Invoke();
-                            currentLight--;
+                            if (t.TryGetComponent(out SC_ImAFusible fusible))
+                            {
+                                SwitchOnTheLights?.Invoke();
+                                currentLight--;
+                                Destroy(t.gameObject);
+                                break;
+                            }
                         }
-                        
                     }
                 }
             }

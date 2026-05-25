@@ -24,6 +24,8 @@ public class SC_FSMController : MonoBehaviour
     
     //Animator
     [SerializeField] private Animator animator;
+
+    [SerializeField] private GameObject[] models;
     
     
     
@@ -73,12 +75,16 @@ public class SC_FSMController : MonoBehaviour
     private void StopMovement()
     {
         //bloquear al agente
+        models[0].gameObject.SetActive(true);
+        models[1].gameObject.SetActive(false);
         Agent.isStopped = true;
         triggerCollider.enabled = false;
     }
 
     private void PatrolAndWait()
     {
+        models[1].gameObject.SetActive(false);
+        models[0].gameObject.SetActive(true);
         ChangeState(PatrolState);
         triggerCollider.enabled = true;
     }
