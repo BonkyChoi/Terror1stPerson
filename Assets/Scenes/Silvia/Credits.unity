@@ -631,14 +631,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\n\n\n\n\n\n\n\n\nCONCEPT DESIGN\nMiguel Angel Neira\n Ignacio Rocabado\nJorge
-    Alonso\nAlejandro Fernandez\nSilvia Garc\xEDa de Arboleya\n\n\nLEVEL DESIGN\nIgnacio
-    Rocabado\nJorge Alonso\n\n\nSYSTEMS DESIGN\nSilvia Garc\xEDa de Arboleya\n\n\nMECHANICS
-    DESIGN\nAlejandro Fernandez\n\n\nENEMY DESIGN\nSilvia Garc\xEDa de Arboleya\n\n\nGAME
-    PROGRAMMER\nAlejandro Fernandez\nSilvia Garc\xEDa de Arboleya\n\n\n3D ARTIST\nMiguel
-    Angel Neira\n\n\nTEXTURE ARTIST\nMiguel Angel Neira\nFAB\n\n\nLIGHTING\nSilvia
-    Garc\xEDa de Arboleya\n\n\nCINEMATICS\nSilvia de Arboleya\n\n\n\n\n\nTHANK YOU
-    FOR HAVING PLAYED, SEE YOU IN FUTURE PROJECTS\n\n"
+  m_text: "\n\n\n\n\n\n\n\n\nCONCEPT DESIGN\nMiguel Angel Neira\nIgnacio Rocabado\nJorge
+    Alonso\nAlejandro Fern\xE1ndez\nSilvia Garc\xEDa de Arboleya\n\n\nLEVEL DESIGN\nIgnacio
+    Rocabado\nJorge Alonso\n\n\nSYSTEMS DESIGN\nSilvia Garc\xEDa de Arboleya\nMiguel
+    \xC1ngel Neira\nJorge Alonso G\xF3mez\n\n\nMECHANICS DESIGN\nAlejandro Fernandez\n\n\nENEMY
+    DESIGN\nSilvia Garc\xEDa de Arboleya\n\n\nGAME PROGRAMMER\nAlejandro Fernandez\nSilvia
+    Garc\xEDa de Arboleya\n\n\n3D ARTIST\nMiguel Angel Neira\n\n\nTEXTURE ARTIST\nMiguel
+    Angel Neira\nFAB\n\n\nLIGHTING\nSilvia Garc\xEDa de Arboleya\nIgnacio Rocabado\n\nCINEMATICS\nSilvia
+    de Arboleya\n\n\nNARRATIVE DESIGN\nJorge Alonso\n\n\nMUSIC\nJorge Alonso\n\n\nTHANK
+    YOU FOR HAVING PLAYED, SEE YOU IN FUTURE PROJECTS\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
