@@ -36,7 +36,7 @@ public class PuzzleLightCounter : MonoBehaviour
         lightCounter++;
         puzzleCounterA++;
         //OnPuzleAComplete?.Invoke();
-        if (lightCounter == 5)
+        if (lightCounter == 4)//cambiar los valores d 4 a 5
         {
             puzzleCounterA = 0;
             OpenFinalDoor?.Invoke();
@@ -47,7 +47,7 @@ public class PuzzleLightCounter : MonoBehaviour
         if (puzzleCounterB > 0) return;
         lightCounter++;
         puzzleCounterB++;
-        if (lightCounter == 5)
+        if (lightCounter == 4)
         {
             puzzleCounterB = 0;
             OpenFinalDoor?.Invoke();
@@ -58,7 +58,7 @@ public class PuzzleLightCounter : MonoBehaviour
         if (puzzleCounterC > 0) return;
         puzzleCounterC++;
         lightCounter++;
-        if (lightCounter == 5)
+        if (lightCounter == 4)
         {
             puzzleCounterC = 0;
             OpenFinalDoor?.Invoke();
@@ -69,7 +69,7 @@ public class PuzzleLightCounter : MonoBehaviour
         if (puzzleCounterD > 0) return;
         puzzleCounterD++;
         lightCounter++;
-        if (lightCounter == 5)
+        if (lightCounter == 4)
         {
             puzzleCounterD = 0;
             OpenFinalDoor?.Invoke();
@@ -81,7 +81,7 @@ public class PuzzleLightCounter : MonoBehaviour
         if (puzzleTutorial > 0) return;
         puzzleTutorial++;
         lightCounter++;
-        if (lightCounter == 5)
+        if (lightCounter == 4)
         {
             puzzleCounterD = 0;
             OpenFinalDoor?.Invoke();

@@ -7775,8 +7775,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
+      propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -7788,7 +7792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
@@ -7799,36 +7803,48 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
+      propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[6].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1613666514}
+      objectReference: {fileID: 1168317568}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1168317565}
+      objectReference: {fileID: 1613666514}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1606571927}
+      objectReference: {fileID: 1168317565}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 587651750}
+      objectReference: {fileID: 1606571927}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 1123407662}
+      objectReference: {fileID: 587651750}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[5].m_Target
       value: 
+      objectReference: {fileID: 1123407662}
+    - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
+      propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[6].m_Target
+      value: 
       objectReference: {fileID: 1069987572}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
+      propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[6].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: set_enabled
+      value: Prioritize
       objectReference: {fileID: 0}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
+      value: set_enabled
       objectReference: {fileID: 0}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -7836,23 +7852,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: SwitchOff
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: OpenFinalDoor
+      value: SwitchOff
       objectReference: {fileID: 0}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
+      value: OpenFinalDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
+      propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
       value: Play
       objectReference: {fileID: 0}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.Animator, UnityEngine
+      value: Unity.Cinemachine.CinemachineCamera, Unity.Cinemachine
       objectReference: {fileID: 0}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UnityEngine.Animator, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
@@ -7860,19 +7880,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
-      value: SC_LightManager, Assembly-CSharp
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: SC_ToOpenFInalDoor, Assembly-CSharp
+      value: SC_LightManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
+      value: SC_ToOpenFInalDoor, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
+      propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
       value: UnityEngine.Playables.PlayableDirector, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
@@ -7884,7 +7908,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_BoolArgument
@@ -7894,9 +7918,17 @@ PrefabInstance:
       propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_BoolArgument
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
+      propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1359737947438298334, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: m_Name
       value: FinalDoor (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913477978328500346, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8416461458765881244, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -87767,15 +87799,15 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 88b3c982d86a21e4a99e4e6532d290a1, type: 3}
     - target: {fileID: 4580459296967668706, guid: 4ff482a5347c7d245947d92fc5915a4d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.961
+      value: 65.760345
       objectReference: {fileID: 0}
     - target: {fileID: 4580459296967668706, guid: 4ff482a5347c7d245947d92fc5915a4d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.57
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4580459296967668706, guid: 4ff482a5347c7d245947d92fc5915a4d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 21.02
+      value: -46
       objectReference: {fileID: 0}
     - target: {fileID: 4580459296967668706, guid: 4ff482a5347c7d245947d92fc5915a4d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -118164,7 +118196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3924217420999123648, guid: 5afcc80f235ea54408f9bbf2ecf0c1c7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.7
+      value: 59
       objectReference: {fileID: 0}
     - target: {fileID: 3924217420999123648, guid: 5afcc80f235ea54408f9bbf2ecf0c1c7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -118172,7 +118204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3924217420999123648, guid: 5afcc80f235ea54408f9bbf2ecf0c1c7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -33.207
+      value: -42.943314
       objectReference: {fileID: 0}
     - target: {fileID: 3924217420999123648, guid: 5afcc80f235ea54408f9bbf2ecf0c1c7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -235980,15 +236012,15 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 88b3c982d86a21e4a99e4e6532d290a1, type: 3}
     - target: {fileID: 4119200588140536871, guid: 00437b4c8d80b5d4f90e1afe9012b090, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.13
+      value: 26.630001
       objectReference: {fileID: 0}
     - target: {fileID: 4119200588140536871, guid: 00437b4c8d80b5d4f90e1afe9012b090, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4999948
+      value: 0.95594025
       objectReference: {fileID: 0}
     - target: {fileID: 4119200588140536871, guid: 00437b4c8d80b5d4f90e1afe9012b090, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.16
+      value: -91.239
       objectReference: {fileID: 0}
     - target: {fileID: 4119200588140536871, guid: 00437b4c8d80b5d4f90e1afe9012b090, type: 3}
       propertyPath: m_LocalRotation.w
@@ -236181,7 +236213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2624333662203946307, guid: 000b95d8eb65423429293f64ed985bbf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 73.66
+      value: 59.024582
       objectReference: {fileID: 0}
     - target: {fileID: 2624333662203946307, guid: 000b95d8eb65423429293f64ed985bbf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -236189,7 +236221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2624333662203946307, guid: 000b95d8eb65423429293f64ed985bbf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -106.33
+      value: -47.040894
       objectReference: {fileID: 0}
     - target: {fileID: 2624333662203946307, guid: 000b95d8eb65423429293f64ed985bbf, type: 3}
       propertyPath: m_LocalRotation.w

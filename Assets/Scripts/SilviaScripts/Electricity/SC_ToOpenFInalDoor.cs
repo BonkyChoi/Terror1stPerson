@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SC_ToOpenFInalDoor : MonoBehaviour
 {
@@ -38,8 +39,8 @@ public class SC_ToOpenFInalDoor : MonoBehaviour
     
     private void OnTriggerExit(Collider other)//cuando el jugador sale por la puerta termina el juego
     {
-        if(other.CompareTag("Player"))
-            ShowCredits?.Invoke();
+        if (other.CompareTag("Player"))
+            SceneManager.LoadScene("Credits");
         print("fin");
     }
 }
