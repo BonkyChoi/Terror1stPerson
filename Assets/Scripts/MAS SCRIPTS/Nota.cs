@@ -4,32 +4,16 @@ public class Nota : MonoBehaviour
 {
     public GameObject panel;
 
-    private bool playerInside = false;
+    public void Interact()
+    {
+        panel.SetActive(!panel.activeSelf);
+    }
 
-    void Update()
+    public void ClosePanel()
     {
-        if (playerInside && Input.GetKeyDown(KeyCode.E))
+        if (panel.activeSelf)
         {
-            panel.SetActive(!panel.activeSelf);
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInside = true;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInside = false;
-            
-            if (panel.activeSelf)
-            {
-                panel.SetActive(false);
-            }
+            panel.SetActive(false);
         }
     }
 }

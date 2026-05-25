@@ -4,7 +4,8 @@ using UnityEngine;
 public class SC_LightManager : MonoBehaviour
 {
    public static System.Action OnSwitchOff;//activa el movimiento de los enemigos
-   public static System.Action OnSwitchOn;//activa el movimiento de los enemigos
+   public static System.Action OnSwitchOn;
+   public static System.Action OnSwitchPreOff;
     
     [SerializeField] private Light[] lights;
 
@@ -84,6 +85,7 @@ public class SC_LightManager : MonoBehaviour
                     break;
 
                 case LightState.Flicker3:
+                    OnSwitchPreOff?.Invoke();
                     yield return Flick(light, flicker3Interval);
                     break;
 

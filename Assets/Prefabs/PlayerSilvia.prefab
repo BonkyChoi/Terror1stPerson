@@ -673,7 +673,7 @@ MonoBehaviour:
   runRadius: 2.2
   crouchRadius: 1
   cameraTransform: {fileID: 8862180756585350986}
-  mouseSensitivity: 80
+  mouseSensitivity: 20
   maxLookUp: 60
   maxLookDown: -60
   crouchHeight: 1
@@ -704,6 +704,11 @@ MonoBehaviour:
   runStepDelay: 0.3
   crouchStepDelay: 0.75
   fusibles: []
+  objetoBalanceo1: {fileID: 8268801767059037992}
+  objetoBalanceo2: {fileID: 7666147624160423386}
+  swayAmount: 0.03
+  swaySpeed: 7
+  rotationAmount: 2
 --- !u!143 &6081443176328577178
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1104,6 +1109,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 94438253f73258640a7403b23e77f1b2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 59783b2e542cd1d498626910fea98a5b, type: 2}
     - target: {fileID: 919132149155446097, guid: 94438253f73258640a7403b23e77f1b2, type: 3}
       propertyPath: m_Name
       value: mano
@@ -1185,6 +1194,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c13498450deaa4442a13f16632dcb4f8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 59783b2e542cd1d498626910fea98a5b, type: 2}
     - target: {fileID: 919132149155446097, guid: c13498450deaa4442a13f16632dcb4f8, type: 3}
       propertyPath: m_Name
       value: Brazo (1)
@@ -1266,6 +1279,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 94438253f73258640a7403b23e77f1b2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 59783b2e542cd1d498626910fea98a5b, type: 2}
     - target: {fileID: 919132149155446097, guid: 94438253f73258640a7403b23e77f1b2, type: 3}
       propertyPath: m_Name
       value: mano (1)
@@ -1347,6 +1364,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c13498450deaa4442a13f16632dcb4f8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 59783b2e542cd1d498626910fea98a5b, type: 2}
     - target: {fileID: 919132149155446097, guid: c13498450deaa4442a13f16632dcb4f8, type: 3}
       propertyPath: m_Name
       value: Brazo

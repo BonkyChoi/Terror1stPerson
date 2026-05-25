@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.39743567
       objectReference: {fileID: 0}
+    - target: {fileID: 5293033316371912723, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7220932015605925798, guid: a6bd20554e9d0e24d864e32130f489e7, type: 3}
       propertyPath: totalTimesToSuccess
       value: 3
