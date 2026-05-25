@@ -703,7 +703,23 @@ MonoBehaviour:
   walkStepDelay: 0.5
   runStepDelay: 0.3
   crouchStepDelay: 0.75
-  fusibles: []
+  fusibles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   objetoBalanceo1: {fileID: 8268801767059037992}
   objetoBalanceo2: {fileID: 7666147624160423386}
   swayAmount: 0.03
