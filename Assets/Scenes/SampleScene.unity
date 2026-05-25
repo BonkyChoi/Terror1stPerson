@@ -91464,7 +91464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 27364693952883424, guid: f5a67f0dee9cd9e4b830522f5f95b382, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.16
+      value: 2.119
       objectReference: {fileID: 0}
     - target: {fileID: 27364693952883424, guid: f5a67f0dee9cd9e4b830522f5f95b382, type: 3}
       propertyPath: m_LocalPosition.z
@@ -204047,6 +204047,14 @@ PrefabInstance:
     - target: {fileID: 7722645853464220824, guid: 3506142ca2258554fb32afbea66f421c, type: 3}
       propertyPath: m_Name
       value: NewEnemy Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8991146323356176167, guid: 3506142ca2258554fb32afbea66f421c, type: 3}
+      propertyPath: <VisionMagnitude>k__BackingField
+      value: 11.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 8991146323356176167, guid: 3506142ca2258554fb32afbea66f421c, type: 3}
+      propertyPath: <ListingMagnitude>k__BackingField
+      value: 18.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
