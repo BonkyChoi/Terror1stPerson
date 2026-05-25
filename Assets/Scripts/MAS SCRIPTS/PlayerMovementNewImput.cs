@@ -377,7 +377,7 @@ public class PlayerMovementNewImput : MonoBehaviour
                 cameraTransform.forward
             );
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 3f))
+        if (Physics.Raycast(ray, out RaycastHit hit, 5f))
         {
             return;
         }
