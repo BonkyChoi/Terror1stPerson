@@ -104,7 +104,11 @@
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastSize.Cube",
+<<<<<<< HEAD
                 "value": "{\"m_Value\":{\"x\":-3.5111312866210939,\"y\":3.355865716934204,\"z\":-1.8690757751464844}}"
+=======
+                "value": "{\"m_Value\":{\"x\":16.91917610168457,\"y\":9.343893051147461,\"z\":-0.71539306640625}}"
+>>>>>>> parent of 73ca32c (aaaaaa)
             },
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
