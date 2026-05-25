@@ -112,6 +112,8 @@ public class PlayerMovementNewImput : MonoBehaviour
     private Material originalMaterial;
 
     private float pushTimer = 0f;
+    
+    private Nota currentNota;
 
     public float currentSpeed { get; set; }
 
@@ -158,6 +160,7 @@ public class PlayerMovementNewImput : MonoBehaviour
         CheckHighlight();
         HandleFootsteps();
         HandleObjectSway();
+        CheckNoteVision();
 
         if (pushTimer > 0)
             pushTimer -= Time.deltaTime;
@@ -265,11 +268,7 @@ public class PlayerMovementNewImput : MonoBehaviour
     }
     void TryInteract()
     {
-        Ray ray =
-            new Ray(
-                cameraTransform.position,
-                cameraTransform.forward
-            );
+        Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
 
         if (Physics.Raycast(ray, out RaycastHit hit, grabDistance))
         {
@@ -295,6 +294,7 @@ public class PlayerMovementNewImput : MonoBehaviour
             if (nota != null)
             {
                 nota.Interact();
+                currentNota = nota;
             }
         }
     }
@@ -655,6 +655,32 @@ public class PlayerMovementNewImput : MonoBehaviour
                         obj2InitialRot,
                         Time.deltaTime * 8f
                     );
+            }
+        }
+    }
+    void CheckNoteVision()
+    {
+        Ray ray = new Ray(
+            cameraTransform.position,
+            cameraTransform.forward
+        );
+
+        if (Physics.Raycast(ray, out RaycastHit hit, grabDistance))
+        {
+            Nota nota = hit.collider.GetComponent<Nota>();
+            
+            if (currentNota != null && nota != currentNota)
+            {
+                currentNota.ClosePanel();
+                currentNota = null;
+            }
+        }
+        else
+        {
+            if (currentNota != null)
+            {
+                currentNota.ClosePanel();
+                currentNota = null;
             }
         }
     }
