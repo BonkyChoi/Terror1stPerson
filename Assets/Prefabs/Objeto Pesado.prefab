@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2421481517125114158}
   m_Layer: 0
   m_Name: Objeto Pesado
-  m_TagString: Untagged
+  m_TagString: Pesado
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.19, y: 0.09531, z: 0.16171}
-  m_LocalScale: {x: 1.8204782, y: 1.8204782, z: 2.7603433}
+  m_LocalScale: {x: 0.67931336, y: 0.67931336, z: 0.67931336}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ba217a3409acb3f41b58bf3237ae094c, type: 2}
+  - {fileID: 2100000, guid: 2922dfe96ee2d6c4a851257531415f1b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -117,7 +117,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &2421481517125114158
 BoxCollider:
