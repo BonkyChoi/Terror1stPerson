@@ -7261,6 +7261,11 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 1172672760025643150, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
   m_PrefabInstance: {fileID: 104788983}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &86641872 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6811698382087321584, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+  m_PrefabInstance: {fileID: 192714754}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &86911115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14487,6 +14492,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1999483818}
+    - target: {fileID: 721164102773168212, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 735423991554815936, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -14659,6 +14668,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1999483818}
+    - target: {fileID: 7617749297418706048, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7844993133036688117, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -17130,7 +17143,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 2090159664}
+  m_Mesh: {fileID: 1117015301}
 --- !u!33 &227887258
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -41227,7 +41240,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1931931750}
+  m_Mesh: {fileID: 2090159664}
 --- !u!33 &470403269
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -56363,6 +56376,11 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &623409316 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2953482404822996705, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+  m_PrefabInstance: {fileID: 192714754}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &625109729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79734,7 +79752,7 @@ PrefabInstance:
     - target: {fileID: 3187958282173333027, guid: 4ff482a5347c7d245947d92fc5915a4d, type: 3}
       propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 2072055075}
+      objectReference: {fileID: 104788984}
     - target: {fileID: 3187958282173333027, guid: 4ff482a5347c7d245947d92fc5915a4d, type: 3}
       propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
@@ -79770,31 +79788,31 @@ PrefabInstance:
     - target: {fileID: 3532935151100928044, guid: 4ff482a5347c7d245947d92fc5915a4d, type: 3}
       propertyPath: zone
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1537760712}
     - target: {fileID: 3532935151100928044, guid: 4ff482a5347c7d245947d92fc5915a4d, type: 3}
       propertyPath: cursor
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 86641872}
     - target: {fileID: 3532935151100928044, guid: 4ff482a5347c7d245947d92fc5915a4d, type: 3}
       propertyPath: zoneRect
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1537760711}
     - target: {fileID: 3532935151100928044, guid: 4ff482a5347c7d245947d92fc5915a4d, type: 3}
       propertyPath: exitPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1056772561}
     - target: {fileID: 3532935151100928044, guid: 4ff482a5347c7d245947d92fc5915a4d, type: 3}
       propertyPath: beginPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 623409316}
     - target: {fileID: 3532935151100928044, guid: 4ff482a5347c7d245947d92fc5915a4d, type: 3}
       propertyPath: puzzlePanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 987967523}
     - target: {fileID: 3532935151100928044, guid: 4ff482a5347c7d245947d92fc5915a4d, type: 3}
       propertyPath: tutorialPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1219761056}
     - target: {fileID: 3532935151100928044, guid: 4ff482a5347c7d245947d92fc5915a4d, type: 3}
       propertyPath: audio.Array.size
       value: 5
@@ -89518,6 +89536,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1139233720021660248, guid: 0eba07e77cab5f145af7f735618abc0c, type: 3}
   m_PrefabInstance: {fileID: 1243268674}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &987967523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7617749297418706048, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+  m_PrefabInstance: {fileID: 192714754}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &991260386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94409,6 +94432,11 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &1056772561 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7477693540684901597, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+  m_PrefabInstance: {fileID: 192714754}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1058271582
 Mesh:
   m_ObjectHideFlags: 0
@@ -106951,7 +106979,7 @@ PrefabInstance:
     - target: {fileID: 2727341545091854081, guid: 5afcc80f235ea54408f9bbf2ecf0c1c7, type: 3}
       propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2072055075}
+      objectReference: {fileID: 104788984}
     - target: {fileID: 2727341545091854081, guid: 5afcc80f235ea54408f9bbf2ecf0c1c7, type: 3}
       propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -107023,31 +107051,31 @@ PrefabInstance:
     - target: {fileID: 4099137989814612238, guid: 5afcc80f235ea54408f9bbf2ecf0c1c7, type: 3}
       propertyPath: zone
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1537760712}
     - target: {fileID: 4099137989814612238, guid: 5afcc80f235ea54408f9bbf2ecf0c1c7, type: 3}
       propertyPath: cursor
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 86641872}
     - target: {fileID: 4099137989814612238, guid: 5afcc80f235ea54408f9bbf2ecf0c1c7, type: 3}
       propertyPath: zoneRect
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1537760711}
     - target: {fileID: 4099137989814612238, guid: 5afcc80f235ea54408f9bbf2ecf0c1c7, type: 3}
       propertyPath: exitPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1056772561}
     - target: {fileID: 4099137989814612238, guid: 5afcc80f235ea54408f9bbf2ecf0c1c7, type: 3}
       propertyPath: beginPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 623409316}
     - target: {fileID: 4099137989814612238, guid: 5afcc80f235ea54408f9bbf2ecf0c1c7, type: 3}
       propertyPath: puzzlePanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 987967523}
     - target: {fileID: 4099137989814612238, guid: 5afcc80f235ea54408f9bbf2ecf0c1c7, type: 3}
       propertyPath: tutorialPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1219761056}
     - target: {fileID: 4099137989814612238, guid: 5afcc80f235ea54408f9bbf2ecf0c1c7, type: 3}
       propertyPath: audio.Array.size
       value: 5
@@ -108666,6 +108694,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cba00f75539bc564fabb9136fccfac6c, type: 3}
+--- !u!1 &1219761056 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 721164102773168212, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+  m_PrefabInstance: {fileID: 192714754}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1219814960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -133999,6 +134032,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8aec2c92ad9dbca44a5611c1d760a4aa, type: 3}
+--- !u!224 &1537760711 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 680463483776216308, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+  m_PrefabInstance: {fileID: 192714754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1537760712 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5669019920586878468, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+  m_PrefabInstance: {fileID: 192714754}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &1537907328
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -147807,7 +147856,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1117015301}
+  m_Mesh: {fileID: 1067064142}
 --- !u!33 &1719860854
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -217727,82 +217776,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00574a435d1305b439f45e2eeb418417, type: 3}
---- !u!1001 &2072055074
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
-      propertyPath: OnOpenDoor.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 587651750}
-    - target: {fileID: 1359737947438298334, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
-      propertyPath: m_Name
-      value: FinalDoor
-      objectReference: {fileID: 0}
-    - target: {fileID: 1359737947438298334, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8416461458765881244, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -38.39143
-      objectReference: {fileID: 0}
-    - target: {fileID: 8416461458765881244, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 8416461458765881244, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 30.844559
-      objectReference: {fileID: 0}
-    - target: {fileID: 8416461458765881244, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8416461458765881244, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8416461458765881244, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8416461458765881244, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8416461458765881244, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8416461458765881244, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8416461458765881244, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
---- !u!114 &2072055075 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1238241236001796365, guid: 322e4513de6ba7046bbf9d046c80d2fc, type: 3}
-  m_PrefabInstance: {fileID: 2072055074}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6aaf89de3d3b2b4db2fc8f8387379a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SC_FinalElectricDoor
 --- !u!1001 &2074072721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -219335,7 +219308,7 @@ PrefabInstance:
     - target: {fileID: 3064346881676175846, guid: 00437b4c8d80b5d4f90e1afe9012b090, type: 3}
       propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2072055075}
+      objectReference: {fileID: 104788984}
     - target: {fileID: 3064346881676175846, guid: 00437b4c8d80b5d4f90e1afe9012b090, type: 3}
       propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -219367,31 +219340,31 @@ PrefabInstance:
     - target: {fileID: 4016324279637014505, guid: 00437b4c8d80b5d4f90e1afe9012b090, type: 3}
       propertyPath: zone
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1537760712}
     - target: {fileID: 4016324279637014505, guid: 00437b4c8d80b5d4f90e1afe9012b090, type: 3}
       propertyPath: cursor
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 86641872}
     - target: {fileID: 4016324279637014505, guid: 00437b4c8d80b5d4f90e1afe9012b090, type: 3}
       propertyPath: zoneRect
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1537760711}
     - target: {fileID: 4016324279637014505, guid: 00437b4c8d80b5d4f90e1afe9012b090, type: 3}
       propertyPath: exitPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1056772561}
     - target: {fileID: 4016324279637014505, guid: 00437b4c8d80b5d4f90e1afe9012b090, type: 3}
       propertyPath: beginPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 623409316}
     - target: {fileID: 4016324279637014505, guid: 00437b4c8d80b5d4f90e1afe9012b090, type: 3}
       propertyPath: puzzlePanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 987967523}
     - target: {fileID: 4016324279637014505, guid: 00437b4c8d80b5d4f90e1afe9012b090, type: 3}
       propertyPath: tutorialPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1219761056}
     - target: {fileID: 4016324279637014505, guid: 00437b4c8d80b5d4f90e1afe9012b090, type: 3}
       propertyPath: audio.Array.size
       value: 5
@@ -219608,31 +219581,31 @@ PrefabInstance:
     - target: {fileID: 3097648838404224653, guid: 000b95d8eb65423429293f64ed985bbf, type: 3}
       propertyPath: zone
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1537760712}
     - target: {fileID: 3097648838404224653, guid: 000b95d8eb65423429293f64ed985bbf, type: 3}
       propertyPath: cursor
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 86641872}
     - target: {fileID: 3097648838404224653, guid: 000b95d8eb65423429293f64ed985bbf, type: 3}
       propertyPath: zoneRect
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1537760711}
     - target: {fileID: 3097648838404224653, guid: 000b95d8eb65423429293f64ed985bbf, type: 3}
       propertyPath: exitPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1056772561}
     - target: {fileID: 3097648838404224653, guid: 000b95d8eb65423429293f64ed985bbf, type: 3}
       propertyPath: beginPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 623409316}
     - target: {fileID: 3097648838404224653, guid: 000b95d8eb65423429293f64ed985bbf, type: 3}
       propertyPath: puzzlePanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 987967523}
     - target: {fileID: 3097648838404224653, guid: 000b95d8eb65423429293f64ed985bbf, type: 3}
       propertyPath: tutorialPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1219761056}
     - target: {fileID: 3097648838404224653, guid: 000b95d8eb65423429293f64ed985bbf, type: 3}
       propertyPath: audio.Array.size
       value: 5
@@ -219664,7 +219637,7 @@ PrefabInstance:
     - target: {fileID: 4019297548141602946, guid: 000b95d8eb65423429293f64ed985bbf, type: 3}
       propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2072055075}
+      objectReference: {fileID: 104788984}
     - target: {fileID: 4019297548141602946, guid: 000b95d8eb65423429293f64ed985bbf, type: 3}
       propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -219673,6 +219646,14 @@ PrefabInstance:
       propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 1688357874}
+    - target: {fileID: 4019297548141602946, guid: 000b95d8eb65423429293f64ed985bbf, type: 3}
+      propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchOnLightA
+      objectReference: {fileID: 0}
+    - target: {fileID: 4019297548141602946, guid: 000b95d8eb65423429293f64ed985bbf, type: 3}
+      propertyPath: onPuzzleCompleted.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PuzzleAComplete
+      objectReference: {fileID: 0}
     - target: {fileID: 9130962983159810592, guid: 000b95d8eb65423429293f64ed985bbf, type: 3}
       propertyPath: m_Name
       value: PuzzlePannelA Variant
@@ -238609,7 +238590,6 @@ SceneRoots:
   - {fileID: 1515824370}
   - {fileID: 2108506334}
   - {fileID: 573301344}
-  - {fileID: 2072055074}
   - {fileID: 1239156627}
   - {fileID: 543450651743065678}
   - {fileID: 543450653400837293}
