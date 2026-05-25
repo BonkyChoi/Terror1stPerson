@@ -50947,7 +50947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6075355464957548247, guid: d119d249033c0724c80631df80f771a4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19.760002
+      value: -19.71
       objectReference: {fileID: 0}
     - target: {fileID: 6075355464957548247, guid: d119d249033c0724c80631df80f771a4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -56509,7 +56509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 27364693952883424, guid: f5a67f0dee9cd9e4b830522f5f95b382, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.08
+      value: 2.29
       objectReference: {fileID: 0}
     - target: {fileID: 27364693952883424, guid: f5a67f0dee9cd9e4b830522f5f95b382, type: 3}
       propertyPath: m_LocalPosition.z
@@ -56546,6 +56546,10 @@ PrefabInstance:
     - target: {fileID: 3388630840246901918, guid: f5a67f0dee9cd9e4b830522f5f95b382, type: 3}
       propertyPath: m_Name
       value: PuertaCorrederaAuto (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582995151821570598, guid: f5a67f0dee9cd9e4b830522f5f95b382, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -100549,7 +100553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 27364693952883424, guid: f5a67f0dee9cd9e4b830522f5f95b382, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.69098395
+      value: 0.7431533
       objectReference: {fileID: 0}
     - target: {fileID: 27364693952883424, guid: f5a67f0dee9cd9e4b830522f5f95b382, type: 3}
       propertyPath: m_LocalScale.z
@@ -102070,7 +102074,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 27364693952883424, guid: f5a67f0dee9cd9e4b830522f5f95b382, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.69098395
+      value: 0.78461224
       objectReference: {fileID: 0}
     - target: {fileID: 27364693952883424, guid: f5a67f0dee9cd9e4b830522f5f95b382, type: 3}
       propertyPath: m_LocalScale.z
@@ -123057,7 +123061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 27364693952883424, guid: f5a67f0dee9cd9e4b830522f5f95b382, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -28.55
+      value: -28.8
       objectReference: {fileID: 0}
     - target: {fileID: 27364693952883424, guid: f5a67f0dee9cd9e4b830522f5f95b382, type: 3}
       propertyPath: m_LocalPosition.y
