@@ -15,6 +15,9 @@ public class SC_ElectricalPannel : MonoBehaviour
     private bool canInteract;
     public static System.Action SwitchOnTheLights;
 
+    [SerializeField] private GameObject playerRightHand;
+    [SerializeField] private GameObject playerLeftHand;
+
     private void Awake()
     {
         currentLight = totalLights;
@@ -72,18 +75,19 @@ public class SC_ElectricalPannel : MonoBehaviour
                     if (!isLightOn)
                     {
                         print("light is off");
-                        foreach (Transform t in transform)
+                        GameObject fuse = GetFuseInHand();
+
+                        if (fuse != null)
                         {
-                            if (t.TryGetComponent(out SC_ImAFusible fusible))
-                            {
-                                print("encontre un fusible");
-                                //referencia serializada a mano derecha y de ahi se coge
-                                SwitchOnTheLights?.Invoke();
-                                currentLight--;
-                                Destroy(t.gameObject);
-                                print("enciendo luz");
-                                break;
-                            }
+                            print("Tiene un fusible en la mano");
+
+                            SwitchOnTheLights?.Invoke();
+
+                            currentLight--;
+
+                            Destroy(fuse);
+
+                            print("enciendo luz");
                         }
                     }
                 }
@@ -92,5 +96,27 @@ public class SC_ElectricalPannel : MonoBehaviour
         }
         
         //en el array de luces se apaga la primera
+    }
+    private GameObject GetFuseInHand()
+    {
+        // Mano derecha
+        foreach (Transform child in playerRightHand.transform)
+        {
+            if (child.CompareTag("Fusible"))
+            {
+                return child.gameObject;
+            }
+        }
+
+        // Mano izquierda
+        foreach (Transform child in playerLeftHand.transform)
+        {
+            if (child.CompareTag("Fusible"))
+            {
+                return child.gameObject;
+            }
+        }
+
+        return null;
     }
 }

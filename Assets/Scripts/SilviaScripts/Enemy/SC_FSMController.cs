@@ -75,10 +75,11 @@ public class SC_FSMController : MonoBehaviour
     private void StopMovement()
     {
         //bloquear al agente
-        models[0].gameObject.SetActive(true);
-        models[1].gameObject.SetActive(false);
+        models[1].gameObject.SetActive(true);
+        models[0].gameObject.SetActive(false);
         Agent.isStopped = true;
         triggerCollider.enabled = false;
+        print("cambio a luz encendida");
     }
 
     private void PatrolAndWait()
