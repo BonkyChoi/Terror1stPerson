@@ -53,7 +53,6 @@ public class SC_FinalElectricDoor : MonoBehaviour
     public void SwitchOnLightA()
     {
         lightA.material = materials[1];
-        print("cambio de material");
     }
 
     public void OpenDoor()
