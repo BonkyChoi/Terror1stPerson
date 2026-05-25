@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2396146224051951908}
   - component: {fileID: 3126201432049420370}
   - component: {fileID: 9107464975482465854}
-  - component: {fileID: 9003530182463669842}
+  - component: {fileID: 266308275423706307}
   m_Layer: 0
   m_Name: Fusible
   m_TagString: Fusible
@@ -132,8 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b800bc92ed8d25f40b4cb41df74413d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SC_ImAFusible
---- !u!136 &9003530182463669842
-CapsuleCollider:
+--- !u!65 &266308275423706307
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -150,8 +150,6 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.0017090231
-  m_Height: 0.0053451406
-  m_Direction: 1
-  m_Center: {x: 0.0000000022084286, y: -3.154898e-10, z: -0.00008994505}
+  serializedVersion: 3
+  m_Size: {x: 0.002988359, y: 0.0029883606, z: 0.0029095365}
+  m_Center: {x: 0.0000000023865143, y: -4.6566134e-10, z: -0.00000043871114}
