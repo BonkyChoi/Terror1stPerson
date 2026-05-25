@@ -223219,6 +223219,10 @@ PrefabInstance:
       propertyPath: mensajeUI
       value: 
       objectReference: {fileID: 1956832743}
+    - target: {fileID: 5926662767972435637, guid: 2881dd5835b67d44ab2b77d49d956a63, type: 3}
+      propertyPath: openSound
+      value: 
+      objectReference: {fileID: 8300000, guid: da101ddeb7b833d4ebaee749e8ea4935, type: 3}
     - target: {fileID: 8366289589907484835, guid: 2881dd5835b67d44ab2b77d49d956a63, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.49
