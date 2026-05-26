@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 1394047053972045857}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Iluminado
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,8 +123,8 @@ Transform:
   m_GameObject: {fileID: 3553310241826487465}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.024936676, y: -0.047032118, z: 0.47000122}
-  m_LocalScale: {x: 0.79806167, y: 0.79806167, z: 0.79806167}
+  m_LocalPosition: {x: -0.024936676, y: 0.59, z: 0.47000122}
+  m_LocalScale: {x: 0.79806167, y: 0.17509474, z: 0.79806167}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5651021943166307054}
