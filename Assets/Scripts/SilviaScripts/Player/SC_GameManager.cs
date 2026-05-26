@@ -32,6 +32,7 @@ public class SC_GameManager : MonoBehaviour
       playerInput.currentActionMap.Enable();
       
       print("OPENUI " + playerInput.currentActionMap);
+      print("La ui esta abierta");
    }
 
    public void CloseUI()

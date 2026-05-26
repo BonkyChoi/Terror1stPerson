@@ -43,6 +43,7 @@ public class SC_PlayerController : MonoBehaviour
     private void Start()
     {
         SC_GameManager.Instance.RegisterPlayerInput(playerInput);
+        print("He registrado al playerInput");
     }
 
 
@@ -52,7 +53,7 @@ public class SC_PlayerController : MonoBehaviour
         playerInput.actions["PauseCursor"].started += PauseCursor;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         if (playerInput == null) return;
 
@@ -63,7 +64,7 @@ public class SC_PlayerController : MonoBehaviour
     private void BeginMiniGame(InputAction.CallbackContext ctx)
     {
         print("Call begin mini game");
-        //debe salir esto otra vez
+        //una vez que muere no llama a esto
         SC_InputEvent.OnBeginMiniGame?.Invoke();
     }
 

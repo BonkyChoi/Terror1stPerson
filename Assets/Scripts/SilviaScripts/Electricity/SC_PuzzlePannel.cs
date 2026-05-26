@@ -13,7 +13,7 @@ public class SC_PuzzlePannel : MonoBehaviour
     [SerializeField] private UnityEvent onPuzzleInteract;
 
     //a borrar mas tarde
-    //private PlayerMovementNewImput move;
+    private PlayerMovementNewImput move;
 
     private bool CanSuccess;
     private bool canInteract;
@@ -34,15 +34,17 @@ public class SC_PuzzlePannel : MonoBehaviour
         if (!other.CompareTag("Player")) return;
         if (other.GetComponent<PlayerMovementNewImput>())
         {
-            //move = other.GetComponent<PlayerMovementNewImput>();
+            move = other.GetComponent<PlayerMovementNewImput>();
         }
         if (CanSuccess) return;
         
         if (canInteract && !puzzleOpened)
         {
             puzzleOpened = true;
-            //move.enabled = false;
+            move.enabled = false;
+            SC_GameManager.Instance.OpenUI();
             onPuzzleInteract?.Invoke();
+            print("abro puzle");
         }
         
         
@@ -52,7 +54,7 @@ public class SC_PuzzlePannel : MonoBehaviour
         print("Reset puzzle");
         puzzleOpened = false;
         canInteract = false;
-        // move.enabled = true;
+        move.enabled = true;
         
         //creo que ahora este script lo tengo duplicado
     }
@@ -119,7 +121,7 @@ public class SC_PuzzlePannel : MonoBehaviour
     public void CursorSendSuccess()
     {
         CanSuccess = true;
-        //move.enabled = true;
+        move.enabled = true;
         
         SC_GameManager.Instance.CloseUI();
         onPuzzleCompleted?.Invoke();

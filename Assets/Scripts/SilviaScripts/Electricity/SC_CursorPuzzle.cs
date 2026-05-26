@@ -84,6 +84,7 @@ public class SC_CursorPuzzle : MonoBehaviour
 
     private void StartMiniGame()
     {
+        print("llego a start mini game");
         //una vez que muere no llega aqui
         if (!puzzleActive)
         {
@@ -236,6 +237,8 @@ public class SC_CursorPuzzle : MonoBehaviour
             tutorialPanel.SetActive(true);
         else
             beginPanel.SetActive(true);
+        //se queda aqui
+        
         //cuando pulse una tecla que se le permitira pulsar comienza el juego
         //programar bien el puzle
         
