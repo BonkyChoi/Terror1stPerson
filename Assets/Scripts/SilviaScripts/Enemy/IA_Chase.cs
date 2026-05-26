@@ -33,14 +33,14 @@ public class IA_Chase : IA_EnemyStates
 
     private AudioSource audio;
     
-    public IA_Chase(SC_FSMController controller)
+    public IA_Chase(SC_FSMController controller, AudioSource chaseAudio)
     {
         
         this.controller = controller;
         
         agent = controller.Agent;
         perception = controller.PerceptionSystem;
-        audio = controller.ChaseAudio;
+        audio = chaseAudio;
     }
     
     private IEnumerator MakeRwarBeforeGo()//te avisa de que te ha visto
@@ -54,8 +54,9 @@ public class IA_Chase : IA_EnemyStates
     public override void OnEnterState()
     {
        myCoroutine = controller.RunCoroutine(MakeRwarBeforeGo());
-       controller.Agent.speed = 8f;
+       controller.Agent.speed = 6.5f;
        controller.Agent.acceleration = 25f;
+       audio.loop = true;
        audio.Play();
     }
 
