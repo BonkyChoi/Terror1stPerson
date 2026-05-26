@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 580eeed1ca4bfe746bbff70121ddc8d2
+  - enabled: 1
+    path: Assets/Scenes/Controles.unity
+    guid: 44bd30a475576a1499446aa91b438368
   m_configObjects:
     com.unity.adaptivePerformance.basic.provider_settings: {fileID: 11400000, guid: f353b03beccfb0d44bbb8242a31df48e, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 436f512d6809fd248ab75fdf1d465dad, type: 2}
