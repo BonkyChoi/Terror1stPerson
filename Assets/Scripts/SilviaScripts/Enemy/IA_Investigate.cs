@@ -19,12 +19,15 @@ public class IA_Investigate : IA_EnemyStates
     private NavMeshAgent agent;
     private SC_PerceptionSystem perception;
 
-    public IA_Investigate(SC_FSMController controller)
+    private AudioSource audio;
+
+    public IA_Investigate(SC_FSMController controller, AudioSource chaseAudio)
     {
         this.controller = controller;
         
         agent = controller.Agent;
         perception = controller.PerceptionSystem;
+        audio = chaseAudio;
     }
 
     public override void OnEnterState()
@@ -32,6 +35,7 @@ public class IA_Investigate : IA_EnemyStates
         timer = maxTimer;
         //animator.SetTrigger("lookAround");
         agent.isStopped = false;
+        audio.Stop();
     }
     
 

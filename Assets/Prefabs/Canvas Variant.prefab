@@ -269,6 +269,10 @@ PrefabInstance:
       propertyPath: m_Texture
       value: 
       objectReference: {fileID: 2800000, guid: f3f5712728440ad4abc1da7354a46bbd, type: 3}
+    - target: {fileID: 1525918069133227715, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2413806693520163455, guid: 15ca2a94724332143abe89257b2a9af4, type: 3}
     - target: {fileID: 3389525741922306409, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
       propertyPath: m_Name
       value: Canvas Variant
@@ -285,6 +289,14 @@ PrefabInstance:
       propertyPath: m_Texture
       value: 
       objectReference: {fileID: 2800000, guid: ae0f0c83a6f26654ea4e4874b5d15da5, type: 3}
+    - target: {fileID: 6899972577686694628, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2413806693520163455, guid: 15ca2a94724332143abe89257b2a9af4, type: 3}
+    - target: {fileID: 8708389053828798560, guid: 0dd79981961b8f6459fd928b9b915fb3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
