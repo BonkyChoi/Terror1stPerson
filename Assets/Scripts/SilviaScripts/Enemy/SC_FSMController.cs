@@ -43,8 +43,8 @@ public class SC_FSMController : MonoBehaviour
             patrolPoints.Add(points.position);
         }
         ChaseState = new IA_Chase(this, ChaseAudio);
-        PatrolState = new IA_Patrol(this, patrolPoints);
-        InvestigateState = new IA_Investigate(this);
+        PatrolState = new IA_Patrol(this, patrolPoints, ChaseAudio);
+        InvestigateState = new IA_Investigate(this, ChaseAudio);
 
     }
     

@@ -18,14 +18,18 @@ public class IA_Patrol : IA_EnemyStates
     private float waitTimer;
     private float waitDuration;
     private bool waiting;
+    
+    private AudioSource audio;
 
-    public IA_Patrol(SC_FSMController controller, List<Vector3> patrolPoints)
+    public IA_Patrol(SC_FSMController controller, List<Vector3> patrolPoints, AudioSource chaseAudio)
     {
         this.controller = controller;
         points = patrolPoints;
         agent = controller.Agent;
         perception = controller.PerceptionSystem;
         controller.Agent.speed = 3.5f;
+        audio = chaseAudio;
+
     }
 
 
@@ -40,6 +44,7 @@ public class IA_Patrol : IA_EnemyStates
         currentPatrolPoint = 0;
         waiting = false;
         GoToNextPoint();
+        audio.Stop();
     }
 
     public override void OnUpdateState()

@@ -54,10 +54,21 @@ public class IA_Chase : IA_EnemyStates
     public override void OnEnterState()
     {
        myCoroutine = controller.RunCoroutine(MakeRwarBeforeGo());
-       controller.Agent.speed = 6.5f;
+       controller.Agent.speed = 20f;
        controller.Agent.acceleration = 25f;
-       audio.loop = true;
-       audio.Play();
+       if (!audio.isPlaying)
+       {
+           audio.loop = true;
+           audio.Play(); 
+       }
+       else
+       {
+           audio.Stop();
+           audio.loop = true;
+           audio.Play(); 
+       }
+       
+       
     }
 
     public override void OnUpdateState()
@@ -84,6 +95,7 @@ public class IA_Chase : IA_EnemyStates
         // if (Physics.Raycast(transform.position,
         //         directionToTarget.normalized, sensorSystem.VisionDistance, isAPlayer))
         // {
+        /*
             if (distance <= sprintDistance)
             {
                 //animator.SetBool("attackPlayer", true);
@@ -94,7 +106,7 @@ public class IA_Chase : IA_EnemyStates
                 //animator.SetBool("attackPlayer", false);
                 agent.speed = currentVelocity;
             }
-
+*/
         
         //
         if (!perception.CanSeePlayer)
@@ -149,7 +161,7 @@ public class IA_Chase : IA_EnemyStates
         }
 
         controller.StopCoroutine(myCoroutine);//Quieres que pare todas? O deberia parar solo las del chase?
-        audio.Stop();
+        //audio.Stop();
     
     } 
             
