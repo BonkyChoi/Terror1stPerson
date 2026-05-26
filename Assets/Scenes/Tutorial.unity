@@ -26552,6 +26552,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 960252390288756510, guid: 39f6a4166dd778d4d81aea78061e0851, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -7129177091995595102, guid: 3a29fedfce659f34a945bfc8631500f2, type: 3}
     - target: {fileID: 2723422506938923114, guid: 39f6a4166dd778d4d81aea78061e0851, type: 3}
       propertyPath: m_Name
       value: Objeto Pesado (6)
@@ -26568,6 +26572,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7514496517998794052, guid: 39f6a4166dd778d4d81aea78061e0851, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bcd8a40cdece4e5409ff8464edab77d0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33989,6 +33997,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 960252390288756510, guid: 39f6a4166dd778d4d81aea78061e0851, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -7129177091995595102, guid: 3a29fedfce659f34a945bfc8631500f2, type: 3}
     - target: {fileID: 2723422506938923114, guid: 39f6a4166dd778d4d81aea78061e0851, type: 3}
       propertyPath: m_Name
       value: Objeto Pesado
@@ -34005,6 +34017,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7514496517998794052, guid: 39f6a4166dd778d4d81aea78061e0851, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bcd8a40cdece4e5409ff8464edab77d0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -55096,7 +55112,7 @@ PrefabInstance:
       objectReference: {fileID: 1763131631}
     - target: {fileID: 4547095761356832956, guid: da838a3197fe0ba4ea99e2d45be337aa, type: 3}
       propertyPath: m_VersionIndex
-      value: 2548
+      value: 2551
       objectReference: {fileID: 0}
     - target: {fileID: 5651021943166307054, guid: da838a3197fe0ba4ea99e2d45be337aa, type: 3}
       propertyPath: m_LocalPosition.x
