@@ -33,7 +33,7 @@ public class SC_FSMController : MonoBehaviour
     
     private void Awake()
     {
-        triggerCollider.enabled = true;
+        triggerCollider.enabled = false;
         PerceptionSystem = GetComponent<SC_PerceptionSystem>();
         Agent = GetComponent<NavMeshAgent>();
         ChaseAudio = GetComponent<AudioSource>();
