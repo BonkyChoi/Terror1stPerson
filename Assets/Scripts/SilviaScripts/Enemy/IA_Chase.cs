@@ -54,19 +54,12 @@ public class IA_Chase : IA_EnemyStates
     public override void OnEnterState()
     {
        myCoroutine = controller.RunCoroutine(MakeRwarBeforeGo());
-       controller.Agent.speed = 20f;
+       controller.Agent.speed = 10f;
        controller.Agent.acceleration = 25f;
-       if (!audio.isPlaying)
-       {
-           audio.loop = true;
-           audio.Play(); 
-       }
-       else
-       {
-           audio.Stop();
-           audio.loop = true;
-           audio.Play(); 
-       }
+       
+       audio.loop = true; 
+       audio.Play(); 
+       
        
        
     }

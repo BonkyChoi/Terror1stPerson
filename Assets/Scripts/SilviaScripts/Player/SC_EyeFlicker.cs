@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class SC_EyeFlicker : MonoBehaviour
 {
-    private Image hudImage;
+    [SerializeField]private Image hudImage;
 
     private void Awake()
     {
@@ -57,6 +57,7 @@ public class SC_EyeFlicker : MonoBehaviour
         newColor.a = 0;
         newImage.color = newColor;
         SC_GameManager.Instance.CloseUI();
+        print("Ciero ui");
         
         
     }
