@@ -232706,19 +232706,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 793901140049497764, guid: 4265ba3aee600db4abffca249db5a898, type: 3}
       propertyPath: 'codigoCorrecto.Array.data[0]'
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 793901140049497764, guid: 4265ba3aee600db4abffca249db5a898, type: 3}
-      propertyPath: 'codigoCorrecto.Array.data[1]'
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 793901140049497764, guid: 4265ba3aee600db4abffca249db5a898, type: 3}
+      propertyPath: 'codigoCorrecto.Array.data[1]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 793901140049497764, guid: 4265ba3aee600db4abffca249db5a898, type: 3}
       propertyPath: 'codigoCorrecto.Array.data[2]'
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 793901140049497764, guid: 4265ba3aee600db4abffca249db5a898, type: 3}
       propertyPath: 'codigoCorrecto.Array.data[3]'
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1358757495074990775, guid: 4265ba3aee600db4abffca249db5a898, type: 3}
       propertyPath: m_Name
@@ -243845,7 +243845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5968996855713234803, guid: d317c4badd36be146a12b32e120be290, type: 3}
       propertyPath: 'codigoCorrecto.Array.data[1]'
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5968996855713234803, guid: d317c4badd36be146a12b32e120be290, type: 3}
       propertyPath: 'codigoCorrecto.Array.data[2]'
@@ -243853,7 +243853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5968996855713234803, guid: d317c4badd36be146a12b32e120be290, type: 3}
       propertyPath: 'codigoCorrecto.Array.data[3]'
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8556070699337171365, guid: d317c4badd36be146a12b32e120be290, type: 3}
       propertyPath: m_LocalScale.x
