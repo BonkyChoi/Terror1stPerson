@@ -1,4 +1,5 @@
 using System;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,14 +17,28 @@ public class SC_FinalElectricDoor : MonoBehaviour
     [SerializeField] private Material[] materials;
 
     [SerializeField] private UnityEvent OnOpenDoor;
+    [SerializeField] private UnityEvent OnOpenDoor2;
     
     // Esto ahora se va a mandar por un evento desde la instancia -> OpenDoor();
+
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private CinemachineCamera cinemachineCamera;
+
+    [SerializeField] private AudioListener mainListener;
+    [SerializeField] private AudioListener cineListener;
+
+    [SerializeField] private GameObject PuzzlePannel;
     private void Awake()
     {
         lightA.material = materials[0];
         lightB.material = materials[0];
         lightC.material = materials[0];
         lightD.material = materials[0];
+    }
+
+    private void DisablePannel()
+    {
+        PuzzlePannel.gameObject.SetActive(false);
     }
 
     private void Start()
@@ -33,6 +48,16 @@ public class SC_FinalElectricDoor : MonoBehaviour
         if (PuzzleLightCounter.Instance.puzzleCounterB > 0) SwitchOnLightB();
         if (PuzzleLightCounter.Instance.puzzleCounterC > 0) SwitchOnLightC();
         if (PuzzleLightCounter.Instance.puzzleCounterD > 0) SwitchOnLightD();
+        if (PuzzleLightCounter.Instance.puzzleCounterA > 0 && PuzzleLightCounter.Instance.puzzleCounterB > 0 &&
+            PuzzleLightCounter.Instance.puzzleCounterC > 0 && PuzzleLightCounter.Instance.puzzleCounterD > 0)
+        {
+            OpenDoor2();
+        }
+    }
+
+    private void OpenDoor2()
+    {
+        OnOpenDoor2?.Invoke();
     }
 
     public void SwitchOnLightD()
@@ -64,15 +89,29 @@ public class SC_FinalElectricDoor : MonoBehaviour
         //Apagar las luces (esta ultima parte se debe hacer a oscuras)
         //Volver al gameplay normal
         print("Abro la puerta");
-        Time.timeScale = 0;
         //cinemática/poner sonido en el que se oye una puerta y dice "PARECE QUE LA PUERTA SE ABRIÓ"
+        DisablePannel();
+        DarlePrioridadACinemachine();
+        Time.timeScale = 0;
         OnOpenDoor?.Invoke();
         
     }
 
+    private void DarlePrioridadACinemachine()
+    {
+        cinemachineCamera.Priority = 100;
+        print("priorizar la cinemachine");
+    }
+
     public void ReturnGameplay()
     {
+        QuitarlePrioridadACinemachine();
         Time.timeScale = 1;
+    }
+
+    private void QuitarlePrioridadACinemachine()
+    {
+        cinemachineCamera.Priority = -7;
     }
 
     private void OnEnable()

@@ -1,20 +1,19 @@
 using System;
 using System.Collections;
+using SilviaScripts.Electricity;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class SC_PuzzlePannel : MonoBehaviour
 {
-    
-    
     [SerializeField] private SC_CursorPuzzle cursorPuzzle;
 
     [SerializeField] private UnityEvent onPuzzleCompleted;
     [SerializeField] private UnityEvent onPuzzleInteract;
 
     //a borrar mas tarde
-    private PlayerMovementNewImput move;
+    //private PlayerMovementNewImput move;
 
     private bool CanSuccess;
     private bool canInteract;
@@ -23,10 +22,11 @@ public class SC_PuzzlePannel : MonoBehaviour
     
     private bool puzzleOpened;
 
-    private void Awake()
+    [SerializeField] private E_PuzzleType puzzleType;
+
+    public void AmICanSuccess(E_PuzzleType otherType)
     {
-        CanSuccess = false;
-        //canInteract = false;
+        if(otherType==puzzleType)CanSuccess = true;
     }
 
     private void OnTriggerStay(Collider other)
@@ -34,14 +34,14 @@ public class SC_PuzzlePannel : MonoBehaviour
         if (!other.CompareTag("Player")) return;
         if (other.GetComponent<PlayerMovementNewImput>())
         {
-            move = other.GetComponent<PlayerMovementNewImput>();
+            //move = other.GetComponent<PlayerMovementNewImput>();
         }
         if (CanSuccess) return;
         
         if (canInteract && !puzzleOpened)
         {
             puzzleOpened = true;
-            move.enabled = false;
+            //move.enabled = false;
             onPuzzleInteract?.Invoke();
         }
         
@@ -86,14 +86,23 @@ public class SC_PuzzlePannel : MonoBehaviour
                 //tambien debes cerrar la ui y reactivar el botón de sta
             }
         }*/
-    
+
 
     private void OnEnable()
     {
         //cursorPuzzle.AddSuccess += CursorSendSuccess;
         SC_PlayerBrain.OnInteract += OnInteract;
-        //SC_PlayerBrain.OnDesinteract += OnStopInteract;
+        //SC_PlayerBrain.OnDesinteract += OnStopInteract
     }
+
+    private void Start()
+    {
+        PuzzleLightCounter.Instance.OnBeginSuccessA += AmICanSuccess;
+        PuzzleLightCounter.Instance.OnBeginSuccessB += AmICanSuccess;
+        PuzzleLightCounter.Instance.OnBeginSuccessC += AmICanSuccess;
+        PuzzleLightCounter.Instance.OnBeginSuccessD += AmICanSuccess;
+    }
+
 
     // private void CursorPuzzleOnAddSuccess()
     // {
@@ -110,7 +119,7 @@ public class SC_PuzzlePannel : MonoBehaviour
     public void CursorSendSuccess()
     {
         CanSuccess = true;
-        move.enabled = true;
+        //move.enabled = true;
         
         SC_GameManager.Instance.CloseUI();
         onPuzzleCompleted?.Invoke();

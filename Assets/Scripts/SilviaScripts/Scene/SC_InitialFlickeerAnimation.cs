@@ -39,6 +39,10 @@ public class SC_InitialFlickeerAnimation : MonoBehaviour
             OnBeginToFlick?.Invoke();
             //
             timesDeath++;
+            
+            //pedirle al controlador de los puzles que revise los que tienen success
+            PuzzleLightCounter.Instance.SendBeginSuccess();
+            print("le pido que revise si debe decir que ha mandado el success");
         }
     }
 

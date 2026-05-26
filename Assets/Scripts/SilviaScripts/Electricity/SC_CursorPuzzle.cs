@@ -56,6 +56,7 @@ public class SC_CursorPuzzle : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        
     }
 
     private void Start()
@@ -78,14 +79,26 @@ public class SC_CursorPuzzle : MonoBehaviour
         SC_UIBrain.OnExitGame += OnExitGame;
         
     }
+    //siempre que se pulsa te permote jugar?
+    //parece q si
 
     private void StartMiniGame()
     {
-        if (!puzzleActive) return;
+        //una vez que muere no llega aqui
+        if (!puzzleActive)
+        {
+            print("el juego no esta activo");
+            return;
+        }
 
-        if (gameStarted) return;
+        if (gameStarted)
+        {
+            print("El juego ya empezo");
+            return;
+        }
 
         gameStarted = true;
+        //puede que antes se quedara justo en gamestarted
 
         tutorialPanel.SetActive(false);
         beginPanel.SetActive(false);
@@ -95,7 +108,7 @@ public class SC_CursorPuzzle : MonoBehaviour
 
     private void OnDisable()
     {
-      
+        ResetPuzzleState();
        SC_InputEvent.OnBeginMiniGame -= StartMiniGame;
        SC_InputEvent.OnPauseCursor -= TryStopCursor;
 
@@ -274,7 +287,13 @@ public class SC_CursorPuzzle : MonoBehaviour
         //cursor.rotation = Quaternion.Euler(0, 0, speed * Time.deltaTime);
     }
 
-    
+    private void ResetPuzzleState()
+    {
+        resolving = false;
+        gameStarted = false;
+        cursorCanMove = false;
+        puzzleActive = false;
+    }
 
     
 

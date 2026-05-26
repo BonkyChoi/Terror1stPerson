@@ -62,6 +62,8 @@ public class SC_PlayerController : MonoBehaviour
 
     private void BeginMiniGame(InputAction.CallbackContext ctx)
     {
+        print("Call begin mini game");
+        //debe salir esto otra vez
         SC_InputEvent.OnBeginMiniGame?.Invoke();
     }
 

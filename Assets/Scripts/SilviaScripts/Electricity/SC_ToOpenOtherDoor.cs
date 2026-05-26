@@ -1,0 +1,34 @@
+using System.Collections;
+using UnityEngine;
+
+namespace SilviaScripts.Electricity
+{
+    public class SC_ToOpenOtherDoor:MonoBehaviour
+    {
+        [SerializeField] private GameObject doorA;
+        [SerializeField] private GameObject doorB;
+    
+        [SerializeField] private float doorFinalMovement;
+    
+   
+        private bool isOpening;
+
+
+        public void OpenFinalDoor()
+        {
+            if (isOpening) return;
+            StartCoroutine(OpenFinalDoorCoroutine());
+            isOpening = true;
+        }
+
+        private IEnumerator OpenFinalDoorCoroutine()
+        {
+            while (Vector3.Distance(doorA.transform.position, doorB.transform.position) < doorFinalMovement)
+            {
+                doorA.transform.position += Vector3.back * Time.deltaTime;
+                doorB.transform.position += Vector3.forward  * Time.deltaTime;
+                yield return null;
+            }
+        }
+    }
+}
