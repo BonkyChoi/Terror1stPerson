@@ -5,7 +5,7 @@ public class Titulo : MonoBehaviour
 {
     public void JUGAR()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void SALIR()
