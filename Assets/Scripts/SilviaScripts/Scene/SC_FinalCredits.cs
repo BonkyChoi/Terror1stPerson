@@ -17,7 +17,7 @@ public class SC_FinalCredits : MonoBehaviour
 
    private IEnumerator WaitForCredits()
    {
-      yield return new WaitForSeconds(30f);
+      yield return new WaitForSeconds(14);
       SceneManager.LoadScene("Titulo");
    }
 
