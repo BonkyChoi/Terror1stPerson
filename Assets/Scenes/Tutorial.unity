@@ -5376,6 +5376,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 306492657504039459, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 306492657504039459, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 306492657504039459, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 306492657504039459, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -5471,6 +5483,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5669019920586878468, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669019920586878468, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+      propertyPath: m_Color.r
+      value: 0.19998002
+      objectReference: {fileID: 0}
     - target: {fileID: 7007346661822226235, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
       propertyPath: m_fontColor.b
       value: 1
@@ -5486,6 +5506,11 @@ PrefabInstance:
     - target: {fileID: 7007346661822226235, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7450069763417983306, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
+      propertyPath: m_text
+      value: "En este juego tipo Pop The Lock, deber\xE1s pulsar en el momento exacto
+        en el que el puntero se encuentre en la zona verde"
       objectReference: {fileID: 0}
     - target: {fileID: 7617749297418706048, guid: a7891335e626b404b8067a40a1585ac1, type: 3}
       propertyPath: m_IsActive
