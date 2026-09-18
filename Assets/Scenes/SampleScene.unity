@@ -142546,6 +142546,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6418215036263499804, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
+      propertyPath: field of view
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6418215036263499804, guid: 9f158d23a1f6a9d42816e7c8118c4ede, type: 3}
       propertyPath: near clip plane
       value: 0.01
       objectReference: {fileID: 0}
